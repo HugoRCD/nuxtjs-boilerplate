@@ -1,42 +1,46 @@
-# Nuxt 3 Minimal Starter
+<img src="./public/homescreen.webp" width="750" alt="">
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/96ef5ef23a4442c2bf73762f46e52749)](https://www.codacy.com/gh/HugoRCD/vuejs-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HugoRCD/vuejs-boilerplate&amp;utm_campaign=Badge_Grade)
 
-## Setup
+# Introduction
 
-Make sure to install the dependencies:
+Here is a completely working VueJS Template ! This app is a single-page application built with VueJS and includes features such as OAuth authentication with Google, translation with I18n, and a dark and light theme and many more...
+Everything is connected and ready to use to a working api in NestJS check here !!! [NestJS Template](https://github.com/HugoRCD/nestjs-boilerplate)
 
-```bash
-# yarn
+## Features
+- OAuth authentication with Google
+- Translation with I18n
+- Dark and light theme
+- Authentication with JSON Web Tokens (JWTs) and refresh tokens
+- Working forgot password
+- Role Feature
+- Admin Dashboard
+- Support Ticket integration
+- This template is fully responsive and use CSS pre-processors (SCSS)
+
+## Getting Started
+To get started with this VueJS App, follow these steps:
+
+### Clone the repository:
+```
+git clone git@github.com:HugoRCD/vuejs-boilerplate.git
+```
+
+### Install dependencies:
+```
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
 
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
+### Start the development server:
+```
+yarn run serve
 ```
 
-## Production
+Now you can open the app in your browser at http://localhost:8080
 
-Build the application for production:
+## Documentation
+For more information on how to use this VueJS App, see the [documentation](./docs).
 
-```bash
-npm run build
-```
+## License
+This VueJS Template is licensed under the [MIT License](./LICENSE).
 
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

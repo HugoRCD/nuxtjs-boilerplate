@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@nuxt/image-edge",
     ["@pinia/nuxt", { autoImport: ["defineStore"] }],
+    "nuxt-headlessui",
   ],
   image: {
     dir: "assets/media",

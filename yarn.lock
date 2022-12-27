@@ -411,7 +411,7 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@headlessui/vue@^1.7.7":
+"@headlessui/vue@^1.0.0", "@headlessui/vue@^1.7.7":
   version "1.7.7"
   resolved "https://registry.npmjs.org/@headlessui/vue/-/vue-1.7.7.tgz"
   integrity sha512-dkdNhJkxyT9rXW5fHx/MkKaM3U13P3duYuwoGTRmDGjE7xAsvcWOSJRJpw1AmCQTvjZF44bh2wSlySLaHW+WuQ==
@@ -3797,6 +3797,15 @@ nuxi@3.0.0:
   integrity sha512-VWh1kKFffxD2yadZWcQSd6eTf9okXRr7d3HsjLiI4B3Q1/8iKdIUiodGo7X71OZ+gPVnX6Oh/XFzcb7mr+8TbQ==
   optionalDependencies:
     fsevents "~2.3.2"
+
+nuxt-headlessui@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/nuxt-headlessui/-/nuxt-headlessui-1.0.4.tgz#f37d61db6c033f0c64be9e8983af916d068f2319"
+  integrity sha512-DvmfZqDInDyvBnldf54XIShZVOmKA7SFtIxWQNOORwghDijQxqxkDLw+2BCw/otXf/xE815/7su895edeVsSeA==
+  dependencies:
+    "@headlessui/vue" "^1.0.0"
+    "@nuxt/kit" "^3.0.0"
+    pathe "^1.0.0"
 
 nuxt-icon@^0.1.8:
   version "0.1.8"
