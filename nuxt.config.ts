@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxtjs/i18n", "nuxt-icon"],
+  modules: ["@nuxtjs/i18n", "nuxt-icon", "@nuxt/image-edge"],
   i18n: {
     locales: ["en", "fr"],
     defaultLocale: "en",
@@ -22,5 +22,8 @@ export default defineNuxtConfig({
         }
       },
     },
+  },
+  image: {
+    dir: "assets/media",
   }
 })
