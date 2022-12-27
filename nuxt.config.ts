@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
+  routeRules: {
+    "/": { ssr: false },
+  },
   css: ["~/assets/style/main.scss"],
   postcss: {
     plugins: {
@@ -7,7 +10,6 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    "@nuxtjs/i18n",
     "nuxt-icon",
     "@nuxt/image-edge",
     ["@pinia/nuxt", { autoImport: ["defineStore"] }],

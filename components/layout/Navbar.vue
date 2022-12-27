@@ -13,7 +13,7 @@ const isLogged = useUserStore().isLoggedIn;
 <template>
   <Disclosure
     as="nav"
-    class="bg-primary sticky top-0 z-10 border-b border-gray-200 border-opacity-25"
+    class="backdrop-blur-lg sticky top-0 z-10 border-b border-gray-100 border-opacity-25"
     v-slot="{ open }"
   >
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -92,7 +92,7 @@ const isLogged = useUserStore().isLoggedIn;
       <div class="space-y-1 px-2 pt-2 pb-3">
         <router-link
           v-for="item in navigation"
-          :to="{ name: item.name }"
+          to="/"
           :key="item.name"
           :class="[
             item.name === $route.name
