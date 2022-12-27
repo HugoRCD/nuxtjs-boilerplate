@@ -1,0 +1,16 @@
+.title {
+  font-size: var(--font-xxl);
+  font-weight: var(--font-bold);
+  color: var(--font-color);
+  margin-bottom: 0.5rem;
+}
+
+.text {
+  font-size: var(--font-base);
+  color: var(--font-color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.center {
+  text-align: center;
+}

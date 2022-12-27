@@ -5,7 +5,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "format": "prettier --write \"src/**/*.js\" \"src/**/*.vue\" "
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.7",
@@ -21,8 +22,14 @@
     "@nuxtjs/style-resources": "^1.2.1",
     "@tailwindcss/forms": "^0.5.3",
     "autoprefixer": "^10.4.13",
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.8.0",
     "nuxt": "3.0.0",
+    "nuxt-icon": "^0.1.8",
     "postcss": "^8.4.20",
+    "prettier": "^2.3.2",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
     "tailwindcss": "^3.2.4"

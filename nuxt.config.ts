@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ["~/assets/style/main.scss"],
   postcss: {
@@ -7,4 +6,21 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: ["@nuxtjs/i18n", "nuxt-icon"],
+  i18n: {
+    locales: ["en", "fr"],
+    defaultLocale: "en",
+    vueI18n: {
+      fallbackLocale: "en",
+      legacy: false,
+      messages: {
+        en: {
+          home: "Home",
+        },
+        fr: {
+          home: "Accueil",
+        }
+      },
+    },
+  }
 })

@@ -22,12 +22,12 @@
           <div class="flex flex-shrink-0 items-center">
             <img
               class="block h-8 w-auto lg:hidden"
-              src="../assets/media/logo.png"
+              src="../../assets/media/logo.png"
               alt="Your Company"
             />
             <img
               class="hidden h-8 w-auto lg:block"
-              src="../assets/media/logo.png"
+              src="../../assets/media/logo.png"
               alt="Your Company"
             />
           </div>
@@ -35,7 +35,7 @@
             <div class="flex space-x-4">
               <router-link
                 v-for="item in navigation"
-                :to="{ name: item.name }"
+                to="/"
                 :key="item.name"
                 class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 :class="[
@@ -46,7 +46,7 @@
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
               >
-                {{ item.name }}
+                {{ $t(item.name.toLowerCase()) }}
               </router-link>
             </div>
           </div>
@@ -61,13 +61,13 @@
           <ProfilTool v-if="isLogged" />
           <div v-else class="hidden tablet:flex gap-2">
             <router-link
-              :to="{ name: 'AppLogin' }"
+              to="/"
               class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Login
             </router-link>
             <router-link
-              :to="{ name: 'Register' }"
+              to="/"
               class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
             >
               Signup
@@ -117,8 +117,8 @@
 <script>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
-import ProfilTool from "../components/ProfilTool.vue";
-import Tools from "../components/Tools.vue";
+import ProfilTool from "@/components/ProfilTool.vue";
+import Tools from "@/components/Tools.vue";
 
 export default {
   name: "Navbar",

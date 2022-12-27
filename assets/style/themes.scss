@@ -1,0 +1,34 @@
+:root {
+  --accent-color: 16, 185, 129;
+  --accent-color-hover: 5, 150, 105;
+  --accent-color-faded: rgba(5, 150, 105, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #111827;
+  --bg-secondary: #1F2937;
+  --bg-tertiary: #374151;
+  --font-color: #ffffff;
+  --font-color-secondary: #9CA3AF;
+  --accent: #10B981;
+  --accent-hover: #059669;
+
+  --font-base: #ffffff;
+  --font-muted: #6A7280;
+  --font-inverted: #ffffff;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f4f4f4;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #ffffff;
+  --font-color: #111827;
+  --font-color-secondary: #374151;
+  --accent: #10B981;
+  --accent-hover: #059669;
+
+
+  --font-base: #111827;
+  --font-muted: #6A7280;
+  --font-inverted: #ffffff;
+}

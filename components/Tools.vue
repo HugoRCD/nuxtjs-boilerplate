@@ -1,15 +1,17 @@
 <template>
   <div class="flex justify-center flex-row gap-3">
     <ThemeSwitcher />
+    <LanguageSelector />
   </div>
 </template>
 
 <script>
-import ThemeSwitcher from "./ThemeSwitcher.vue";
+import LanguageSelector from "@/components/LanguageSelector.vue";
+import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
 
 export default {
   name: "Tools",
-  components: { ThemeSwitcher },
+  components: { ThemeSwitcher, LanguageSelector },
 };
 </script>
 

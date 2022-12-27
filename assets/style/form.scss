@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+}
+
+.form-item {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.label {
+  color: var(--font-color);
+  font-size: var(--font-sm);
+  margin-bottom: 0.5rem;
+  font-weight: var(--font-bold);
+}

@@ -1,7 +1,7 @@
 <template>
   <div class="theme-switcher" @click="changeTheme">
-    <i v-if="theme === 'light'" class="fa-regular fa-solid fa-moon fa-sm"></i>
-    <i v-else class="fa-regular fa-solid fa-sun fa-sm"></i>
+    <Icon v-if="theme === 'light'" name="moon" size="sm" />
+    <Icon v-else name="sun" size="sm" />
   </div>
 </template>
 
@@ -14,21 +14,28 @@ export default {
     };
   },
   created() {
-    if (process.client)
+    if (process.browser) {
       this.theme = localStorage.getItem("theme") || "dark";
+    } else {
+      this.theme = "dark";
+    }
   },
   methods: {
     changeTheme() {
       if (document.documentElement.getAttribute("data-theme") === "dark") {
         document.documentElement.setAttribute("data-theme", "light");
-        if (process.client)
+        if (process.browser) {
           localStorage.setItem("theme", "light");
-        this.theme = "light";
+        } else {
+          this.theme = "light";
+        }
       } else {
         document.documentElement.setAttribute("data-theme", "dark");
-        if (process.client)
-          localStorage.setItem("theme", "light");
-        this.theme = "dark";
+        if (process.browser) {
+          localStorage.setItem("theme", "dark");
+        } else {
+          this.theme = "dark";
+        }
       }
     },
   },

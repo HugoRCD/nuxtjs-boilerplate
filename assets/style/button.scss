@@ -1,0 +1,27 @@
+.btn-primary {
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  color: var(--btn-color);
+  background-color: var(--accent);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--accent-hover);
+  }
+}
+
+.btn-secondary {
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  color: var(--btn-color);
+  background-color: var(--btn-secondary-bg);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--btn-secondary-bg-hover);
+  }
+}

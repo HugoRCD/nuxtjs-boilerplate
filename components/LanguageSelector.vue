@@ -1,41 +1,16 @@
-<template>
-  <div class="language-selector" @click="changeLocale">
-    <div v-if="$i18n.locale === 'en'"><span>EN</span></div>
-    <div v-else><span>FR</span></div>
-  </div>
-</template>
-
-<script>
-export default {
-  name: "LanguageSelector",
-  data() {
-    return {
-      theme: "dark",
-    };
-  },
-  methods: {
-    changeLocale() {
-      if (this.$i18n.locale === "fr") {
-        this.$i18n.locale = "en";
-      } else {
-        this.$i18n.locale = "fr";
-      }
-    },
-  },
-};
+<script setup>
+const { locale } = useI18n();
 </script>
 
-<style scoped lang="scss">
-.language-selector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  div {
-    border-radius: 0.25rem;
-    color: var(--font-color);
-    font-weight: 600;
-    font-size: 0.75rem;
-  }
-}
-</style>
+<template>
+  <select
+    class="bg-transparent text-primary border-none focus:outline-none"
+    v-model="locale"
+    :value="locale"
+  >
+    <option value="en">EN</option>
+    <option value="fr">FR</option>
+  </select>
+</template>
+
+<style scoped lang="scss"></style>

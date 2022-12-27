@@ -25,7 +25,7 @@
       >
         <router-link
           v-for="item in profile_navigation"
-          :to="{ name: item.name }"
+          to="/"
           :key="item.name"
           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           :class="[
@@ -37,7 +37,7 @@
         >
         <div
           class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white cursor-pointer"
-          @click="logout"
+          @click="console.log('logout')"
         >
           Logout
         </div>
@@ -60,16 +60,6 @@ export default {
         { name: "Settings" },
       ],
     };
-  },
-  computed: {
-    user() {
-      return "John Doe";
-    },
-  },
-  methods: {
-    async logout() {
-      console.log("logout");
-    },
   },
 };
 </script>
