@@ -3,7 +3,6 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import ProfilTool from "@/components/ProfilTool.vue";
 import Tools from "@/components/Tools.vue";
-import { useUserStore } from "~/store/userStore";
 
 const navigation = [{ name: "Home" }, { name: "About" }, { name: "Contact" }];
 
@@ -34,12 +33,12 @@ const isLogged = useUserStore().isLoggedIn;
           <div class="flex flex-shrink-0 items-center">
             <img
               class="block h-8 w-auto lg:hidden"
-              src="../../assets/media/logo.png"
+              src="../assets/media/logo.png"
               alt="Your Company"
             />
             <img
               class="hidden h-8 w-auto lg:block"
-              src="../../assets/media/logo.png"
+              src="../assets/media/logo.png"
               alt="Your Company"
             />
           </div>

@@ -1,11 +1,4 @@
-<script>
-import { defineComponent } from "vue";
-import Navbar from "~/components/layout/Navbar.vue";
-
-export default defineComponent({
-  components: { Navbar },
-});
-</script>
+<script setup></script>
 
 <template>
   <div>

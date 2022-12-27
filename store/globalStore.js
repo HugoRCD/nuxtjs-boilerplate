@@ -8,13 +8,13 @@ export const useGlobalStore = defineStore({
     user: useUserStore(),
   }),
   getters: {
-    doubleCount() {
-      return this.count * 2;
+    isLoading(state) {
+      return state.isLoading;
     },
   },
   actions: {
-    increment() {
-      this.count++;
+    loading(state, payload) {
+      state.isLoading = payload;
     },
   },
 });

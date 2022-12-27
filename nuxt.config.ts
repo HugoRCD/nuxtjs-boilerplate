@@ -1,4 +1,18 @@
 export default defineNuxtConfig({
+  app: {
+    head: {
+      meta: [{ name: "viewport" }, { charset: "utf-8" }],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    },
+    pageTransition: {
+      name: "fade",
+      mode: "out-in",
+    },
+  },
+  imports: {
+    autoImport: true,
+    dirs: ["store", "plugins", "components"],
+  },
   routeRules: {
     "/": { ssr: false },
   },
