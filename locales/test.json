@@ -1,0 +1,10 @@
+{
+  "message": "Hello World",
+  "errors": [
+    {
+      "creation": "creation error",
+        "update": "update error",
+        "delete": "delete error"
+    }
+  ]
+}

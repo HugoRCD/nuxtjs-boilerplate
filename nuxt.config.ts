@@ -6,7 +6,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxtjs/i18n", "nuxt-icon", "@nuxt/image-edge"],
+  modules: [
+    "@nuxtjs/i18n",
+    "nuxt-icon",
+    "@nuxt/image-edge",
+    ["@pinia/nuxt", { autoImport: ["defineStore"] }],
+  ],
   i18n: {
     locales: ["en", "fr"],
     defaultLocale: "en",
@@ -19,11 +24,11 @@ export default defineNuxtConfig({
         },
         fr: {
           home: "Accueil",
-        }
+        },
       },
     },
   },
   image: {
     dir: "assets/media",
-  }
-})
+  },
+});

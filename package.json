@@ -11,7 +11,9 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.7",
     "@heroicons/vue": "^2.0.13",
+    "@pinia/nuxt": "^0.4.6",
     "axios": "^1.2.1",
+    "pinia": "^2.0.28",
     "vue-router": "^4.0.3",
     "vue-sweetalert2": "^5.0.5",
     "vue3-google-login": "^2.0.12",
