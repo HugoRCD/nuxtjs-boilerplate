@@ -12,22 +12,6 @@ export default defineNuxtConfig({
     "@nuxt/image-edge",
     ["@pinia/nuxt", { autoImport: ["defineStore"] }],
   ],
-  i18n: {
-    locales: ["en", "fr"],
-    defaultLocale: "en",
-    vueI18n: {
-      fallbackLocale: "en",
-      legacy: false,
-      messages: {
-        en: {
-          home: "Home",
-        },
-        fr: {
-          home: "Accueil",
-        },
-      },
-    },
-  },
   image: {
     dir: "assets/media",
   },
