@@ -23,7 +23,7 @@
       <MenuItems
         class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
       >
-        <router-link
+        <NuxtLink
           v-for="item in profile_navigation"
           to="/"
           :key="item.name"
@@ -33,7 +33,7 @@
             'block px-4 py-2 text-sm text-gray-700',
           ]"
           role="menuitem"
-          >{{ item.name }}</router-link
+          >{{ item.name }}</NuxtLink
         >
         <div
           class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white cursor-pointer"

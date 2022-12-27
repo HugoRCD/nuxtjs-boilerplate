@@ -1,3 +1,17 @@
+<script setup>
+import { Switch } from "@headlessui/vue";
+
+definePageMeta({
+  name: "Contact",
+  path: "/contact",
+  title: "Contact",
+  description: "Contact page",
+  keywords: "contact",
+});
+
+const agreed = ref(false);
+</script>
+
 <template>
   <div class="overflow-hidden bg-base py-16 px-4 sm:px-6 lg:px-8 lg:py-24">
     <div class="relative mx-auto max-w-xl">
@@ -227,20 +241,5 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Switch } from "@headlessui/vue";
-export default {
-  name: "Contact",
-  components: {
-    Switch,
-  },
-  data() {
-    return {
-      agreed: false,
-    };
-  },
-};
-</script>
 
 <style scoped lang="scss"></style>

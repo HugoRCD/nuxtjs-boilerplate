@@ -1,3 +1,39 @@
+<script setup>
+definePageMeta({
+  title: "Home",
+  path: "/",
+  description: "Home page",
+  keywords: "Home",
+});
+
+const logos = [
+  {
+    name: "Transistor",
+    url: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
+  },
+  {
+    name: "Mirage",
+    url: "https://tailwindui.com/img/logos/mirage-logo-gray-400.svg",
+  },
+  {
+    name: "Tuple",
+    url: "https://tailwindui.com/img/logos/tuple-logo-gray-400.svg",
+  },
+  {
+    name: "Laravel",
+    url: "https://tailwindui.com/img/logos/laravel-logo-gray-400.svg",
+  },
+  {
+    name: "StaticKit",
+    url: "https://tailwindui.com/img/logos/statickit-logo-gray-400.svg",
+  },
+  {
+    name: "Workcation",
+    url: "https://tailwindui.com/img/logos/workcation-logo-gray-400.svg",
+  },
+];
+</script>
+
 <template>
   <div>
     <main>
@@ -277,70 +313,3 @@
     </main>
   </div>
 </template>
-
-<script>
-export default {
-  name: "Home",
-  data() {
-    return {
-      stats: [
-        {
-          id: 1,
-          value: "12k",
-          label: "companies",
-        },
-        {
-          id: 2,
-          value: "24k",
-          label: "templates",
-        },
-        {
-          id: 3,
-          value: "16k",
-          label: "queries",
-        },
-      ],
-      logos: [
-        {
-          name: "Transistor",
-          url: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
-        },
-        {
-          name: "Mirage",
-          url: "https://tailwindui.com/img/logos/mirage-logo-gray-400.svg",
-        },
-        {
-          name: "Tuple",
-          url: "https://tailwindui.com/img/logos/tuple-logo-gray-400.svg",
-        },
-        {
-          name: "Laravel",
-          url: "https://tailwindui.com/img/logos/laravel-logo-gray-400.svg",
-        },
-        {
-          name: "StaticKit",
-          url: "https://tailwindui.com/img/logos/statickit-logo-gray-400.svg",
-        },
-        {
-          name: "Workcation",
-          url: "https://tailwindui.com/img/logos/workcation-logo-gray-400.svg",
-        },
-      ],
-      footerNavigation: {
-        main: [
-          { name: "About", href: "#" },
-          { name: "Contact", href: "#" },
-          { name: "Terms", href: "#" },
-          { name: "Privacy", href: "#" },
-        ],
-        social: [
-          { name: "Twitter", href: "#", icon: "" },
-          { name: "Facebook", href: "#", icon: "" },
-          { name: "Instagram", href: "#", icon: "" },
-          { name: "LinkedIn", href: "#", icon: "" },
-        ],
-      },
-    };
-  },
-};
-</script>

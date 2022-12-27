@@ -4,7 +4,11 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import ProfilTool from "@/components/ProfilTool.vue";
 import Tools from "@/components/Tools.vue";
 
-const navigation = [{ name: "Home" }, { name: "About" }, { name: "Contact" }];
+const navigation = [
+  { name: "Home", path: "" },
+  { name: "About", path: "about" },
+  { name: "Contact", path: "contact" },
+];
 
 const isLogged = useUserStore().isLoggedIn;
 </script>
@@ -44,9 +48,9 @@ const isLogged = useUserStore().isLoggedIn;
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
-              <router-link
+              <NuxtLink
                 v-for="item in navigation"
-                to="/"
+                :to="{ name: item.name }"
                 :key="item.name"
                 class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 :class="[
@@ -58,7 +62,7 @@ const isLogged = useUserStore().isLoggedIn;
                 :aria-current="item.current ? 'page' : undefined"
               >
                 {{ $t(item.name.toLowerCase()) }}
-              </router-link>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -71,25 +75,25 @@ const isLogged = useUserStore().isLoggedIn;
           ></div>
           <ProfilTool v-if="isLogged" />
           <div v-else class="hidden tablet:flex gap-2">
-            <router-link
+            <NuxtLink
               to="/"
               class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Login
-            </router-link>
-            <router-link
+            </NuxtLink>
+            <NuxtLink
               to="/"
               class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
             >
               Signup
-            </router-link>
+            </NuxtLink>
           </div>
         </div>
       </div>
     </div>
     <DisclosurePanel class="sm:hidden">
       <div class="space-y-1 px-2 pt-2 pb-3">
-        <router-link
+        <NuxtLink
           v-for="item in navigation"
           to="/"
           :key="item.name"
@@ -102,24 +106,24 @@ const isLogged = useUserStore().isLoggedIn;
           :aria-current="item.current ? 'page' : undefined"
         >
           {{ item.name }}
-        </router-link>
+        </NuxtLink>
       </div>
       <div
         class="py-5 border-t border-gray-700 items-center center"
         v-if="!isLogged"
       >
-        <router-link
+        <NuxtLink
           :to="{ name: 'AppLogin' }"
           class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           Login
-        </router-link>
-        <router-link
+        </NuxtLink>
+        <NuxtLink
           :to="{ name: 'Register' }"
           class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
         >
           Signup
-        </router-link>
+        </NuxtLink>
       </div>
     </DisclosurePanel>
   </Disclosure>
