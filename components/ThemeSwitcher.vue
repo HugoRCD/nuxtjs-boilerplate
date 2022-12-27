@@ -1,46 +1,30 @@
-<template>
-  <div class="theme-switcher" @click="changeTheme">
-    <Icon v-if="theme === 'light'" name="moon" size="sm" />
-    <Icon v-else name="sun" size="sm" />
-  </div>
-</template>
+<script setup>
+const theme = ref("dark");
 
-<script>
-export default {
-  name: "theme-switcher",
-  data() {
-    return {
-      theme: "dark",
-    };
-  },
-  created() {
-    if (process.browser) {
-      this.theme = localStorage.getItem("theme") || "dark";
-    } else {
-      this.theme = "dark";
-    }
-  },
-  methods: {
-    changeTheme() {
-      if (document.documentElement.getAttribute("data-theme") === "dark") {
-        document.documentElement.setAttribute("data-theme", "light");
-        if (process.browser) {
-          localStorage.setItem("theme", "light");
-        } else {
-          this.theme = "light";
-        }
-      } else {
-        document.documentElement.setAttribute("data-theme", "dark");
-        if (process.browser) {
-          localStorage.setItem("theme", "dark");
-        } else {
-          this.theme = "dark";
-        }
-      }
-    },
-  },
+const toggleTheme = () => {
+  if (theme.value === "dark") {
+    theme.value = "light";
+  } else {
+    theme.value = "dark";
+  }
+  document.documentElement.setAttribute("data-theme", theme.value);
+  if (process.client) {
+    localStorage.setItem("theme", theme.value);
+  }
 };
 </script>
+
+<template>
+  <div class="theme-switcher" @click="toggleTheme">
+    <Icon
+      v-if="theme === 'light'"
+      name="grommet-icons:sun"
+      size="1.5em"
+      class="text-primary"
+    />
+    <Icon v-else name="ph:moon-stars-bold" size="1.5em" class="text-primary" />
+  </div>
+</template>
 
 <style scoped lang="scss">
 .theme-switcher {
