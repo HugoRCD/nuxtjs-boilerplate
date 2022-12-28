@@ -1,5 +1,5 @@
 <template>
-  <div class="center">
+  <div class="text-center">
     <Icon name="line-md:loading-twotone-loop" size="2em" />
     <p class="text" v-if="isText">
       {{ $t("loading") }}

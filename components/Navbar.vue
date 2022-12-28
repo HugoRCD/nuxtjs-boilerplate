@@ -1,17 +1,28 @@
-<script setup>
+<script>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
-import ProfilTool from "@/components/ProfilTool.vue";
-import Tools from "@/components/Tools.vue";
 import { useUserStore } from "~/store/userStore";
 
-const navigation = [
-  { name: "Home", path: "" },
-  { name: "About", path: "about" },
-  { name: "Contact", path: "contact" },
-];
-
-const isLogged = useUserStore().isLoggedIn;
+export default {
+  name: "Navbar",
+  components: {
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Bars3Icon,
+    XMarkIcon,
+  },
+  data() {
+    return {
+      navigation: [{ name: "Home" }, { name: "About" }, { name: "Contact" }],
+    };
+  },
+  computed: {
+    isLogged() {
+      return useUserStore().isLoggedIn;
+    },
+  },
+};
 </script>
 
 <template>

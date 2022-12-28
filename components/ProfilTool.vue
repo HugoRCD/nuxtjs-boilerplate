@@ -1,3 +1,23 @@
+<script setup>
+import { useUserStore } from "~/store/userStore";
+import { MenuButton, Menu, MenuItems } from "@headlessui/vue";
+
+const profile_navigation = [
+  { name: "Profile" },
+  { name: "Dashboard" },
+  { name: "Settings" },
+];
+
+const logout = async () => {
+  useGlobalStore().setLoading(true);
+  useUserStore().logout();
+  useGlobalStore().setLoading(false);
+  /*await useApi("auth/logout", "POST", {});  send refreshToken */
+  useRouter().push({ name: "Home" });
+  useGlobalStore().setLoading(false);
+};
+</script>
+
 <template>
   <Menu as="div" class="relative ml-3">
     <div>
@@ -37,7 +57,7 @@
         >
         <div
           class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white cursor-pointer"
-          @click="console.log('logout')"
+          @click="logout"
         >
           Logout
         </div>
@@ -45,21 +65,3 @@
     </transition>
   </Menu>
 </template>
-
-<script>
-import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
-
-export default {
-  name: "ProfilTool",
-  components: { Menu, MenuButton, MenuItems },
-  data() {
-    return {
-      profile_navigation: [
-        { name: "Profile" },
-        { name: "Dashboard" },
-        { name: "Settings" },
-      ],
-    };
-  },
-};
-</script>

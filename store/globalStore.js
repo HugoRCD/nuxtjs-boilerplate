@@ -6,8 +6,8 @@ export const useGlobalStore = defineStore({
     loading: false,
   }),
   getters: {
-    isLoading(state) {
-      return state.loading;
+    isLoading() {
+      return this.loading;
     },
   },
   actions: {

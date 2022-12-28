@@ -1,14 +1,18 @@
 import { defineStore } from "pinia";
 
-export const useUserStore = defineStore({
-  id: "user",
+const defaultUser = {
+  accessToken: "",
+  user: {},
+};
+
+export const useUserStore = defineStore("user", {
   state: () => ({
     accessToken: "",
     user: {},
   }),
   getters: {
     getToken() {
-      return this.token;
+      return this.accessToken;
     },
     getUser() {
       return this.user;
@@ -18,11 +22,14 @@ export const useUserStore = defineStore({
     },
   },
   actions: {
-    setToken(token) {
-      this.token = token;
+    setAccessToken(token) {
+      this.accessToken = token;
     },
     setUser(user) {
       this.user = user;
+    },
+    logout() {
+      Object.assign(this, defaultUser);
     },
   },
 });

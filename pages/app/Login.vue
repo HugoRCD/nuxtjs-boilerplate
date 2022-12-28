@@ -1,8 +1,5 @@
-<script setup>
+<script>
 import { GoogleLogin } from "vue3-google-login";
-import Loader from "@/components/Loader.vue";
-import Tools from "@/components/Tools.vue";
-import { useGlobalStore } from "~/store/globalStore";
 
 definePageMeta({
   name: "Login",
@@ -10,21 +7,57 @@ definePageMeta({
   description: "Login to your account",
 });
 
-const credentials = reactive({
-  login: null,
-  password: null,
+useHead({
+  title: "Vue Template - Login",
+  meta: [
+    {
+      name: "description",
+      content: "Login to your account",
+    },
+  ],
 });
 
-const loading = computed(() => {
-  return useGlobalStore().isLoading;
-});
-
-const login = async () => {
-  console.log("login");
-};
-
-const googleLogin = async (googleUser) => {
-  console.log("googleLogin");
+export default {
+  components: { GoogleLogin },
+  data() {
+    return {
+      credentials: {
+        login: null,
+        password: null,
+      },
+    };
+  },
+  computed: {
+    loading() {
+      return useGlobalStore().isLoading;
+    },
+  },
+  methods: {
+    async login() {
+      useGlobalStore().setLoading(true);
+      const response = await useApi("auth/login", "POST", this.credentials);
+      if (response) {
+        useUserStore().setAccessToken(response.accessToken);
+        useRouter().push({ name: "Home" });
+        useGlobalStore().setLoading(false);
+      } else {
+        useGlobalStore().setLoading(false);
+      }
+    },
+    async googleLogin(googleToken) {
+      useGlobalStore().setLoading(true);
+      const response = await useApi("auth/google", "POST", {
+        token: googleToken.credential,
+      });
+      if (response) {
+        useUserStore().setAccessToken(response.accessToken);
+        useRouter().push({ name: "Home" });
+        useGlobalStore().setLoading(false);
+      } else {
+        useGlobalStore().setLoading(false);
+      }
+    },
+  },
 };
 </script>
 
@@ -59,7 +92,6 @@ const googleLogin = async (googleUser) => {
             Sign in to your account
           </h2>
         </div>
-
         <div class="mt-16">
           <form v-if="!loading" class="space-y-6" @submit.prevent="login">
             <div>
