@@ -146,7 +146,7 @@ export default {
 
               <div class="text-sm">
                 <router-link
-                  to="/"
+                  :to="{ name: 'PasswordForgot' }"
                   class="font-medium text-accent hover:text-accent-hover"
                   >Forgot your password?</router-link
                 >

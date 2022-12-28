@@ -1,8 +1,8 @@
 <script setup>
 definePageMeta({
+  title: "About",
   name: "About",
   path: "/about",
-  title: "About",
   description: "About page",
   keywords: "about",
 });

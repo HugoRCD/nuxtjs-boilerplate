@@ -1,6 +1,7 @@
 <script setup>
 definePageMeta({
   title: "Home",
+  name: "Home",
   path: "/",
   description: "Home page",
   keywords: "Home",

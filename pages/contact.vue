@@ -2,9 +2,9 @@
 import { Switch } from "@headlessui/vue";
 
 definePageMeta({
+  title: "Contact",
   name: "Contact",
   path: "/contact",
-  title: "Contact",
   description: "Contact page",
   keywords: "contact",
 });
