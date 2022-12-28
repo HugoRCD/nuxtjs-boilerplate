@@ -55,7 +55,7 @@ export default {
           <router-link to="/">
             <img
               class="h-12 w-auto mx-auto"
-              src="../../../assets/media/logo.png"
+              src="../../assets/media/logo.png"
               alt="Your Company"
             />
           </router-link>

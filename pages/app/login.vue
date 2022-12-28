@@ -7,16 +7,6 @@ definePageMeta({
   description: "Login to your account",
 });
 
-useHead({
-  title: "Vue Template - Login",
-  meta: [
-    {
-      name: "description",
-      content: "Login to your account",
-    },
-  ],
-});
-
 export default {
   components: { GoogleLogin },
   data() {

@@ -2,7 +2,6 @@
 definePageMeta({
   title: "About",
   name: "About",
-  path: "/about",
   description: "About page",
   keywords: "about",
 });
