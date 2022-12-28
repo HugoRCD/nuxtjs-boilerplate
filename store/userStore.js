@@ -14,7 +14,7 @@ export const useUserStore = defineStore({
       return this.user;
     },
     isLoggedIn() {
-      return true; // !!this.accessToken;
+      return !!this.accessToken;
     },
   },
   actions: {

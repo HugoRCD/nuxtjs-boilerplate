@@ -1,20 +1,18 @@
 import { defineStore } from "pinia";
-import { useUserStore } from "./userStore";
 
 export const useGlobalStore = defineStore({
   id: "global",
   state: () => ({
-    isLoading: false,
-    user: useUserStore(),
+    loading: false,
   }),
   getters: {
     isLoading(state) {
-      return state.isLoading;
+      return state.loading;
     },
   },
   actions: {
-    loading(state, payload) {
-      state.isLoading = payload;
+    setLoading(payload) {
+      this.loading = payload;
     },
   },
 });

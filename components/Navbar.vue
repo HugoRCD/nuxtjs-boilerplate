@@ -3,6 +3,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import ProfilTool from "@/components/ProfilTool.vue";
 import Tools from "@/components/Tools.vue";
+import { useUserStore } from "~/store/userStore";
 
 const navigation = [
   { name: "Home", path: "" },
@@ -76,7 +77,7 @@ const isLogged = useUserStore().isLoggedIn;
           <ProfilTool v-if="isLogged" />
           <div v-else class="hidden tablet:flex gap-2">
             <NuxtLink
-              to="/"
+              :to="{ name: 'Login' }"
               class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Login

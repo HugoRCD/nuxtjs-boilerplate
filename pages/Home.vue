@@ -5,7 +5,21 @@ definePageMeta({
   description: "Home page",
   keywords: "Home",
 });
-
+useHead({
+  title: "Vue 3 + Nuxt 3",
+  meta: [
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+    { name: "description", content: "Home page" },
+    { name: "keywords", content: "Home" },
+  ],
+  link: [
+    {
+      rel: "icon",
+      type: "image/x-icon",
+      href: "/favicon.ico",
+    },
+  ],
+});
 const logos = [
   {
     name: "Transistor",
