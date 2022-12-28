@@ -58,5 +58,4 @@ export const useApi = async (url, method, body = null) => {
     credentials: "include",
     ...(body ? { body: JSON.stringify(body) } : {}),
   });
-  return response;
 };
