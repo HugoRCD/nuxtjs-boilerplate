@@ -18,15 +18,11 @@ export default {
   },
   methods: {
     async sendForgotPassword() {
-      useGlobalStore().setLoading(true);
       const response = await useApi("reset-password", "POST", {
         email: this.email,
       });
       if (response) {
         useRouter().push({ name: "Login" });
-        useGlobalStore().setLoading(false);
-      } else {
-        useGlobalStore().setLoading(false);
       }
     },
   },

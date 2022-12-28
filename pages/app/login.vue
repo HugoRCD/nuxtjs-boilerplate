@@ -24,27 +24,21 @@ export default {
   },
   methods: {
     async login() {
-      useGlobalStore().setLoading(true);
       const response = await useApi("auth/login", "POST", this.credentials);
       if (response) {
         useUserStore().setAccessToken(response.accessToken);
-        useRouter().push({ name: "Home" });
-        useGlobalStore().setLoading(false);
-      } else {
-        useGlobalStore().setLoading(false);
+        localStorage.setItem("accessToken", response.accessToken);
+        useRouter().push({ name: "Profile" });
       }
     },
     async googleLogin(googleToken) {
-      useGlobalStore().setLoading(true);
       const response = await useApi("auth/google", "POST", {
         token: googleToken.credential,
       });
       if (response) {
         useUserStore().setAccessToken(response.accessToken);
-        useRouter().push({ name: "Home" });
-        useGlobalStore().setLoading(false);
-      } else {
-        useGlobalStore().setLoading(false);
+        localStorage.setItem("accessToken", response.accessToken);
+        useRouter().push({ name: "Profile" });
       }
     },
   },

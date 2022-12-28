@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     async resetPassword() {
-      useGlobalStore().setLoading(true);
       const response = await useApi(
         "reset-password/" + useRoute().params.token,
         "POST",
@@ -29,9 +28,6 @@ export default {
       );
       if (response) {
         useRouter().push({ name: "Login" });
-        useGlobalStore().setLoading(false);
-      } else {
-        useGlobalStore().setLoading(false);
       }
     },
   },
