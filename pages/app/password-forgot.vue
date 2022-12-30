@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     async sendForgotPassword() {
-      const response = await useApi("reset-password", "POST", {
+      const response = await useAxios("reset-password", "POST", {
         email: this.email,
       });
       if (response) {

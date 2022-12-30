@@ -1,5 +1,6 @@
 <script>
 import { GoogleLogin } from "vue3-google-login";
+import { useAxios } from "~/composables/useApi";
 
 definePageMeta({
   name: "Login",
@@ -24,7 +25,8 @@ export default {
   },
   methods: {
     async login() {
-      const response = await useApi("auth/login", "POST", this.credentials);
+      const response = await useAxios("auth/login", "POST", this.credentials);
+      console.log(response);
       if (response) {
         useUserStore().setAccessToken(response.accessToken);
         localStorage.setItem("accessToken", response.accessToken);
@@ -32,7 +34,7 @@ export default {
       }
     },
     async googleLogin(googleToken) {
-      const response = await useApi("auth/google", "POST", {
+      const response = await useAxios("auth/google", "POST", {
         token: googleToken.credential,
       });
       if (response) {

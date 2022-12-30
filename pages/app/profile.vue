@@ -1,4 +1,6 @@
 <script>
+import { useAxios } from "~/composables/useApi";
+
 definePageMeta({
   name: "Profile",
   title: "Profile",
@@ -24,8 +26,7 @@ export default {
   },
   methods: {
     async getCurrentUser() {
-      const response = await useApi("user", "GET");
-      console.log(response);
+      const response = await useAxios("user", "GET");
       if (response) {
         this.user = response;
       }

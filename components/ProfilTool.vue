@@ -12,7 +12,7 @@ const logout = async () => {
   useGlobalStore().setLoading(true);
   useUserStore().logout();
   useGlobalStore().setLoading(false);
-  /*await useApi("auth/logout", "POST", {});  send refreshToken */
+  await useAxios("auth/logout", "POST", {});
   useRouter().push({ name: "Home" });
   useGlobalStore().setLoading(false);
 };

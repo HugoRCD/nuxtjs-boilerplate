@@ -1,53 +1,53 @@
 import { useGlobalStore } from "~/store/globalStore";
 import { useUserStore } from "~/store/userStore";
 
-/*
- *  TODO:
- *   - Add other composables for other API calls like refresh token, etc.
- *   - Add localStorage handling
- *   - Finish implementing the refresh token logic
- *   - Fix deconnection error
- */
+import axios from "axios";
 
-export const useApi = async (url, method, body = null) => {
+const config = useRuntimeConfig();
+
+axios.defaults.baseURL = config.public.apiUrl;
+axios.defaults.headers.common["Accept"] = "application/json";
+axios.defaults.headers.common["Content-Type"] = "application/json";
+axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+axios.defaults.withCredentials = true;
+axios.defaults.headers.common["Authorization"] =
+  "Bearer " + localStorage.getItem("accessToken");
+
+let isRefreshing = false;
+
+axios.interceptors.response.use(
+  (resp) => resp,
+  async (error) => {
+    if (error.response.status === 401 && !isRefreshing) {
+      isRefreshing = true;
+      const response = await axios.post(
+        "/auth/refresh",
+        {},
+        { withCredentials: true },
+      );
+      if (response.status === 200) {
+        useUserStore().setAccessToken(response.data.accessToken);
+        localStorage.setItem("accessToken", response.data.accessToken);
+        error.config.headers["Authorization"] =
+          "Bearer " + response.data.accessToken;
+        isRefreshing = false;
+        return axios.request(error.config);
+      }
+    }
+    isRefreshing = false;
+    return error;
+  },
+);
+
+export const useAxios = async (url, method, body = null) => {
+  useGlobalStore().setLoading(true);
   const config = useRuntimeConfig();
   const authorization =
     "Bearer " + localStorage.getItem("accessToken") || useUserStore().getToken;
-  return await $fetch(config.public.apiUrl + url, {
-    onRequest() {
-      useGlobalStore().setLoading(true);
-    },
-    onRequestError() {
-      useGlobalStore().setLoading(false);
-    },
-    onResponse() {
-      useGlobalStore().setLoading(false);
-    },
-    async onResponseError({ response }) {
-      if (response.status === 401) {
-        await $fetch(config.public.apiUrl + "auth/refresh", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-            Authorization: authorization,
-            "Access-Control-Expose-Headers": "Set-Cookie",
-          },
-          credentials: "include",
-        })
-          .then((response) => {
-            console.log(response);
-            useUserStore().setAccessToken(response.accessToken);
-          })
-          .catch(() => {
-            useUserStore().logout();
-            useRouter().push({ name: "Login" });
-          });
-      }
-      useGlobalStore().setLoading(false);
-    },
+  const response = await axios({
+    url: config.public.apiUrl + url,
     method: method,
+    data: body,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -55,7 +55,8 @@ export const useApi = async (url, method, body = null) => {
       Authorization: authorization,
       "Access-Control-Expose-Headers": "Set-Cookie",
     },
-    credentials: "include",
-    ...(body ? { body: JSON.stringify(body) } : {}),
+    withCredentials: true,
   });
+  useGlobalStore().setLoading(false);
+  return response.data;
 };

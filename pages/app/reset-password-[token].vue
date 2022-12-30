@@ -1,4 +1,6 @@
 <script>
+import { useAxios } from "~/composables/useApi";
+
 definePageMeta({
   name: "reset-password",
   title: "Reset Password",
@@ -19,7 +21,7 @@ export default {
   },
   methods: {
     async resetPassword() {
-      const response = await useApi(
+      const response = await useAxios(
         "reset-password/" + useRoute().params.token,
         "POST",
         {
