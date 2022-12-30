@@ -3,9 +3,7 @@ import { useUserStore } from "~/store/userStore";
 
 import axios from "axios";
 
-const config = useRuntimeConfig();
-
-axios.defaults.baseURL = config.public.apiUrl;
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 axios.defaults.headers.common["Accept"] = "application/json";
 axios.defaults.headers.common["Content-Type"] = "application/json";
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
@@ -28,6 +26,9 @@ axios.interceptors.response.use(
           "Bearer " + response.data.accessToken;
         isRefreshing = false;
         return axios.request(error.config);
+      } else {
+        useUserStore().logout();
+        useRouter().push({ name: "Login" });
       }
     }
     isRefreshing = false;
