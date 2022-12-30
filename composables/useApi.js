@@ -20,11 +20,7 @@ axios.interceptors.response.use(
   async (error) => {
     if (error.response.status === 401 && !isRefreshing) {
       isRefreshing = true;
-      const response = await axios.post(
-        "/auth/refresh",
-        {},
-        { withCredentials: true },
-      );
+      const response = await axios.post("/auth/refresh", {});
       if (response.status === 200) {
         useUserStore().setAccessToken(response.data.accessToken);
         localStorage.setItem("accessToken", response.data.accessToken);
@@ -41,21 +37,10 @@ axios.interceptors.response.use(
 
 export const useAxios = async (url, method, body = null) => {
   useGlobalStore().setLoading(true);
-  const config = useRuntimeConfig();
-  const authorization =
-    "Bearer " + localStorage.getItem("accessToken") || useUserStore().getToken;
   const response = await axios({
-    url: config.public.apiUrl + url,
     method: method,
+    url: url,
     data: body,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "X-Requested-With": "XMLHttpRequest",
-      Authorization: authorization,
-      "Access-Control-Expose-Headers": "Set-Cookie",
-    },
-    withCredentials: true,
   });
   useGlobalStore().setLoading(false);
   return response.data;
