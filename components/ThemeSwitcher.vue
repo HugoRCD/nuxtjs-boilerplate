@@ -1,36 +1,36 @@
 <script setup>
-import { useGlobalStore } from "~/store/globalStore";
+const theme = ref("dark");
 
-const availableThemes = [
-  {
-    key: "light",
-    name: "Light",
-  },
-  {
-    key: "dark",
-    name: "Dark",
-  },
-];
-
-const theme = useGlobalStore().theme;
-const onThemeChange = (theme) => {
-  useGlobalStore().setTheme(theme);
-  document.documentElement.setAttribute("data-theme", theme);
+const toggleTheme = () => {
+  if (theme.value === "dark") {
+    theme.value = "light";
+  } else {
+    theme.value = "dark";
+  }
+  document.documentElement.setAttribute("data-theme", theme.value);
+  if (process.client) {
+    localStorage.setItem("theme", theme.value);
+  }
 };
 </script>
 
 <template>
-  <select
-    class="bg-transparent text-primary border-none focus:outline-none"
-    v-model="theme"
-    @change="onThemeChange($event.target.value)"
-  >
-    <option
-      v-for="theme in availableThemes"
-      :value="theme.key"
-      :key="theme.key"
-    >
-      {{ theme.name }}
-    </option>
-  </select>
+  <div class="theme-switcher" @click="toggleTheme">
+    <Icon
+      v-if="theme === 'light'"
+      name="grommet-icons:sun"
+      size="1.5em"
+      class="text-primary"
+    />
+    <Icon v-else name="ph:moon-stars-bold" size="1.5em" class="text-primary" />
+  </div>
 </template>
+
+<style scoped lang="scss">
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+</style>
