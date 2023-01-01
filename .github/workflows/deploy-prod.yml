@@ -1,0 +1,20 @@
+name: my-awesome-actions-jobs-prod
+
+on:
+  push:
+    branches:
+      - master
+      
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: onekiloparsec/heroku-node-deploy-subfolder@v1.1.0
+        with:
+          api_key: ${{secrets.HEROKU_API_KEY}}
+          email: ${{secrets.HEROKU_EMAIL}}
+          app_name: nuxtjs-boilerplate
+          heroku_branch: "master"
+          subfolder: "dist-prod"
