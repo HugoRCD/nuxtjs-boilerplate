@@ -2,11 +2,7 @@
 import { useUserStore } from "~/store/userStore";
 import { MenuButton, Menu, MenuItems } from "@headlessui/vue";
 
-const profile_navigation = [
-  { name: "Profile" },
-  { name: "Dashboard" },
-  { name: "Settings" },
-];
+const profile_navigation = [{ name: "Profile" }];
 
 const logout = async () => {
   useGlobalStore().setLoading(true);
@@ -45,7 +41,7 @@ const logout = async () => {
       >
         <NuxtLink
           v-for="item in profile_navigation"
-          to="/"
+          :to="{ name: item.name }"
           :key="item.name"
           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           :class="[
