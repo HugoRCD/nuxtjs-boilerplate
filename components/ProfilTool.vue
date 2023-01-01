@@ -5,12 +5,9 @@ import { MenuButton, Menu, MenuItems } from "@headlessui/vue";
 const profile_navigation = [{ name: "Profile" }];
 
 const logout = async () => {
-  useGlobalStore().setLoading(true);
   useUserStore().logout();
-  useGlobalStore().setLoading(false);
   await useAxios("auth/logout", "POST", {});
   useRouter().push({ name: "Home" });
-  useGlobalStore().setLoading(false);
 };
 </script>
 
