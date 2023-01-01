@@ -1,4 +1,4 @@
-name: my-awesome-actions-jobs-prod
+name: Deploy to Production
 
 on:
   push:
