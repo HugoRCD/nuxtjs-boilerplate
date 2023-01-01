@@ -4,16 +4,14 @@ on:
   push:
     branches:
       - master
-      
+
 jobs:
-  deploy-prod:
+  build:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
-      - uses: onekiloparsec/heroku-node-deploy-subfolder@v1.1.0
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          api_key: ${{secrets.HEROKU_API_KEY}}
-          email: ${{secrets.HEROKU_EMAIL}}
-          app_name: nuxt3-boilerplate
-          heroku_branch: "master"
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: nuxt3-boilerplate
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
