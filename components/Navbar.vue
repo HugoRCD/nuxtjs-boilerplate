@@ -1,28 +1,10 @@
-<script>
+<script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { useUserStore } from "~/store/userStore";
 
-export default {
-  name: "Navbar",
-  components: {
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    Bars3Icon,
-    XMarkIcon,
-  },
-  data() {
-    return {
-      navigation: [{ name: "Home" }, { name: "About" }, { name: "Contact" }],
-    };
-  },
-  computed: {
-    isLogged() {
-      return useUserStore().isLoggedIn;
-    },
-  },
-};
+const navigation = [{ name: "Home" }, { name: "About" }, { name: "Contact" }];
+const isLogged = computed(() => useUserStore().isLoggedIn);
 </script>
 
 <template>
@@ -107,7 +89,7 @@ export default {
       <div class="space-y-1 px-2 pt-2 pb-3">
         <NuxtLink
           v-for="item in navigation"
-          to="/"
+          :to="{ name: item.name }"
           :key="item.name"
           :class="[
             item.name === $route.name
@@ -121,17 +103,17 @@ export default {
         </NuxtLink>
       </div>
       <div
-        class="py-5 border-t border-gray-700 items-center center"
+        class="py-5 border-t border-gray-700 items-center text-center"
         v-if="!isLogged"
       >
         <NuxtLink
-          :to="{ name: 'AppLogin' }"
+          :to="{ name: 'Login' }"
           class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           Login
         </NuxtLink>
         <NuxtLink
-          :to="{ name: 'Register' }"
+          :to="{ name: 'Home' }"
           class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
         >
           Signup
