@@ -17,4 +17,3 @@ jobs:
           email: ${{secrets.HEROKU_EMAIL}}
           app_name: nuxt3-boilerplate
           heroku_branch: "master"
-          subfolder: "dist-prod"
