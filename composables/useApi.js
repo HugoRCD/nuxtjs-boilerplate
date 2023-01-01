@@ -22,7 +22,6 @@ axios.interceptors.response.use(
       const response = await axios.post("/auth/refresh", {});
       if (response.status === 200) {
         useUserStore().setAccessToken(response.data.accessToken);
-        useLocalStorage().set("accessToken", response.data.accessToken);
         error.config.headers["Authorization"] =
           "Bearer " + response.data.accessToken;
         isRefreshing = false;

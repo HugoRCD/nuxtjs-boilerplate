@@ -1,6 +1,7 @@
 <script setup>
 import { useI18n } from "vue-i18n";
 import { useLocalStorage } from "~/composables/useLocalStorage";
+
 const { locale } = useI18n();
 
 const theme = useLocalStorage().get("theme");
@@ -13,9 +14,11 @@ accessToken ? useUserStore().setAccessToken(accessToken) : null;
 </script>
 
 <template>
-  <div>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <Html data-theme="dark">
+    <Body class="bg-primary m-0 p-0 text-primary">
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </Body>
+  </Html>
 </template>
