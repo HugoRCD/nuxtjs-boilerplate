@@ -4,12 +4,6 @@ export default defineNuxtConfig({
     layoutTransition: { name: "fade", mode: "out-in" },
   },
 
-  runtimeConfig: {
-    public: {
-      apiUrl: process.env.VITE_API_URL,
-    },
-  },
-
   ssr: false,
 
   css: ["~/assets/style/main.scss"],

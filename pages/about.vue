@@ -36,31 +36,29 @@ const faqs = [
 </script>
 
 <template>
-  <div class="bg-base">
-    <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
-      <div class="lg:grid lg:grid-cols-3 lg:gap-8">
-        <div>
-          <h2 class="text-3xl font-bold tracking-tight text-primary">
-            Frequently asked questions
-          </h2>
-          <p class="mt-4 text-lg text-muted">
-            Can’t find the answer you’re looking for? Reach out to our
-            <a href="#" class="font-medium text-accent hover:text-accent-hover"
-              >customer support</a
-            >
-            team.
-          </p>
-        </div>
-        <div class="mt-12 lg:col-span-2 lg:mt-0">
-          <dl class="space-y-12">
-            <div v-for="faq in faqs" :key="faq.question">
-              <dt class="text-lg font-medium leading-6 text-primary">
-                {{ faq.question }}
-              </dt>
-              <dd class="mt-2 text-primary text-muted">{{ faq.answer }}</dd>
-            </div>
-          </dl>
-        </div>
+  <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+    <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-primary">
+          Frequently asked questions
+        </h2>
+        <p class="mt-4 text-lg text-muted">
+          Can’t find the answer you’re looking for? Reach out to our
+          <a href="#" class="font-medium text-accent hover:text-accent-hover"
+            >customer support</a
+          >
+          team.
+        </p>
+      </div>
+      <div class="mt-12 lg:col-span-2 lg:mt-0">
+        <dl class="space-y-12">
+          <div v-for="faq in faqs" :key="faq.question">
+            <dt class="text-lg font-medium leading-6 text-primary">
+              {{ faq.question }}
+            </dt>
+            <dd class="mt-2 text-primary text-muted">{{ faq.answer }}</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </div>

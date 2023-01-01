@@ -12,7 +12,7 @@ const agreed = ref(false);
 </script>
 
 <template>
-  <div class="overflow-hidden bg-base py-16 px-4 sm:px-6 lg:px-8 lg:py-24">
+  <div class="overflow-hidden py-16 px-4 sm:px-6 lg:px-8 lg:py-24">
     <div class="relative mx-auto max-w-xl">
       <svg
         class="absolute left-full translate-x-1/2 transform"
