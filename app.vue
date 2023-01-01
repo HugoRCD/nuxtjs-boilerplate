@@ -20,7 +20,7 @@ useHead({
   ],
 });
 
-onBeforeMount(() => {
+onMounted(() => {
   const userLocale = useLocalStorage().get("locale");
   const theme = useLocalStorage().get("theme");
   const accessToken = useLocalStorage().get("accessToken");
