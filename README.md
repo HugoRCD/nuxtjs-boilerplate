@@ -1,10 +1,10 @@
 <img src="./public/homescreen.webp" width="750" alt="">
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/96ef5ef23a4442c2bf73762f46e52749)](https://www.codacy.com/gh/HugoRCD/vuejs-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HugoRCD/vuejs-boilerplate&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/96ef5ef23a4442c2bf73762f46e52749)](https://www.codacy.com/gh/HugoRCD/nuxtjs-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HugoRCD/nuxtjs-boilerplate&amp;utm_campaign=Badge_Grade)
 
 # Introduction
 
-Here is a completely working VueJS Template ! This app is a single-page application built with VueJS and includes features such as OAuth authentication with Google, translation with I18n, and a dark and light theme and many more...
+Here is a completely working Nuxt 3 Template ! This app is a single-page application built with Nuxt 3 and includes features such as OAuth authentication with Google, translation with I18n, and a dark and light theme and many more...
 Everything is connected and ready to use to a working api in NestJS check here !!! [NestJS Template](https://github.com/HugoRCD/nestjs-boilerplate)
 
 ## Features
@@ -19,11 +19,11 @@ Everything is connected and ready to use to a working api in NestJS check here !
 - This template is fully responsive and use CSS pre-processors (SCSS)
 
 ## Getting Started
-To get started with this VueJS App, follow these steps:
+To get started with this Nuxt 3 App, follow these steps:
 
 ### Clone the repository:
 ```
-git clone git@github.com:HugoRCD/vuejs-boilerplate.git
+git clone git@github.com:HugoRCD/nuxtjs-boilerplate.git
 ```
 
 ### Install dependencies:
@@ -39,8 +39,8 @@ yarn run serve
 Now you can open the app in your browser at http://localhost:8080
 
 ## Documentation
-For more information on how to use this VueJS App, see the [documentation](./docs).
+For more information on how to use this Nuxt 3 App, see the [documentation](./docs).
 
 ## License
-This VueJS Template is licensed under the [MIT License](./LICENSE).
+This Nuxt 3 Template is licensed under the [MIT License](./LICENSE).
 

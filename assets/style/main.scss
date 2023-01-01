@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "animation";
+@import "themes";
+
 @layer base {
   :root {
     --color-text-primary: #ffffff;
@@ -14,49 +17,11 @@
   }
 }
 
-@import "animation";
-@import "themes";
-@import "html";
-
-.pointer {
-  cursor: pointer;
-}
-
-.full-height {
-  height: 100vh;
-}
-
-.container {
-  margin: auto;
-  padding: 2rem;
-}
-
-.card {
+body {
   background-color: var(--bg-primary);
-  border: 1px solid var(--bg-tertiary);
-  border-radius: var(--btn-radius);
-  padding: 1rem;
-  margin: 1rem;
-}
-
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.left {
-  text-align: left;
-}
-
-.right {
-  text-align: right;
-}
-
-.fullwidth {
-  width: 100%;
+  overflow-x: hidden;
+  font-size: var(--font-base);
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
 }

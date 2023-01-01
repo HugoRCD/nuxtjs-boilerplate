@@ -26,7 +26,6 @@ export default {
   methods: {
     async login() {
       const response = await useAxios("auth/login", "POST", this.credentials);
-      console.log(response);
       if (response) {
         useUserStore().setAccessToken(response.accessToken);
         localStorage.setItem("accessToken", response.accessToken);
@@ -79,7 +78,7 @@ export default {
           </h2>
         </div>
         <div class="mt-16">
-          <form v-if="!loading" class="space-y-6" @submit.prevent="login">
+          <form v-if="!loading" class="space-y-6" @submit.prevent="Login">
             <div>
               <label for="login" class="block text-sm font-medium text-primary"
                 >Login</label
