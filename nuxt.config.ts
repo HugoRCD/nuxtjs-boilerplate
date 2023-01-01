@@ -16,6 +16,13 @@ export default defineNuxtConfig({
     dirs: ["store"],
   },
 
+  runtimeConfig: {
+    public: {
+      googleClientId: process.env.NUXT_GOOGLE_CLIENT_ID,
+      apiUrl: process.env.NUXT_API_URL,
+    },
+  },
+
   postcss: {
     plugins: {
       tailwindcss: {},

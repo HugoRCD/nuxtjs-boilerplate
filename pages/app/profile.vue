@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import { useAxios } from "~/composables/useApi";
 
 definePageMeta({
@@ -7,32 +7,9 @@ definePageMeta({
   description: "Profile",
 });
 
-export default {
-  name: "Profile",
-  data() {
-    return {
-      user: {},
-      password: "",
-      editMode: false,
-    };
-  },
-  created() {
-    this.user = this.getCurrentUser();
-  },
-  computed: {
-    isLoading() {
-      return useGlobalStore().isLoading;
-    },
-  },
-  methods: {
-    async getCurrentUser() {
-      const response = await useAxios("user", "GET");
-      if (response) {
-        this.user = response;
-      }
-    },
-  },
-};
+const loading = computed(() => useGlobalStore().isLoading);
+
+const user = await useAxios("user", "GET");
 </script>
 
 <template>
@@ -52,7 +29,7 @@ export default {
         <i class="fas fa-trash-alt fa-md" @click="deleteUser"></i>-->
       </div>
     </div>
-    <div class="profile-content" v-if="!isLoading">
+    <div class="profile-content" v-if="!loading">
       <div class="profile-content-item flex-row">
         <p>{{ $t("firstname") }}:</p>
         <input class="custom-input" type="text" v-model="user.firstname" />
