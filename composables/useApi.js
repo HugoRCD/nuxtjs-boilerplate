@@ -42,6 +42,9 @@ export const useAxios = async (url, method, body = null) => {
     method: method,
     url: url,
     data: body,
+    headers: {
+      Authorization: "Bearer " + useUserStore().getToken,
+    },
   });
   useGlobalStore().setLoading(false);
   return response.data;

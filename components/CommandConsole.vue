@@ -67,9 +67,11 @@ export default {
     };
   },
   created() {
-    document.addEventListener("keydown", (event) => {
-      if (event.metaKey && event.key === "k") this.open = !this.open;
-    });
+    if (process.client) {
+      document.addEventListener("keydown", (event) => {
+        if (event.metaKey && event.key === "k") this.open = !this.open;
+      });
+    }
   },
   computed: {
     filteredProjects() {

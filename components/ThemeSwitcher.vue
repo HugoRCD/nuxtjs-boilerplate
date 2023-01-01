@@ -7,7 +7,8 @@ const toggleTheme = () => {
   } else {
     theme.value = "dark";
   }
-  document.documentElement.setAttribute("data-theme", theme.value);
+  if (process.client)
+    document.documentElement.setAttribute("data-theme", theme.value);
   if (process.client) {
     localStorage.setItem("theme", theme.value);
   }
