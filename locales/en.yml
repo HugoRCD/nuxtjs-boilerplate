@@ -1,0 +1,25 @@
+global:
+    hello: "Hello World!"
+    no: No
+    yes: Yes
+components:
+  navbar:
+    home: Home
+    about: About
+    contact: Contact
+    login: Login
+    logout: Logout
+    register: Register
+pages:
+  profile:
+    title: Profile
+    username: Username
+    firstname: Firstname
+    lastname: Lastname
+    email: Email
+    password: Password
+    update: Update
+    cancel_my_account: Cancel my account
+    are_you_sure: Are you sure?
+    delete_account: Delete account
+    delete_my_account: Delete my account

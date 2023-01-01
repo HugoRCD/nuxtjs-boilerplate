@@ -31,15 +31,15 @@ const user = await useAxios("user", "GET");
     </div>
     <div class="profile-content" v-if="!loading">
       <div class="profile-content-item flex-row">
-        <p>{{ $t("firstname") }}:</p>
+        <p>{{ $t("pages.profile.firstname") }}:</p>
         <input class="custom-input" type="text" v-model="user.firstname" />
       </div>
       <div class="profile-content-item flex-row">
-        <p>{{ $t("lastname") }}:</p>
+        <p>{{ $t("pages.profile.lastname") }}:</p>
         <input class="custom-input" type="text" v-model="user.lastname" />
       </div>
       <div class="profile-content-item flex-row">
-        <p>{{ $t("email") }}:</p>
+        <p>{{ $t("pages.profile.email") }}:</p>
         <input class="custom-input" type="text" v-model="user.email" />
       </div>
     </div>

@@ -1,20 +1,38 @@
 <script setup>
-const setLocale = (locale) => {
-  if (process.client) {
-    localStorage.setItem("locale", locale);
-  }
+import { useI18n } from "vue-i18n";
+const { locale } = useI18n();
+
+const availableLocales = {
+  en: {
+    name: "English",
+    iso: "en",
+    flag: "🇺🇸",
+  },
+  fr: {
+    name: "Français",
+    iso: "fr",
+    flag: "🇫🇷",
+  },
 };
+
+watch(locale, (newLang) => {
+  locale.value = newLang;
+  useLocalStorage().set("locale", newLang);
+});
 </script>
 
 <template>
   <select
     class="bg-transparent text-primary border-none focus:outline-none"
-    v-model="$i18n.locale"
-    :value="$i18n.locale"
-    @change="setLocale($event.target.value)"
+    v-model="locale"
   >
-    <option value="en">EN</option>
-    <option value="fr">FR</option>
+    <option
+      v-for="(locale, key) in availableLocales"
+      :key="key"
+      :value="locale.iso"
+    >
+      {{ locale.flag }} {{ locale.name }}
+    </option>
   </select>
 </template>
 

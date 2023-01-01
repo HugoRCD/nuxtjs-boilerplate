@@ -20,13 +20,15 @@ useHead({
   ],
 });
 
-const theme = useLocalStorage().get("theme");
-const userLocale = useLocalStorage().get("locale");
-const accessToken = useLocalStorage().get("accessToken");
+onBeforeMount(() => {
+  const userLocale = useLocalStorage().get("locale");
+  const theme = useLocalStorage().get("theme");
+  const accessToken = useLocalStorage().get("accessToken");
 
-// theme ? document.documentElement.setAttribute("data-theme", theme) : null;
-userLocale ? (locale.value = userLocale) : (locale.value = "en");
-accessToken ? useUserStore().setAccessToken(accessToken) : null;
+  theme ? document.documentElement.setAttribute("data-theme", theme) : "dark";
+  accessToken ? useUserStore().setAccessToken(accessToken) : null;
+  userLocale ? (locale.value = userLocale) : (locale.value = "en");
+});
 </script>
 
 <template>
