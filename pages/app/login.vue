@@ -78,7 +78,7 @@ export default {
           </h2>
         </div>
         <div class="mt-16">
-          <form v-if="!loading" class="space-y-6" @submit.prevent="Login">
+          <form v-if="!loading" class="space-y-6" @submit.prevent="login">
             <div>
               <label for="login" class="block text-sm font-medium text-primary"
                 >Login</label
