@@ -4,7 +4,6 @@ import { useLocalStorage } from "~/composables/useLocalStorage";
 
 import axios from "axios";
 
-axios.defaults.baseURL = useRuntimeConfig().public.apiUrl;
 axios.defaults.headers.common["Accept"] = "application/json";
 axios.defaults.headers.common["Content-Type"] = "application/json";
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
@@ -37,10 +36,11 @@ axios.interceptors.response.use(
 );
 
 export const useAxios = async (url, method, body = null) => {
+  const config = useRuntimeConfig().public;
   useGlobalStore().setLoading(true);
   const response = await axios({
     method: method,
-    url: url,
+    url: config.apiUrl + url,
     data: body,
   });
   useGlobalStore().setLoading(false);

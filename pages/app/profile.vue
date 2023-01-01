@@ -46,19 +46,3 @@ const user = await useAxios("user", "GET");
     <Loader v-else />
   </div>
 </template>
-
-<style scoped lang="scss">
-.profile {
-  justify-content: center;
-  gap: 3rem;
-  color: var(--font-color);
-}
-
-.custom-input {
-  border: none;
-  background: none;
-  outline: none;
-  width: 100%;
-  padding: 0;
-}
-</style>
