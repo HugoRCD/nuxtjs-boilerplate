@@ -19,7 +19,7 @@ const login = async () => {
   const response = await useAxios("auth/login", "POST", credentials);
   if (response) {
     useUserStore().setAccessToken(response.accessToken);
-    localStorage.setItem("accessToken", response.accessToken);
+    useLocalStorage().set("accessToken", response.accessToken);
     useRouter().push({ name: "Profile" });
   }
 };
@@ -30,7 +30,7 @@ const googleLogin = async (googleUser) => {
   });
   if (response) {
     useUserStore().setAccessToken(response.accessToken);
-    localStorage.setItem("accessToken", response.accessToken);
+    useLocalStorage().set("accessToken", response.accessToken);
     useRouter().push({ name: "Profile" });
   }
 };

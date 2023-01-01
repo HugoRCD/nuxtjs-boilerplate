@@ -1,23 +1,15 @@
 <script setup>
 import { useI18n } from "vue-i18n";
+import { useLocalStorage } from "~/composables/useLocalStorage";
 const { locale } = useI18n();
 
-if (process.client) {
-  const theme = localStorage.getItem("theme");
-  const userLocale = localStorage.getItem("locale");
-  const accessToken = localStorage.getItem("accessToken");
-  if (theme) {
-    document.documentElement.setAttribute("data-theme", theme);
-  }
-  if (userLocale) {
-    locale.value = userLocale;
-  }
-  if (accessToken) {
-    useUserStore().setAccessToken(accessToken);
-  }
-} else {
-  locale.value = "en";
-}
+const theme = useLocalStorage().get("theme");
+const userLocale = useLocalStorage().get("locale");
+const accessToken = useLocalStorage().get("accessToken");
+
+theme ? document.documentElement.setAttribute("data-theme", theme) : null;
+userLocale ? (locale.value = userLocale) : (locale.value = "en");
+accessToken ? useUserStore().setAccessToken(accessToken) : null;
 </script>
 
 <template>
