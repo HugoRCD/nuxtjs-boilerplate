@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import { GoogleLogin } from "vue3-google-login";
 import { useAxios } from "~/composables/useApi";
 
@@ -8,41 +8,31 @@ definePageMeta({
   description: "Login to your account",
 });
 
-export default {
-  components: { GoogleLogin },
-  data() {
-    return {
-      credentials: {
-        login: null,
-        password: null,
-      },
-    };
-  },
-  computed: {
-    loading() {
-      return useGlobalStore().isLoading;
-    },
-  },
-  methods: {
-    async login() {
-      const response = await useAxios("auth/login", "POST", this.credentials);
-      if (response) {
-        useUserStore().setAccessToken(response.accessToken);
-        localStorage.setItem("accessToken", response.accessToken);
-        useRouter().push({ name: "Profile" });
-      }
-    },
-    async googleLogin(googleToken) {
-      const response = await useAxios("auth/google", "POST", {
-        token: googleToken.credential,
-      });
-      if (response) {
-        useUserStore().setAccessToken(response.accessToken);
-        localStorage.setItem("accessToken", response.accessToken);
-        useRouter().push({ name: "Profile" });
-      }
-    },
-  },
+const loading = computed(() => useGlobalStore().isLoading);
+
+const credentials = reactive({
+  email: "",
+  password: "",
+});
+
+const login = async () => {
+  const response = await useAxios("auth/login", "POST", credentials);
+  if (response) {
+    useUserStore().setAccessToken(response.accessToken);
+    localStorage.setItem("accessToken", response.accessToken);
+    useRouter().push({ name: "Profile" });
+  }
+};
+
+const googleLogin = async (googleUser) => {
+  const response = await useAxios("auth/google", "POST", {
+    token: googleUser.credential,
+  });
+  if (response) {
+    useUserStore().setAccessToken(response.accessToken);
+    localStorage.setItem("accessToken", response.accessToken);
+    useRouter().push({ name: "Profile" });
+  }
 };
 </script>
 
