@@ -6,16 +6,17 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: yarn install
-      - name: Build
-        run: yarn run build
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: Transfer code to Raspberry Pi
+        uses: appleboy/scp-action@v1
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: nuxt3-boilerplate
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          host: ${{secrets.RASP_DB_HOST}}
+          username: ${{secrets.RASP_DB_USER}}
+          password: ${{secrets.RASP_DB_PASSWORD}}
+          source: .
+          target: /home/hugorcd/my-project
