@@ -20,4 +20,4 @@ jobs:
           password: ${{secrets.RASP_PASSWORD}}
           port: ${{secrets.RASP_PORT}}
           source: .
-          target: /home/${{secrets.RASP_USER}}/nuxt-app
+          target: /home/${{secrets.RASP_USER}}/nuxt-app/app

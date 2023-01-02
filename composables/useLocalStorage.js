@@ -1,12 +1,12 @@
 export const useLocalStorage = () => {
   function set(key, value) {
-    localStorage.setItem(key, value);
+    if (process.client) localStorage.setItem(key, value);
   }
   function get(key) {
-    return localStorage.getItem(key);
+    if (process.client) return localStorage.getItem(key);
   }
   function remove(key) {
-    localStorage.removeItem(key);
+    if (process.client) localStorage.removeItem(key);
   }
   return {
     set,

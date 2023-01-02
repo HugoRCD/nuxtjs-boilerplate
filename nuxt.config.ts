@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     layoutTransition: { name: "fade", mode: "out-in" },
   },
 
-  ssr: true,
+  ssr: false,
 
   css: ["~/assets/style/main.scss"],
 
