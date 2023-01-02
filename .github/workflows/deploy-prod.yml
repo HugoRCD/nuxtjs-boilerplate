@@ -13,7 +13,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Deploy
-        uses: heroku/deploy-via-github@v1
+      - uses: akhileshns/heroku-deploy@v3.12.12
         env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-          HEROKU_APP_NAME: nuxt3-boilerplate
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: nuxt3-boilerplate
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
