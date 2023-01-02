@@ -13,10 +13,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Transfer code to Raspberry Pi
-        uses: appleboy/scp-action@v1
+        uses: appleboy/scp-action@master
         with:
           host: ${{secrets.RASP_DB_HOST}}
           username: ${{secrets.RASP_DB_USER}}
           password: ${{secrets.RASP_DB_PASSWORD}}
+          port: ${{secrets.RASP_DB_PORT}}
           source: .
           target: /home/hugorcd/my-project
