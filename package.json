@@ -1,6 +1,8 @@
 {
   "private": true,
   "scripts": {
+    "heroku-postbuild": "npm run build",
+    "start": "nuxt start",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
