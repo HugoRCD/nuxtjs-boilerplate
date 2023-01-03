@@ -55,7 +55,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
               >
-                {{ $t("components.navbar." + item.name.toLowerCase()) }}
+                {{ $t("navigation." + item.name.toLowerCase()) }}
               </NuxtLink>
             </div>
           </div>
@@ -73,13 +73,13 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
               :to="{ name: 'Login' }"
               class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
-              {{ $t("components.navbar.login") }}
+              {{ $t("navigation.login") }}
             </NuxtLink>
             <NuxtLink
               to="/"
               class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
             >
-              {{ $t("components.navbar.register") }}
+              {{ $t("navigation.register") }}
             </NuxtLink>
           </div>
         </div>
@@ -99,7 +99,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
           ]"
           :aria-current="item.current ? 'page' : undefined"
         >
-          {{ $t("components.navbar." + item.name.toLowerCase()) }}
+          {{ $t("navigation." + item.name.toLowerCase()) }}
         </NuxtLink>
       </div>
       <div
@@ -110,13 +110,13 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
           :to="{ name: 'Login' }"
           class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
         >
-          {{ $t("components.navbar.login") }}
+          {{ $t("navigation.login") }}
         </NuxtLink>
         <NuxtLink
           :to="{ name: 'Home' }"
           class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
         >
-          {{ $t("components.navbar.register") }}
+          {{ $t("navigation.register") }}
         </NuxtLink>
       </div>
     </DisclosurePanel>

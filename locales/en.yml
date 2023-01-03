@@ -1,15 +1,16 @@
 global:
-    hello: "Hello World!"
-    no: No
-    yes: Yes
-components:
-  navbar:
-    home: Home
-    about: About
-    contact: Contact
-    login: Login
-    logout: Logout
-    register: Register
+  hello: "Hello World!"
+  no: No
+  yes: Yes
+navigation:
+  home: Home
+  about: About
+  contact: Contact
+  login: Login
+  logout: Logout
+  register: Register
+  profile: Profile
+  settings: Settings
 pages:
   profile:
     title: Profile

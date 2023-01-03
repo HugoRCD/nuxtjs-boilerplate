@@ -16,3 +16,8 @@
     --color-button-muted: #374151;
   }
 }
+
+html,body, #__nuxt, #__layout{
+  height:100%!important;
+  width: 100%!important;
+}

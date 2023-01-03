@@ -2,14 +2,15 @@ global:
   hello: Hello World!
   no: Non
   yes: Oui
-components:
-  navbar:
-    home: Accueil
-    about: À propos
-    contact: Contact
-    login: Connexion
-    logout: Déconnexion
-    register: Inscription
+navigation:
+  home: Accueil
+  about: À propos
+  contact: Contact
+  login: Connexion
+  logout: Déconnexion
+  register: Inscription
+  profile: Profil
+  settings: Paramètres
 pages:
   profile:
     title: Profil
