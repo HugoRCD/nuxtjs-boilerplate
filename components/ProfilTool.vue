@@ -2,7 +2,11 @@
 import { useUserStore } from "~/store/userStore";
 import { MenuButton, Menu, MenuItems } from "@headlessui/vue";
 
-const profile_navigation = [{ name: "Profile" }];
+const profile_navigation = [
+  { name: "Home" },
+  { name: "Profile" },
+  { name: "Settings" },
+];
 
 const logout = async () => {
   useUserStore().logout();

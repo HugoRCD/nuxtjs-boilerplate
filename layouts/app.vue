@@ -6,32 +6,20 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import {
-  Bars3Icon,
-  CalendarIcon,
-  HomeIcon,
-  MagnifyingGlassCircleIcon,
-  MapIcon,
-  MegaphoneIcon,
-  UserGroupIcon,
-  XMarkIcon,
-} from "@heroicons/vue/24/outline";
+import { Bars3BottomLeftIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 
-const navigation = [
-  { name: "Home" },
-  { name: "Profile" },
-  { name: "Settings" },
-];
+const navigation = [{ name: "Profile" }, { name: "Settings" }];
 
 const sidebarOpen = ref(false);
 </script>
 
 <template>
-  <div class="flex h-full">
+  <div>
     <TransitionRoot as="template" :show="sidebarOpen">
       <Dialog
         as="div"
-        class="relative z-40 lg:hidden"
+        class="relative z-40 md:hidden"
         @close="sidebarOpen = false"
       >
         <TransitionChild
@@ -57,7 +45,7 @@ const sidebarOpen = ref(false);
             leave-to="-translate-x-full"
           >
             <DialogPanel
-              class="relative flex w-full max-w-xs flex-1 flex-col backdrop-blur focus:outline-none"
+              class="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pt-5 pb-4"
             >
               <TransitionChild
                 as="template"
@@ -79,163 +67,127 @@ const sidebarOpen = ref(false);
                   </button>
                 </div>
               </TransitionChild>
-              <div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
-                <div class="flex flex-shrink-0 items-center px-4">
-                  <img
-                    class="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt="Your Company"
-                  />
-                </div>
-                <nav aria-label="Sidebar" class="mt-5">
-                  <div class="space-y-1 px-2">
-                    <NuxtLink
-                      v-for="item in navigation"
-                      :to="{ name: item.name }"
-                      :key="item.name"
-                      :class="[
-                        item.name === $route.name
-                          ? 'bg-accent-faded text-accent'
-                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'block px-3 py-2 rounded-md text-primary font-medium',
-                      ]"
-                      :aria-current="item.current ? 'page' : undefined"
-                    >
-                      {{ $t("navigation." + item.name.toLowerCase()) }}
-                    </NuxtLink>
-                  </div>
-                </nav>
+              <div
+                class="bg-secondary border-b-2 border-gray-700 justify-center flex flex-shrink-0 items-center px-4 justify-center"
+              >
+                <img
+                  class="h-8 mb-4 w-auto"
+                  src="../assets/media/logo.png"
+                  alt="Your Company"
+                />
               </div>
-              <div class="flex flex-shrink-0 border-t border-gray-600 p-4">
-                <a href="#" class="group block flex-shrink-0">
-                  <div class="flex items-center">
-                    <div>
-                      <img
-                        class="inline-block h-10 w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-                        alt=""
-                      />
-                    </div>
-                    <div class="ml-3">
-                      <p
-                        class="text-base font-medium text-gray-700 group-hover:text-gray-900"
-                      >
-                        Whitney Francis
-                      </p>
-                      <p
-                        class="text-sm font-medium text-gray-500 group-hover:text-gray-700"
-                      >
-                        View profile
-                      </p>
-                    </div>
-                  </div>
-                </a>
+              <div class="mt-5 h-0 flex-1 overflow-y-auto">
+                <nav class="space-y-1 px-2">
+                  <NuxtLink
+                    v-for="item in navigation"
+                    :to="{ name: item.name }"
+                    :key="item.name"
+                    :class="[
+                      item.name === $route.name
+                        ? 'bg-accent-faded text-accent'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'block px-3 py-2 rounded-md text-primary font-medium',
+                    ]"
+                    :aria-current="item.current ? 'page' : undefined"
+                  >
+                    {{ $t("navigation." + item.name.toLowerCase()) }}
+                  </NuxtLink>
+                </nav>
               </div>
             </DialogPanel>
           </TransitionChild>
           <div class="w-14 flex-shrink-0" aria-hidden="true">
-            <!-- Force sidebar to shrink to fit close icon -->
+            <!-- Dummy element to force sidebar to shrink to fit close icon -->
           </div>
         </div>
       </Dialog>
     </TransitionRoot>
 
     <!-- Static sidebar for desktop -->
-    <div class="hidden lg:flex lg:flex-shrink-0">
-      <div class="flex w-64 flex-col">
-        <!-- Sidebar component, swap this element with another sidebar if you like -->
+    <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
+      <!-- Sidebar component, swap this element with another sidebar if you like -->
+      <div class="flex min-h-0 flex-1 flex-col bg-gray-800">
         <div
-          class="flex min-h-0 flex-1 flex-col border-r border-gray-600 backdrop-blur"
+          class="bg-secondary justify-center flex h-16 flex-shrink-0 items-center px-4 justify-center border-b-2 border-gray-700"
         >
-          <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-            <div class="flex flex-shrink-0 items-center px-4">
-              <img
-                class="h-8 w-auto"
-                src="../assets/media/logo.png"
-                alt="Your Company"
-              />
-            </div>
-            <nav class="mt-5 flex-1" aria-label="Sidebar">
-              <div class="space-y-1 px-2">
-                <NuxtLink
-                  v-for="item in navigation"
-                  :to="{ name: item.name }"
-                  :key="item.name"
-                  :class="[
-                    item.name === $route.name
-                      ? 'bg-accent-faded text-accent'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-primary font-medium',
-                  ]"
-                  :aria-current="item.current ? 'page' : undefined"
-                >
-                  {{ $t("navigation." + item.name.toLowerCase()) }}
-                </NuxtLink>
-              </div>
-            </nav>
-          </div>
-          <Tools class="my-4" />
-          <div
-            class="flex flex-shrink-0 border-t backdrop-blur border-gray-600 p-4"
-          >
-            <a href="#" class="group block w-full flex-shrink-0">
-              <div class="flex items-center">
-                <div>
-                  <img
-                    class="inline-block h-9 w-9 rounded-full"
-                    src="../assets/media/logo.png"
-                    alt=""
-                  />
-                </div>
-                <div class="ml-3">
-                  <p
-                    class="text-sm font-medium text-gray-700 group-hover:text-gray-900"
-                  >
-                    Whitney Francis
-                  </p>
-                  <p
-                    class="text-xs font-medium text-gray-500 group-hover:text-gray-700"
-                  >
-                    View profile
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
+          <img
+            class="h-8 w-auto"
+            src="../assets/media/logo.png"
+            alt="Your Company"
+          />
+        </div>
+        <div class="flex flex-1 flex-col overflow-y-auto">
+          <nav class="flex-1 space-y-1 px-2 py-4">
+            <NuxtLink
+              v-for="item in navigation"
+              :to="{ name: item.name }"
+              :key="item.name"
+              :class="[
+                item.name === $route.name
+                  ? 'bg-accent-faded text-accent'
+                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                'block px-3 py-2 rounded-md text-primary font-medium',
+              ]"
+              :aria-current="item.current ? 'page' : undefined"
+            >
+              {{ $t("navigation." + item.name.toLowerCase()) }}
+            </NuxtLink>
+          </nav>
         </div>
       </div>
     </div>
-    <div class="flex min-w-0 flex-1 flex-col overflow-hidden">
-      <div class="lg:hidden">
-        <div
-          class="flex items-center justify-between border-b border-gray-600 backdrop-blur px-4 py-1.5"
+    <div class="flex flex-col md:pl-64">
+      <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-primary shadow">
+        <button
+          type="button"
+          class="border-r border-gray-700 px-4 text-gray-500 focus:outline-none border-b-2 border-gray-700 md:hidden"
+          @click="sidebarOpen = true"
         >
-          <div>
-            <img
-              class="h-8 w-auto"
-              src="../assets/media/logo.png"
-              alt="Your Company"
-            />
-          </div>
-          <div>
-            <button
-              type="button"
-              class="-mr-3 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900"
-              @click="sidebarOpen = true"
+          <span class="sr-only">Open sidebar</span>
+          <Bars3BottomLeftIcon class="h-6 w-6" aria-hidden="true" />
+        </button>
+        <div
+          class="flex flex-1 justify-between px-4 border-b-2 border-gray-700"
+        >
+          <div class="flex flex-1">
+            <form
+              class="flex w-full bg-primary md:ml-0"
+              action="#"
+              method="GET"
             >
-              <span class="sr-only">Open sidebar</span>
-              <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-            </button>
+              <label for="search-field" class="sr-only">Search</label>
+              <div
+                class="relative w-full text-gray-400 focus-within:text-gray-600"
+              >
+                <div
+                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center"
+                >
+                  <MagnifyingGlassIcon class="h-5 w-5" aria-hidden="true" />
+                </div>
+                <input
+                  id="search-field"
+                  class="bg-primary block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
+                  placeholder="Search"
+                  type="search"
+                  name="search"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="ml-4 flex items-center md:ml-6">
+            <Tools />
+            <ProfilTool />
           </div>
         </div>
       </div>
-      <div class="relative z-0 flex flex-1 overflow-hidden">
-        <main
-          class="relative z-0 flex-1 p-10 overflow-y-auto focus:outline-none xl:order-last"
-        >
-          <slot />
-        </main>
-      </div>
+
+      <main class="flex-1">
+        <div class="py-6">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+            <slot />
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 </template>
