@@ -10,13 +10,7 @@ export default defineNuxtConfig({
 
   components: true,
 
-  modules: [
-    "nuxt-icon",
-    "@nuxt/image-edge",
-    "@pinia/nuxt",
-    "nuxt-headlessui",
-    "@intlify/nuxt3",
-  ],
+  modules: ["nuxt-icon", "@nuxt/image-edge", "@pinia/nuxt", "nuxt-headlessui"],
 
   imports: {
     dirs: ["store"],
@@ -31,15 +25,6 @@ export default defineNuxtConfig({
 
   experimental: {
     reactivityTransform: false,
-  },
-
-  intlify: {
-    localeDir: "locales",
-    vueI18n: {
-      locale: "en",
-      fallbackLocale: "en",
-      availableLocales: ["en", "fr"],
-    },
   },
 
   postcss: {
