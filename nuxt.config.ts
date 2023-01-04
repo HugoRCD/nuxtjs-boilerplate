@@ -18,8 +18,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      googleClientId: process.env.NUXT_GOOGLE_CLIENT_ID,
-      apiUrl: process.env.NUXT_API_URL,
+      googleClientId: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID,
+      apiUrl: process.env.NUXT_PUBLIC_API_URL,
     },
   },
 
