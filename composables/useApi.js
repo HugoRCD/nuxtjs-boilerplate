@@ -5,7 +5,7 @@ import { useLocalStorage } from "~/composables/useLocalStorage";
 import axios from "axios";
 
 export const useAxios = async (url, method, body = null) => {
-  axios.defaults.baseURL = import.meta.env.VITE_PUBLIC_GOOGLE_CLIENT_ID;
+  axios.defaults.baseURL = useRuntimeConfig().public.apiUrl;
   axios.defaults.headers.common["Accept"] = "application/json";
   axios.defaults.headers.common["Content-Type"] = "application/json";
   axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";

@@ -34,6 +34,7 @@ onMounted(() => {
 <template>
   <Html data-theme="dark">
     <Body class="bg-primary m-0 p-0 text-primary overflow-x-hidden">
+      <EnvChecker />
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
