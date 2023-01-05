@@ -21,11 +21,13 @@ module.exports = {
       textColor: {
         primary: "var(--font-base)",
         muted: "var(--font-muted)",
+        placeholder: "var(--font-placeholder)",
         inverted: "var(--font-inverted)",
         accent: withOpacity("--accent-color"),
         "accent-hover": withOpacity("--accent-color-hover"),
       },
       backgroundColor: {
+        input: "var(--bg-input)",
         primary: "var(--bg-primary)",
         secondary: "var(--bg-secondary)",
         accent: withOpacity("--accent-color"),
@@ -39,10 +41,15 @@ module.exports = {
         transparent: "transparent",
       },
       borderColor: {
+        input: "var(--border-input)",
         muted: "var(--font-muted)",
         accent: withOpacity("--accent-color"),
         "accent-faded": "var(--accent-color-faded)",
         transparent: "transparent",
+      },
+      borderWidth: {
+        sm: "1px",
+        md: "2px",
       },
       screens: {
         mobile: "320px",

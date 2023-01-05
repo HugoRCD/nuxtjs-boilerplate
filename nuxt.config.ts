@@ -24,10 +24,6 @@ export default defineNuxtConfig({
     },
   },
 
-  experimental: {
-    reactivityTransform: false,
-  },
-
   postcss: {
     plugins: {
       tailwindcss: {},

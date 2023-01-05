@@ -11,7 +11,7 @@ definePageMeta({
 const loading = computed(() => useGlobalStore().isLoading);
 
 const credentials = reactive({
-  email: "",
+  login: "",
   password: "",
 });
 
@@ -24,6 +24,7 @@ const login = async () => {
 };
 
 const googleLogin = async (googleUser) => {
+  console.log(googleUser);
   const response = await useAxios("auth/google", "POST", {
     token: googleUser.credential,
   });
@@ -35,120 +36,82 @@ const googleLogin = async (googleUser) => {
 </script>
 
 <template>
-  <div class="flex h-screen">
-    <div
-      class="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
-    >
-      <router-link to="/">
-        <button
-          class="flex items-center justify-center rounded-full w-8 h-8 bg-accent hover:bg-accent-hover"
-        >
-          <Icon
-            name="material-symbols:arrow-left"
-            class="w-4 h-4 text-inverted"
-          >
-          </Icon>
-        </button>
-      </router-link>
-      <div class="mx-auto w-full max-w-sm lg:w-96">
+  <div class="flex min-h-full flex-col justify-center py-12 px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+      <img
+        class="mx-auto h-12 w-auto"
+        src="../../assets/media/logo.png"
+        alt="Your Company"
+      />
+      <h2
+        class="mt-6 text-center text-3xl font-bold tracking-tight text-primary"
+      >
+        Sign in to your account
+      </h2>
+    </div>
+    <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
+      <Loader v-if="loading" />
+      <form class="space-y-6" @submit.prevent="login" v-else>
         <div>
-          <router-link to="/">
-            <img
-              class="h-12 w-auto mx-auto"
-              src="../../assets/media/logo.png"
-              alt="Your Company"
+          <div class="mt-1">
+            <input
+              id="login"
+              name="login"
+              autocomplete="email"
+              required
+              placeholder="Login"
+              class="input"
+              v-model="credentials.login"
             />
-          </router-link>
-          <h2
-            class="text-center mt-6 text-3xl font-bold tracking-tight text-primary"
-          >
-            Sign in to your account
-          </h2>
+          </div>
         </div>
-        <div class="mt-16">
-          <form v-if="!loading" class="space-y-6" @submit.prevent="login">
-            <div>
-              <label for="login" class="block text-sm font-medium text-primary"
-                >Login</label
-              >
-              <div class="mt-1">
-                <input
-                  id="login"
-                  name="login"
-                  type="text"
-                  autocomplete="email"
-                  required=""
-                  v-model="credentials.login"
-                  placeholder="John Doe"
-                  class="block w-full text-gray-900 appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-accent focus:outline-none focus:ring-accent sm:text-sm"
-                />
-              </div>
-            </div>
-            <div class="space-y-1">
-              <label
-                for="password"
-                class="block text-sm font-medium text-primary"
-                >Password</label
-              >
-              <div class="mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autocomplete="current-password"
-                  required=""
-                  v-model="credentials.password"
-                  placeholder="123soleil"
-                  class="block w-full text-gray-900 appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-accent focus:outline-none focus:ring-accent sm:text-sm"
-                />
-              </div>
-            </div>
+        <div>
+          <div class="mt-1">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              placeholder="Password"
+              class="input"
+              v-model="credentials.password"
+            />
+          </div>
+        </div>
+        <div class="flex items-center justify-end">
+          <div class="text-sm">
+            <router-link
+              :to="{ name: 'PasswordForgot' }"
+              class="font-medium text-accent hover:text-accent-hover"
+              >Forgot your password?</router-link
+            >
+          </div>
+        </div>
 
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                />
-                <label for="remember-me" class="ml-2 block text-sm text-primary"
-                  >Remember me</label
-                >
-              </div>
-
-              <div class="text-sm">
-                <router-link
-                  :to="{ name: 'PasswordForgot' }"
-                  class="font-medium text-accent hover:text-accent-hover"
-                  >Forgot your password?</router-link
-                >
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                class="flex w-full justify-center rounded-md border border-transparent bg-accent py-2 px-4 text-sm font-medium text-inverted shadow-sm hover:bg-accent-hover focus:outline-none"
-              >
-                Sign in
-              </button>
-            </div>
-            <div class="text-center">
-              <GoogleLogin :callback="googleLogin" />
-            </div>
-          </form>
-          <Loader v-else />
+        <div>
+          <button type="submit" class="btn-primary">Sign in</button>
+        </div>
+      </form>
+      <div class="btn-secondary mt-6">Don't have an account? Sign up</div>
+      <div class="mt-12">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-input" />
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="bg-primary px-2 text-muted">Or continue with</span>
+          </div>
         </div>
       </div>
-      <Tools class="mt-16" />
-    </div>
-    <div class="relative hidden w-0 flex-1 lg:block">
-      <img
-        class="absolute inset-0 h-full w-full object-cover"
-        src="https://images.unsplash.com/photo-1505904267569-f02eaeb45a4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
-        alt=""
-      />
+      <div class="flex justify-center my-12">
+        <GoogleLogin :callback="googleLogin" />
+      </div>
+      <div class="flex justify-center my-12">
+        <GoogleLogin :callback="googleLogin" popup-type="TOKEN">
+          <div class="btn-secondary mt-6">This button dont work</div>
+        </GoogleLogin>
+      </div>
     </div>
   </div>
 </template>

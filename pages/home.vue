@@ -82,7 +82,7 @@ const logos = [
                 <input
                   id="hero-email"
                   type="email"
-                  class="block w-full rounded-md border border-gray-300 px-5 py-3 text-primary text-gray-900 placeholder-gray-500 shadow-sm focus:border-accent focus:ring-accent"
+                  class="input"
                   placeholder="Enter your email"
                 />
               </div>
