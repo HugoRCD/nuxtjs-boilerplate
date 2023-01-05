@@ -21,15 +21,17 @@ html,body, #__nuxt, #__layout{
   @apply bg-primary;
   height:100%!important;
   width: 100%!important;
+  @apply transition-colors duration-500;
 }
 
 @layer components {
   .input {
     @apply bg-input;
     @apply text-primary placeholder:text-placeholder;
-    @apply border-sm rounded-md border-input;
+    @apply border-sm rounded-md border-primary hover:border-muted;
     @apply focus:outline-none focus:ring-2 focus:ring-accent;
     @apply w-full h-full px-4 py-2;
+    @apply transition-colors duration-300;
   }
 
   .btn-primary {
@@ -43,7 +45,7 @@ html,body, #__nuxt, #__layout{
   .btn-secondary {
     @apply bg-primary;
     @apply text-muted;
-    @apply border-sm rounded-md border-input hover:border-muted;
+    @apply border-sm rounded-md border-primary hover:border-muted;
     @apply px-4 py-2 flex w-full justify-center;
     @apply transition-colors duration-300 cursor-pointer;
   }

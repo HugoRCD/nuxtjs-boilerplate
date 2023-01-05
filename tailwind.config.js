@@ -41,8 +41,8 @@ module.exports = {
         transparent: "transparent",
       },
       borderColor: {
-        input: "var(--border-input)",
-        muted: "var(--font-muted)",
+        primary: "var(--border-primary)",
+        muted: "var(--border-muted)",
         accent: withOpacity("--accent-color"),
         "accent-faded": "var(--accent-color-faded)",
         transparent: "transparent",

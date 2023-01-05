@@ -10,7 +10,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
 <template>
   <Disclosure
     as="nav"
-    class="backdrop-blur-lg sticky top-0 z-10 border-b border-gray-100 border-opacity-25"
+    class="backdrop-blur-lg sticky top-0 z-10 border-b border-muted"
     v-slot="{ open }"
   >
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
