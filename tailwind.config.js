@@ -19,7 +19,7 @@ module.exports = {
   theme: {
     extend: {
       textColor: {
-        primary: "var(--font-base)",
+        primary: "var(--font-primary)",
         muted: "var(--font-muted)",
         placeholder: "var(--font-placeholder)",
         inverted: "var(--font-inverted)",
@@ -27,7 +27,6 @@ module.exports = {
         "accent-hover": withOpacity("--accent-color-hover"),
       },
       backgroundColor: {
-        input: "var(--bg-input)",
         primary: "var(--bg-primary)",
         secondary: "var(--bg-secondary)",
         accent: withOpacity("--accent-color"),

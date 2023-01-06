@@ -46,11 +46,11 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
                 v-for="item in navigation"
                 :to="{ name: item.name }"
                 :key="item.name"
-                class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                class="text-primary hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 :class="[
                   item.name === $route.name
                     ? 'bg-accent-faded text-accent'
-                    : 'text-primary hover:bg-gray-700 hover:text-white',
+                    : 'text-primary hover:bg-gray-800 hover:text-white',
                   'px-3 py-2 rounded-md text-sm font-medium',
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
@@ -71,7 +71,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
           <div v-else class="hidden tablet:flex gap-2">
             <NuxtLink
               :to="{ name: 'Login' }"
-              class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              class="text-primary hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               {{ $t("navigation.login") }}
             </NuxtLink>
@@ -94,7 +94,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
           :class="[
             item.name === $route.name
               ? 'bg-accent-faded text-accent'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+              : 'text-gray-300 hover:bg-gray-800 hover:text-white',
             'block px-3 py-2 rounded-md text-primary font-medium',
           ]"
           :aria-current="item.current ? 'page' : undefined"
@@ -104,12 +104,12 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
       </div>
       <Tools class="my-4" />
       <div
-        class="py-5 border-t border-gray-700 items-center text-center"
+        class="py-5 border-t border-gray-800 items-center text-center"
         v-if="!isLogged"
       >
         <NuxtLink
           :to="{ name: 'Login' }"
-          class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+          class="text-primary hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           {{ $t("navigation.login") }}
         </NuxtLink>
