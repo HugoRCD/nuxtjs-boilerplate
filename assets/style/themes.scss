@@ -3,22 +3,23 @@
   --accent-color-hover: 5, 150, 105;
   --accent-color-faded: rgba(5, 150, 105, 0.1);
 
-  --accent: #10B981;
-  --accent-hover: #059669;
+  --accent: #10B981; // Just to see the color only the -accent-color use in the app
+  --accent-hover: #059669; // Just to see the color only the -accent-color-hover use in the app
+
+  --font-placeholder: #403D46;
 }
 
 [data-theme="dark"] {
   --bg-primary: #05010D;
   --bg-secondary: #120F19;
   --font-color: #FFFFFF;
-  --font-color-secondary: #9CA3AF;
 
   --font-primary: #FFFFFF;
   --font-muted: #66646A;
-  --font-placeholder: #403D46;
   --font-inverted: #FFFFFF;
 
   --border-primary: #1C1822;
+  --border-primary-hover: #66646A;
   --border-muted: #1C1822;
 }
 
@@ -26,13 +27,12 @@
   --bg-primary: #FFFFFF;
   --bg-secondary: #FAFAFA;
   --font-color: #05010D;
-  --font-color-secondary: #374151;
 
   --font-primary: #111827;
   --font-muted: #6A7280;
-  --font-placeholder: #6A7280;
   --font-inverted: #FFFFFF;
 
   --border-primary: #eae7e7;
+  --border-primary-hover: #6A7280;
   --border-muted: #eae7e7;
 }

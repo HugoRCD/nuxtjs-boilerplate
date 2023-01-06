@@ -97,7 +97,7 @@ const googleLogin = async (googleUser) => {
       <div class="mt-12">
         <div class="relative">
           <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-input" />
+            <div class="w-full border-t border-sm border-muted" />
           </div>
           <div class="relative flex justify-center text-sm">
             <span class="bg-primary px-2 text-muted">Or continue with</span>

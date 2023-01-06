@@ -5,18 +5,6 @@
 @import "animation";
 @import "themes";
 
-@layer base {
-  :root {
-    --color-text-primary: #ffffff;
-    --color-text-muted: #9CA3AF;
-    --color-text-inverted: #111827;
-    --color-fill: #111827;
-    --color-button-accent: #10B981;
-    --color-button-accent-hover: #059669;
-    --color-button-muted: #374151;
-  }
-}
-
 html,body, #__nuxt, #__layout{
   @apply bg-primary;
   height:100%!important;
@@ -28,7 +16,7 @@ html,body, #__nuxt, #__layout{
   .input {
     @apply bg-secondary;
     @apply text-primary placeholder:text-placeholder;
-    @apply border-sm rounded-md border-primary hover:border-muted;
+    @apply border-sm rounded-md border-primary hover:border-primary-hover;
     @apply focus:outline-none focus:ring-2 focus:ring-accent;
     @apply w-full h-full px-4 py-2;
     @apply transition-colors duration-300;
@@ -45,7 +33,7 @@ html,body, #__nuxt, #__layout{
   .btn-secondary {
     @apply bg-primary;
     @apply text-muted;
-    @apply border-sm rounded-md border-primary hover:border-muted;
+    @apply border-sm rounded-md border-primary hover:border-primary-hover;
     @apply px-4 py-2 flex w-full justify-center;
     @apply transition-colors duration-300 cursor-pointer;
   }

@@ -36,11 +36,11 @@ module.exports = {
       },
       ringColor: {
         accent: withOpacity("--accent-color"),
-        "accent-faded": "var(--accent-color-faded)",
         transparent: "transparent",
       },
       borderColor: {
         primary: "var(--border-primary)",
+        "primary-hover": "var(--border-primary-hover)",
         muted: "var(--border-muted)",
         accent: withOpacity("--accent-color"),
         "accent-faded": "var(--accent-color-faded)",
