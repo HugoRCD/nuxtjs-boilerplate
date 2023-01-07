@@ -4,7 +4,11 @@ export default defineNuxtConfig({
     layoutTransition: { name: "fade", mode: "out-in" },
   },
 
-  ssr: false,
+  ssr: true,
+
+  routeRules: {
+    "/app/**": { ssr: false },
+  },
 
   css: ["~/assets/style/main.scss"],
 

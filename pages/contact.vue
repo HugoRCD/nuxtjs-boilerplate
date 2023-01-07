@@ -108,7 +108,7 @@ const agreed = ref(false);
                 id="first-name"
                 autocomplete="given-name"
                 placeholder="John"
-                class="block w-full text-gray-900 rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="input"
               />
             </div>
           </div>
@@ -125,7 +125,7 @@ const agreed = ref(false);
                 id="last-name"
                 autocomplete="family-name"
                 placeholder="Doe"
-                class="block w-full text-gray-900 rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="input"
               />
             </div>
           </div>
@@ -140,7 +140,7 @@ const agreed = ref(false);
                 id="company"
                 autocomplete="organization"
                 placeholder="My amazing company"
-                class="block w-full text-gray-900 rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="input"
               />
             </div>
           </div>
@@ -155,7 +155,7 @@ const agreed = ref(false);
                 type="email"
                 autocomplete="email"
                 placeholder="johndoe@contact.com"
-                class="block w-full text-gray-900 rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="input"
               />
             </div>
           </div>
@@ -172,7 +172,7 @@ const agreed = ref(false);
                 id="phone-number"
                 autocomplete="tel"
                 placeholder="+1 (555) 987-6543"
-                class="block w-full text-gray-900 rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="input"
               />
             </div>
           </div>
@@ -186,7 +186,7 @@ const agreed = ref(false);
                 name="message"
                 rows="4"
                 placeholder="How can we help you?..."
-                class="block w-full text-gray-900 rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="input"
               />
             </div>
           </div>
