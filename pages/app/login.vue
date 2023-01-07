@@ -93,7 +93,9 @@ const googleLogin = async (googleUser) => {
           <button type="submit" class="btn-primary">Sign in</button>
         </div>
       </form>
-      <div class="btn-secondary mt-6">Don't have an account? Sign up</div>
+      <NuxtLink :to="{ name: 'Signup' }" class="btn-secondary mt-6">
+        Don't have an account ? Sign up
+      </NuxtLink>
       <div class="mt-12">
         <div class="relative">
           <div class="absolute inset-0 flex items-center">
