@@ -76,7 +76,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
               {{ $t("navigation.login") }}
             </NuxtLink>
             <NuxtLink
-              to="/"
+              :to="{ name: 'Signup' }"
               class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
             >
               {{ $t("navigation.register") }}
@@ -114,7 +114,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
           {{ $t("navigation.login") }}
         </NuxtLink>
         <NuxtLink
-          :to="{ name: 'Home' }"
+          :to="{ name: 'Signup' }"
           class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
         >
           {{ $t("navigation.register") }}
