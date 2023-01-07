@@ -27,10 +27,9 @@ const signup = async () => {
   }
 };
 
-const googleRegister = async (googleUser) => {
-  console.log(googleUser);
+const googleLogin = async (googleUser) => {
   const response = await useAxios("auth/google", "POST", {
-    token: googleUser.credential,
+    token: googleUser.access_token,
   });
   if (response) {
     useUserStore().setAccessToken(response.accessToken);
@@ -132,8 +131,23 @@ const googleRegister = async (googleUser) => {
           </div>
         </div>
       </div>
-      <div class="flex justify-center my-12">
-        <GoogleLogin :callback="googleRegister" />
+      <div class="mt-6 grid grid-cols-2 gap-3">
+        <div>
+          <GoogleLogin
+            class="w-full"
+            :callback="googleLogin"
+            popup-type="TOKEN"
+          >
+            <button type="button" class="btn-secondary">
+              <i class="fab fa-google mr-2"></i>
+            </button>
+          </GoogleLogin>
+        </div>
+        <div>
+          <button type="button" class="btn-secondary">
+            <i class="fab fa-github mr-2"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
