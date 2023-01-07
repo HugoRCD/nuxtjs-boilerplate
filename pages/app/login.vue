@@ -82,7 +82,7 @@ const googleLogin = async (googleUser) => {
         <div class="flex items-center justify-end">
           <div class="text-sm">
             <router-link
-              :to="{ name: 'PasswordForgot' }"
+              :to="{ name: 'ForgotPassword' }"
               class="font-medium text-accent hover:text-accent-hover"
               >Forgot your password?</router-link
             >
