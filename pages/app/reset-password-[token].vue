@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import { useAxios } from "~/composables/useApi";
 
 definePageMeta({
@@ -7,32 +7,19 @@ definePageMeta({
   description: "Reset Password",
 });
 
-export default {
-  data() {
-    return {
-      password: "",
-      password_confirmation: "",
-    };
-  },
-  computed: {
-    loading() {
-      return useGlobalStore().isLoading;
-    },
-  },
-  methods: {
-    async resetPassword() {
-      const response = await useAxios(
-        "reset-password/" + useRoute().params.token,
-        "POST",
-        {
-          password: this.password,
-        },
-      );
-      if (response) {
-        useRouter().push({ name: "Login" });
-      }
-    },
-  },
+const loading = computed(() => useGlobalStore().isLoading);
+const password = ref("");
+const passwordConfirmation = ref("");
+const token = ref(useRoute().params.token);
+
+const resetPassword = async () => {
+  const response = await useAxios("reset-password/" + token.value, "POST", {
+    password: password.value,
+    password_confirmation: passwordConfirmation.value,
+  });
+  if (response) {
+    useRouter().push({ name: "Login" });
+  }
 };
 </script>
 
@@ -41,13 +28,6 @@ export default {
     <div
       class="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
     >
-      <router-link to="/">
-        <button
-          class="flex items-center justify-center rounded-full w-8 h-8 bg-accent hover:bg-accent-hover"
-        >
-          <i class="fas fa-arrow-left fa-xs"></i>
-        </button>
-      </router-link>
       <div class="mx-auto w-full max-w-sm lg:w-96">
         <div>
           <router-link to="/">
@@ -60,58 +40,35 @@ export default {
           <h2
             class="text-center mt-6 text-3xl font-bold tracking-tight text-primary"
           >
-            Reset your password
+            Reset Password
           </h2>
           <p class="my-6 text-center text-sm text-muted">
-            Enter your new password and confirm it.
+            Please enter your new password.
           </p>
         </div>
-
-        <form v-if="!loading" class="space-y-6" @submit.prevent="resetPassword">
-          <div>
-            <label for="email" class="block text-sm font-medium text-primary"
-              >New password</label
-            >
-            <div class="mt-1">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required=""
-                v-model="password"
-                placeholder="123soleil"
-                class="block w-full text-gray-900 appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-accent focus:outline-none focus:ring-accent sm:text-sm"
-              />
-            </div>
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium text-primary"
-              >Confirm password</label
-            >
-            <div class="mt-1">
-              <input
-                id="password_confirmation"
-                name="password_confirmation"
-                type="password"
-                required=""
-                v-model="password_confirmation"
-                placeholder="123soleil"
-                class="block w-full text-gray-900 appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-accent focus:outline-none focus:ring-accent sm:text-sm"
-              />
-            </div>
-          </div>
-          <div>
-            <button
-              type="submit"
-              class="flex w-full justify-center rounded-md border border-transparent bg-accent py-2 px-4 text-sm font-medium text-inverted shadow-sm hover:bg-accent-hover focus:outline-none"
-            >
-              Change password
-            </button>
-          </div>
+        <Loader v-if="loading" />
+        <form class="space-y-6" @submit.prevent="resetPassword" v-else>
+          <input
+            id="password"
+            name="password"
+            required
+            placeholder="Password"
+            type="password"
+            class="input"
+            v-model="password"
+          />
+          <input
+            id="password_confirmation"
+            name="password_confirmation"
+            required
+            placeholder="Password Confirmation"
+            type="password"
+            class="input"
+            v-model="passwordConfirmation"
+          />
+          <button type="submit" class="btn-primary">Send</button>
         </form>
-        <Loader v-else />
       </div>
-      <Tools class="mt-16" />
     </div>
     <div class="relative hidden w-0 flex-1 lg:block">
       <img
@@ -122,5 +79,3 @@ export default {
     </div>
   </div>
 </template>
-
-<style scoped lang="scss"></style>
