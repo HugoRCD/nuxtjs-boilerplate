@@ -13,7 +13,7 @@ const passwordConfirmation = ref("");
 const token = ref(useRoute().params.token);
 
 const resetPassword = async () => {
-  const response = await useAxios("reset-password/" + token, "POST", {
+  const response = await useAxios("reset-password/" + token.value, "POST", {
     password: password.value,
     password_confirmation: passwordConfirmation.value,
   });
@@ -53,6 +53,7 @@ const resetPassword = async () => {
             name="password"
             required
             placeholder="Password"
+            type="password"
             class="input"
             v-model="password"
           />
@@ -61,6 +62,7 @@ const resetPassword = async () => {
             name="password_confirmation"
             required
             placeholder="Password Confirmation"
+            type="password"
             class="input"
             v-model="passwordConfirmation"
           />
