@@ -111,7 +111,7 @@ const googleLogin = async (googleUser) => {
       </div>
       <div class="flex justify-center my-12">
         <GoogleLogin :callback="googleLogin" popup-type="TOKEN">
-          <div class="btn-secondary mt-6">This button dont work</div>
+          <div class="btn-secondary mt-6">Connect with Google</div>
         </GoogleLogin>
       </div>
     </div>
