@@ -18,6 +18,12 @@ useHead({
       href: "/favicon.ico",
     },
   ],
+  script: [
+    {
+      src: "https://kit.fontawesome.com/b3fb3aef7b.js",
+      crossorigin: "anonymous",
+    },
+  ],
 });
 
 onMounted(() => {
