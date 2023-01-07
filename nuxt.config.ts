@@ -14,6 +14,10 @@ export default defineNuxtConfig({
 
   components: true,
 
+  build: {
+    transpile: ["@heroicons/vue"],
+  },
+
   modules: ["nuxt-icon", "@nuxt/image-edge", "@pinia/nuxt", "nuxt-headlessui"],
 
   imports: {
