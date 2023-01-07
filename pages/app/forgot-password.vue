@@ -1,31 +1,20 @@
-<script>
+<script setup>
+import { useAxios } from "~/composables/useApi";
+
 definePageMeta({
-  name: "PasswordForgot",
-  title: "Password Forgot",
-  description: "Password Forgot",
+  name: "ForgotPassword",
+  title: "Forgot Password",
+  description: "Forgot Password",
 });
 
-export default {
-  data() {
-    return {
-      email: "",
-    };
-  },
-  computed: {
-    loading() {
-      return useGlobalStore().isLoading;
-    },
-  },
-  methods: {
-    async sendForgotPassword() {
-      const response = await useAxios("reset-password", "POST", {
-        email: this.email,
-      });
-      if (response) {
-        useRouter().push({ name: "Login" });
-      }
-    },
-  },
+const loading = computed(() => useGlobalStore().isLoading);
+
+const email = ref("");
+
+const sendResetPasswordEmail = async () => {
+  await useAxios("reset-password", "POST", {
+    email: email.value,
+  });
 };
 </script>
 
@@ -34,7 +23,7 @@ export default {
     <div
       class="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
     >
-      <div class="mx-auto max-w-sm lg:w-96">
+      <div class="mx-auto w-full max-w-sm lg:w-96">
         <div>
           <router-link to="/">
             <img
@@ -46,7 +35,7 @@ export default {
           <h2
             class="text-center mt-6 text-3xl font-bold tracking-tight text-primary"
           >
-            Password forgotten
+            Forgot Password
           </h2>
           <p class="my-6 text-center text-sm text-muted">
             Enter your email address and we will send you a link to reset your
@@ -54,23 +43,16 @@ export default {
           </p>
         </div>
         <Loader v-if="loading" />
-        <form class="space-y-6" @submit.prevent="sendForgotPassword" v-else>
-          <div>
-            <div class="mt-1">
-              <input
-                id="email"
-                name="email"
-                autocomplete="email"
-                required
-                placeholder="Email"
-                class="input"
-                v-model="email"
-              />
-            </div>
-          </div>
-          <div>
-            <button type="submit" class="btn-primary">Send</button>
-          </div>
+        <form class="space-y-6" @submit.prevent="sendResetPasswordEmail" v-else>
+          <input
+            id="email"
+            name="email"
+            required
+            placeholder="johndoe@contact.com"
+            class="input"
+            v-model="email"
+          />
+          <button type="submit" class="btn-primary">Send</button>
         </form>
       </div>
     </div>
