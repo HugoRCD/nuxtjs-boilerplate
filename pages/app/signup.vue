@@ -23,8 +23,7 @@ const user = reactive({
 const signup = async () => {
   const response = await useAxios("auth/register", "POST", user);
   if (response) {
-    useUserStore().setAccessToken(response.accessToken);
-    useRouter().push({ name: "Profile" });
+    useRouter().push({ name: "Login" });
   }
 };
 
