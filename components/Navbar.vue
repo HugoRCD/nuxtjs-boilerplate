@@ -1,13 +1,48 @@
 <script setup>
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
-import { useUserStore } from "~/store/userStore";
-
 const navigation = [{ name: "Home" }, { name: "About" }, { name: "Contact" }];
-const isLogged = computed(() => useUserStore().isLoggedIn);
 </script>
 
 <template>
+  <nav class="w-full flex backdrop-blur-md justify-center">
+    <div
+      class="w-2/3 flex items-center py-2 justify-between border-b border-muted"
+    >
+      <div>
+        <NuxtLink to="/" class="flex items-center gap-1">
+          <img class="h-6" src="../assets/media/logo.png" alt="Logo" />
+          <span class="text-primary font-bold text-lg">Nuxt3 Starter</span>
+        </NuxtLink>
+      </div>
+      <div class="flex gap-12">
+        <NuxtLink
+          v-for="item in navigation"
+          :key="item.name"
+          :to="{ name: item.name }"
+          class="text-primary hover:text-muted px-2 py-1 text-md font-medium transition duration-300 ease-in-out"
+        >
+          {{ $t("navigation." + item.name.toLowerCase()) }}
+        </NuxtLink>
+      </div>
+      <div class="flex gap-6">
+        <Tools />
+        <NuxtLink
+          :to="{ name: 'Login' }"
+          class="bg-secondary rounded-md text-primary px-4 py-1 text-md font-medium transition duration-300 ease-in-out"
+        >
+          {{ $t("navigation.login") }}
+        </NuxtLink>
+        <NuxtLink
+          :to="{ name: 'Signup' }"
+          class="bg-accent rounded-md hover:bg-accent-hover text-white px-4 py-1 text-md font-medium transition duration-300 ease-in-out"
+        >
+          {{ $t("navigation.signup") }}
+        </NuxtLink>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<!--<template>
   <Disclosure
     as="nav"
     class="backdrop-blur-lg sticky top-0 z-10 border-b border-muted"
@@ -16,7 +51,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
+          &lt;!&ndash; Mobile menu button&ndash;&gt;
           <DisclosureButton
             class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
           >
@@ -122,4 +157,4 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
       </div>
     </DisclosurePanel>
   </Disclosure>
-</template>
+</template>-->
