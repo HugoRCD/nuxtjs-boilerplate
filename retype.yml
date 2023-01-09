@@ -1,0 +1,19 @@
+input: docs/
+output: .retype
+url: # Add your website address here
+branding:
+  title: Nuxt3 boilerplate
+  label: Docs
+links:
+  - text: Home
+    link: /README.md
+    icon: home
+  - text: About
+    link: /docs/about.md
+    icon: info
+footer:
+  copyright: © Copyright {{ year }} – Maison Hochard – All rights reserved
+  links:
+    - text: License
+      link: LICENSE
+      icon: shield-check
