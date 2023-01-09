@@ -1,17 +1,16 @@
 <script setup>
-const theme = ref("dark");
+const theme = ref("");
+
+const setTheme = (newTheme) => {
+  theme.value = newTheme;
+  if (process.client) {
+    document.documentElement.setAttribute("data-theme", newTheme);
+    useLocalStorage().set("theme", newTheme);
+  }
+};
 
 const toggleTheme = () => {
-  if (theme.value === "dark") {
-    theme.value = "light";
-  } else {
-    theme.value = "dark";
-  }
-  if (process.client)
-    document.documentElement.setAttribute("data-theme", theme.value);
-  if (process.client) {
-    localStorage.setItem("theme", theme.value);
-  }
+  theme.value === "dark" ? setTheme("light") : setTheme("dark");
 };
 </script>
 
