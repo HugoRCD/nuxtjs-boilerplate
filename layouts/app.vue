@@ -72,7 +72,7 @@ const sidebarOpen = ref(false);
               >
                 <img
                   class="h-8 mb-4 w-auto"
-                  src="../assets/media/logo.png"
+                  src="../assets/media/logo.svg"
                   alt="Your Company"
                 />
               </div>
@@ -112,7 +112,7 @@ const sidebarOpen = ref(false);
         >
           <img
             class="h-8 w-auto"
-            src="../assets/media/logo.png"
+            src="../assets/media/logo.svg"
             alt="Your Company"
           />
         </div>

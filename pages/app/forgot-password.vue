@@ -28,7 +28,7 @@ const sendResetPasswordEmail = async () => {
           <router-link to="/">
             <img
               class="h-12 w-auto mx-auto"
-              src="../../assets/media/logo.png"
+              src="../../assets/media/logo.svg"
               alt="Your Company"
             />
           </router-link>

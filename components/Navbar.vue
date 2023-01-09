@@ -13,7 +13,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
     v-slot="{ open }"
   >
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-12 items-center justify-between">
+      <div class="relative flex h-14 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
           <DisclosureButton
@@ -30,12 +30,12 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
           <div class="flex flex-shrink-0 items-center">
             <img
               class="block h-8 w-auto lg:hidden"
-              src="../assets/media/logo.png"
+              src="../assets/media/logo.svg"
               alt="Your Company"
             />
             <img
               class="hidden h-8 w-auto lg:block"
-              src="../assets/media/logo.png"
+              src="../assets/media/logo.svg"
               alt="Your Company"
             />
           </div>

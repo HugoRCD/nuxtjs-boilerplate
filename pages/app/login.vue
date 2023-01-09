@@ -39,7 +39,7 @@ const googleLogin = async (googleUser) => {
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <img
         class="mx-auto h-12 w-auto"
-        src="../../assets/media/logo.png"
+        src="../../assets/media/logo.svg"
         alt="Your Company"
       />
       <h2
