@@ -28,6 +28,7 @@ module.exports = {
       },
       backgroundColor: {
         primary: "var(--bg-primary)",
+        "primary-opacity": withOpacity("--bg-primary-opacity"),
         secondary: "var(--bg-secondary)",
         accent: withOpacity("--accent-color"),
         "accent-hover": withOpacity("--accent-color-hover"),
