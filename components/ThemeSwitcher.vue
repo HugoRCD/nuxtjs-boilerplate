@@ -12,6 +12,11 @@ const setTheme = (newTheme) => {
 const toggleTheme = () => {
   theme.value === "dark" ? setTheme("light") : setTheme("dark");
 };
+
+onMounted(() => {
+  const userTheme = useLocalStorage().get("theme");
+  userTheme ? (theme.value = userTheme) : "dark";
+});
 </script>
 
 <template>

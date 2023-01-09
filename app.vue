@@ -26,19 +26,21 @@ useHead({
   ],
 });
 
+const theme = ref("dark");
+
 onMounted(() => {
   const userLocale = useLocalStorage().get("locale");
-  const theme = useLocalStorage().get("theme");
+  const userTheme = useLocalStorage().get("theme");
   const accessToken = useLocalStorage().get("accessToken");
 
-  theme ? document.documentElement.setAttribute("data-theme", theme) : "dark";
+  userTheme ? (theme.value = userTheme) : "dark";
   accessToken ? useUserStore().setAccessToken(accessToken) : null;
   userLocale ? (locale.value = userLocale) : (locale.value = "en");
 });
 </script>
 
 <template>
-  <Html data-theme="dark">
+  <Html :data-theme="theme">
     <Body class="bg-primary m-0 p-0 text-primary overflow-x-hidden">
       <EnvChecker />
       <NuxtLayout>
