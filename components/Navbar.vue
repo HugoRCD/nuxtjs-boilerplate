@@ -29,15 +29,18 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
         >
           <div class="flex flex-shrink-0 items-center">
             <img
-              class="block h-8 w-auto lg:hidden"
+              class="block h-6 w-auto lg:hidden"
               src="../assets/media/logo.svg"
               alt="Your Company"
             />
             <img
-              class="hidden h-8 w-auto lg:block"
+              class="hidden h-6 w-auto lg:block"
               src="../assets/media/logo.svg"
               alt="Your Company"
             />
+            <span class="text-md font-bold text-primary ml-2"
+              >Nuxt3 Starter</span
+            >
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
@@ -45,12 +48,12 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
                 v-for="item in navigation"
                 :to="{ name: item.name }"
                 :key="item.name"
-                class="text-primary hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                class="text-primary font-medium transition duration-300 ease-in-out"
                 :class="[
                   item.name === $route.name
-                    ? 'bg-accent-faded text-accent'
-                    : 'text-primary hover:bg-gray-800 hover:text-white',
-                  'px-3 py-2 rounded-md text-sm font-medium',
+                    ? 'bg-accent-faded text-accent hover:text-muted'
+                    : 'text-primary hover:text-muted',
+                  'px-4 py-1 rounded-md text-sm font-medium',
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
               >
