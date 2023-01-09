@@ -73,13 +73,13 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
           <div v-else class="hidden tablet:flex gap-2">
             <NuxtLink
               :to="{ name: 'Login' }"
-              class="text-primary hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              class="text-primary hover:bg-gray-800 hover:text-white px-4 py-1 rounded-md text-sm font-medium"
             >
               {{ $t("navigation.login") }}
             </NuxtLink>
             <NuxtLink
               :to="{ name: 'Signup' }"
-              class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
+              class="text-inverted bg-accent hover:bg-accent-hover px-4 py-1 rounded-md text-sm font-medium"
             >
               {{ $t("navigation.signup") }}
             </NuxtLink>
@@ -97,7 +97,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
             item.name === $route.name
               ? 'bg-accent-faded text-accent'
               : 'text-gray-300 hover:bg-gray-800 hover:text-white',
-            'block px-3 py-2 rounded-md text-primary font-medium',
+            'block px-4 py-1 rounded-md text-primary font-medium',
           ]"
           :aria-current="item.current ? 'page' : undefined"
         >
@@ -111,13 +111,13 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
       >
         <NuxtLink
           :to="{ name: 'Login' }"
-          class="text-primary hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+          class="text-primary hover:bg-gray-800 hover:text-white px-4 py-1 rounded-md text-sm font-medium"
         >
           {{ $t("navigation.login") }}
         </NuxtLink>
         <NuxtLink
           :to="{ name: 'Signup' }"
-          class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
+          class="text-inverted bg-accent hover:bg-accent-hover px-4 py-1 rounded-md text-sm font-medium"
         >
           {{ $t("navigation.signup") }}
         </NuxtLink>
