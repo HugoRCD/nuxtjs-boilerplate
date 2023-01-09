@@ -36,6 +36,11 @@ const googleLogin = async (googleUser) => {
     useRouter().push({ name: "Profile" });
   }
 };
+
+const isActive = computed(() => {
+  console.log(user);
+  return !(user.password === user.confirm_password && user.password.length > 0);
+});
 </script>
 
 <template>
@@ -115,7 +120,9 @@ const googleLogin = async (googleUser) => {
           v-model="user.confirm_password"
         />
         <div>
-          <button type="submit" class="btn-primary">Sign up</button>
+          <button type="submit" class="btn-primary" :disabled="isActive">
+            Sign up
+          </button>
         </div>
       </form>
       <NuxtLink :to="{ name: 'Login' }" class="btn-secondary mt-6">
