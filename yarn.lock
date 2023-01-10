@@ -3793,10 +3793,10 @@ nuxi@3.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt-headlessui@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/nuxt-headlessui/-/nuxt-headlessui-1.0.4.tgz"
-  integrity sha512-DvmfZqDInDyvBnldf54XIShZVOmKA7SFtIxWQNOORwghDijQxqxkDLw+2BCw/otXf/xE815/7su895edeVsSeA==
+nuxt-headlessui@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nuxt-headlessui/-/nuxt-headlessui-1.1.1.tgz#ae0207fc4a2d8463596368bc10562937ca4fe451"
+  integrity sha512-sf8qZQvGDaI+uNnKuynFGY+VXScDNEj3W0LMjv2XH4jO4ksQzbliCB9Hl5cdd/VIFPVmnZm+dnneURSI4/1fXw==
   dependencies:
     "@headlessui/vue" "^1.0.0"
     "@nuxt/kit" "^3.0.0"
