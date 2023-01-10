@@ -2,8 +2,6 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/96ef5ef23a4442c2bf73762f46e52749)](https://www.codacy.com/gh/HugoRCD/nuxtjs-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HugoRCD/nuxtjs-boilerplate&amp;utm_campaign=Badge_Grade)
 
-[![Build and Test](https://github.com/HugoRCD/nuxtjs-boilerplate/actions/workflows/test-build.yml/badge.svg)](https://github.com/HugoRCD/nuxtjs-boilerplate/actions/workflows/test-build.yml)
-
 # Introduction
 
 Here is a completely working Nuxt 3 Template ! This app is a single-page application built with Nuxt 3 and includes features such as OAuth authentication with Google, translation with I18n, and a dark and light theme and many more...
