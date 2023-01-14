@@ -18,7 +18,13 @@ export default defineNuxtConfig({
     transpile: ["@heroicons/vue"],
   },
 
-  modules: ["nuxt-icon", "@nuxt/image-edge", "@pinia/nuxt", "nuxt-headlessui"],
+  modules: [
+    "nuxt-icon",
+    "@nuxt/image-edge",
+    "@pinia/nuxt",
+    "nuxt-headlessui",
+    "@nuxtjs/supabase",
+  ],
 
   imports: {
     dirs: ["store"],
@@ -26,9 +32,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      appEnv: process.env.NUXT_APP_ENV,
-      googleClientId: process.env.NUXT_GOOGLE_CLIENT_ID,
-      apiUrl: process.env.NUXT_API_URL,
+      appEnv: process.env.APP_ENV,
+      googleClientId: process.env.GOOGLE_CLIENT_ID,
+      apiUrl: process.env.API_URL,
     },
   },
 
@@ -41,5 +47,17 @@ export default defineNuxtConfig({
 
   image: {
     dir: "assets/media",
+  },
+
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+    serviceKey: process.env.SUPABASE_SERVICE_KEY,
+    client: {
+      auth: {
+        autoRefreshToken: true,
+        storageKey: "access_token",
+      },
+    },
   },
 });
