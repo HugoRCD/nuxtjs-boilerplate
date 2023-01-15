@@ -9,7 +9,6 @@ html,body, #__nuxt, #__layout{
   @apply bg-primary;
   height:100%!important;
   width: 100%!important;
-  @apply transition-colors duration-500;
 }
 
 @layer components {
@@ -18,8 +17,7 @@ html,body, #__nuxt, #__layout{
     @apply text-primary placeholder:text-placeholder;
     @apply border-sm rounded-md border-primary hover:border-primary-hover;
     @apply focus:outline-none focus:ring-2 focus:ring-accent;
-    @apply w-full h-full px-4 py-2;
-    @apply transition-colors duration-300;
+    @apply w-full px-4 py-2;
   }
 
   .btn-primary {
@@ -27,7 +25,7 @@ html,body, #__nuxt, #__layout{
     @apply text-inverted;
     @apply rounded-md;
     @apply px-4 py-2 flex w-full justify-center;
-    @apply transition-colors duration-300 cursor-pointer;
+    @apply cursor-pointer;
 
     &:disabled {
       @apply bg-accent;
@@ -40,6 +38,6 @@ html,body, #__nuxt, #__layout{
     @apply text-muted;
     @apply border-sm rounded-md border-primary hover:border-primary-hover;
     @apply px-4 py-2 flex w-full justify-center;
-    @apply transition-colors duration-300 cursor-pointer;
+    @apply cursor-pointer;
   }
 }
