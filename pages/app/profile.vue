@@ -1,5 +1,6 @@
 <script setup>
 definePageMeta({
+  middleware: ["auth"],
   name: "Profile",
   title: "Profile",
   description: "Profile",
