@@ -1,6 +1,5 @@
 <script setup>
 import { useI18n } from "vue-i18n";
-import { useLocalStorage } from "~/composables/useLocalStorage";
 
 const { locale } = useI18n();
 

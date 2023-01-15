@@ -1,5 +1,4 @@
 <script setup>
-import { useUserStore } from "~/store/userStore";
 import { MenuButton, Menu, MenuItems } from "@headlessui/vue";
 
 const profile_navigation = [

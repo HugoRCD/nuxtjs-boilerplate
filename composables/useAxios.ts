@@ -1,10 +1,6 @@
-import { useGlobalStore } from "~/store/globalStore";
-import { useUserStore } from "~/store/userStore";
-import { useLocalStorage } from "~/composables/useLocalStorage";
-
 import axios from "axios";
 
-export const useAxios = async (url, method, body = null) => {
+export const useAxios = async (url: string, method: string, body = null) => {
   axios.defaults.baseURL = useRuntimeConfig().public.apiUrl;
   axios.defaults.headers.common["Accept"] = "application/json";
   axios.defaults.headers.common["Content-Type"] = "application/json";
