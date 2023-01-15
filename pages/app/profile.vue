@@ -3,7 +3,6 @@ definePageMeta({
   name: "Profile",
   title: "Profile",
   description: "Profile",
-  key: (route) => route.fullPath,
   layout: "app",
 });
 

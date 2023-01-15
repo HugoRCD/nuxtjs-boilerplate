@@ -1,6 +1,4 @@
 <script setup>
-import { useAxios } from "~/composables/useApi";
-
 definePageMeta({
   name: "confirm-account",
   title: "Confirm account",

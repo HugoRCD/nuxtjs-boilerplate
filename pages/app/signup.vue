@@ -1,6 +1,5 @@
 <script setup>
 import { GoogleLogin } from "vue3-google-login";
-import { useAxios } from "~/composables/useApi";
 
 definePageMeta({
   name: "Signup",
