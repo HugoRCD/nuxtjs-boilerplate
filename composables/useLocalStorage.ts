@@ -1,11 +1,11 @@
 export const useLocalStorage = () => {
-  function set(key, value) {
+  function set(key: string, value: string) {
     if (process.client) localStorage.setItem(key, value);
   }
-  function get(key) {
+  function get(key: string) {
     if (process.client) return localStorage.getItem(key);
   }
-  function remove(key) {
+  function remove(key: string) {
     if (process.client) localStorage.removeItem(key);
   }
   return {
