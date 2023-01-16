@@ -26,7 +26,7 @@
     "@headlessui/vue": "^1.7.7",
     "@heroicons/vue": "^2.0.13",
     "axios": "^1.2.2",
-    "pinia": "^2.0.28",
+    "pinia": "^2.0.29",
     "vue-sweetalert2": "^5.0.5",
     "vue3-google-login": "^2.0.12",
     "autoprefixer": "^10.4.13",
