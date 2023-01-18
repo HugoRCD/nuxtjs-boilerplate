@@ -9,13 +9,12 @@ definePageMeta({
 
 const loading = computed(() => useGlobalStore().isLoading);
 
-const credentials = reactive({
-  login: "",
-  password: "",
-});
+const login = ref("");
+const password = ref("");
 
-const login = async () => {
-  const response = await useAxios("auth/login", "POST", credentials);
+const signin = async () => {
+  const response = await useAxios("auth/login", "POST",
+    { login: login.value, password: password.value });
   if (response) {
     useUserStore().setAccessToken(response.accessToken);
     useRouter().push({ name: "Profile" });
@@ -49,7 +48,7 @@ const googleLogin = async (googleUser) => {
     </div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
       <Loader v-if="loading" />
-      <form class="space-y-6" @submit.prevent="login" v-else>
+      <form class="space-y-6" @submit.prevent="signin" v-else>
         <div>
           <div class="mt-1">
             <input
@@ -59,7 +58,7 @@ const googleLogin = async (googleUser) => {
               required
               placeholder="Login"
               class="input"
-              v-model="credentials.login"
+              v-model="login"
             />
           </div>
         </div>
@@ -73,7 +72,7 @@ const googleLogin = async (googleUser) => {
               required
               placeholder="Password"
               class="input"
-              v-model="credentials.password"
+              v-model="password"
             />
           </div>
         </div>
