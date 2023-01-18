@@ -56,7 +56,7 @@ const faqs = [
             <dt class="text-lg font-medium leading-6 text-primary">
               {{ faq.question }}
             </dt>
-            <dd class="mt-2 text-primary text-muted">{{ faq.answer }}</dd>
+            <dd class="mt-2 text-muted">{{ faq.answer }}</dd>
           </div>
         </dl>
       </div>
