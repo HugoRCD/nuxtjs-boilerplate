@@ -20,25 +20,24 @@ const user = reactive({
 });
 
 const signup = async () => {
-  const response = await useAxios("auth/register", "POST", user);
+  /* const response = await useAxios("auth/register", "POST", user);
   if (response) {
     useRouter().push({ name: "Login" });
-  }
+  } */
 };
 
 const googleLogin = async (googleUser) => {
-  const response = await useAxios("auth/google", "POST", {
+  /* const response = await useAxios("auth/google", "POST", {
     token: googleUser.access_token,
   });
   if (response) {
     useUserStore().setAccessToken(response.accessToken);
     useRouter().push({ name: "Profile" });
-  }
+  } */
 };
 
 const isActive = computed(() => {
-  console.log(user);
-  return !(user.password === user.confirm_password && user.password.length > 0);
+  return true; // !(user.password === user.confirm_password && user.password.length > 0);
 });
 </script>
 

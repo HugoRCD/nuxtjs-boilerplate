@@ -10,9 +10,9 @@ const loading = computed(() => useGlobalStore().isLoading);
 const email = ref("");
 
 const sendResetPasswordEmail = async () => {
-  await useAxios("reset-password", "POST", {
+  /* await useAxios("reset-password", "POST", {
     email: email.value,
-  });
+  }); */
 };
 </script>
 

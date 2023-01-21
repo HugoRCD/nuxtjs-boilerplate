@@ -11,13 +11,13 @@ const passwordConfirmation = ref("");
 const token = ref(useRoute().params.token);
 
 const resetPassword = async () => {
-  const response = await useAxios("reset-password/" + token.value, "POST", {
+  /* const response = await useAxios("reset-password/" + token.value, "POST", {
     password: password.value,
     password_confirmation: passwordConfirmation.value,
   });
   if (response) {
     useRouter().push({ name: "Login" });
-  }
+  } */
 };
 </script>
 

@@ -1,5 +1,4 @@
 <script setup>
-import { useLocalStorage } from "@vueuse/core";
 const theme = useLocalStorage("theme", "dark");
 
 const setTheme = (newTheme) => {

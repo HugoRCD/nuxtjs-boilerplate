@@ -13,24 +13,24 @@ const login = ref("");
 const password = ref("");
 
 const signin = async () => {
-  const response = await useAxios("auth/login", "POST", {
+  /* const response = await useAxios("auth/login", "POST", {
     login: login.value,
     password: password.value,
   });
   if (response) {
     useUserStore().setAccessToken(response.accessToken);
     useRouter().push({ name: "Profile" });
-  }
+  } */
 };
 
 const googleLogin = async (googleUser) => {
-  const response = await useAxios("auth/google", "POST", {
+  /* const response = await useAxios("auth/google", "POST", {
     token: googleUser.access_token,
   });
   if (response) {
     useUserStore().setAccessToken(response.accessToken);
     useRouter().push({ name: "Profile" });
-  }
+  } */
 };
 </script>
 

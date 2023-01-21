@@ -10,10 +10,10 @@ const loading = computed(() => useGlobalStore().isLoading);
 const code = ref(useRoute().params.code);
 
 const confirmAccount = async () => {
-  const response = await useAxios("user/verify/" + code.value, "POST");
+  /* const response = await useAxios("user/verify/" + code.value, "POST");
   if (response) {
     useRouter().push({ name: "Profile" });
-  }
+  } */
 };
 
 const resendCode = async () => {

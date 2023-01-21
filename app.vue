@@ -1,5 +1,4 @@
 <script setup>
-import { useLocalStorage } from "@vueuse/core";
 const { locale } = useI18n();
 
 useHead({

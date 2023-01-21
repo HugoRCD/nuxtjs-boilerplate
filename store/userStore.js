@@ -23,14 +23,12 @@ export const useUserStore = defineStore("user", {
   },
   actions: {
     setAccessToken(token) {
-      useLocalStorage().set("accessToken", token);
       this.accessToken = token;
     },
     setUser(user) {
       this.user = user;
     },
     logout() {
-      useLocalStorage().remove("accessToken");
       Object.assign(this, defaultUser);
     },
   },

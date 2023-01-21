@@ -16,7 +16,7 @@ const availableLocales = {
 
 watch(locale, (newLang) => {
   locale.value = newLang;
-  useLocalStorage().set("locale", newLang);
+  useLocalStorage("locale", newLang);
 });
 </script>
 

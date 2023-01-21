@@ -3,7 +3,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 
 const navigation = [{ name: "Home" }, { name: "About" }, { name: "Contact" }];
 
-const isLogged = computed(() => useUserStore().isLoggedIn);
+const isLogged = computed(() => false);
 </script>
 
 <template>

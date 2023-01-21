@@ -9,7 +9,13 @@ definePageMeta({
 
 const loading = computed(() => useGlobalStore().isLoading);
 
-const user = await useAxios("user", "GET");
+// const user = await useAxios("user", "GET");
+const user = ref({
+  username: "John_doe",
+  firstname: "John",
+  lastname: "Doe",
+  email: "johndoe@contact.com",
+});
 </script>
 
 <template>

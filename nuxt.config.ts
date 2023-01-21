@@ -19,7 +19,15 @@ export default defineNuxtConfig({
     transpile: ["@heroicons/vue"]
   },
 
-  modules: ["nuxt-icon", "@nuxt/image-edge", "@pinia/nuxt", "nuxt-headlessui", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@vueuse/nuxt"],
+  modules: [
+    "nuxt-icon",
+    "@nuxt/image-edge",
+    "@pinia/nuxt",
+    "nuxt-headlessui",
+    "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt"
+  ],
 
   imports: {
     dirs: ["store"]

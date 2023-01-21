@@ -8,8 +8,6 @@ const profile_navigation = [
 ];
 
 const logout = async () => {
-  useUserStore().logout();
-  await useAxios("auth/logout", "POST", {});
   useRouter().push({ name: "Home" });
 };
 </script>
