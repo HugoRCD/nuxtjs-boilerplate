@@ -1,4 +1,5 @@
 <script setup>
+import { useLocalStorage } from "@vueuse/core";
 const { locale } = useI18n();
 
 useHead({
@@ -26,13 +27,13 @@ useHead({
 const theme = ref("dark");
 
 onMounted(() => {
-  const userLocale = useLocalStorage().get("locale");
-  const userTheme = useLocalStorage().get("theme");
-  const accessToken = useLocalStorage().get("accessToken");
+  const userLocale = useLocalStorage("locale", "en");
+  const userTheme = useLocalStorage("theme", "dark");
+  const accessToken = useLocalStorage("accessToken", "");
 
-  userTheme ? (theme.value = userTheme) : "dark";
-  accessToken ? useUserStore().setAccessToken(accessToken) : null;
-  userLocale ? (locale.value = userLocale) : (locale.value = "en");
+  locale.value = userLocale.value;
+  theme.value = userTheme.value;
+  useUserStore().setAccessToken(accessToken.value);
 });
 </script>
 
