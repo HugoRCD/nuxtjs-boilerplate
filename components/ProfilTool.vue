@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { MenuButton, Menu, MenuItems } from "@headlessui/vue";
 
 const profile_navigation = [

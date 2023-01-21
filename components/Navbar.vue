@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 
 const navigation = [{ name: "Home" }, { name: "About" }, { name: "Contact" }];

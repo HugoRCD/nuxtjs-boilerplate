@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const theme = useLocalStorage("theme", "dark");
 
 const setTheme = (newTheme) => {
