@@ -24,10 +24,8 @@ const user = await useAxios("user", "GET");
       </p>
       <div class="flex flex-row mt-10 gap-5">
         <div>
-          <label
-            for="firstname"
-            class="block text-sm font-medium text-muted"
-          >Firstname</label
+          <label for="firstname" class="block text-sm font-medium text-muted"
+            >Firstname</label
           >
           <input
             type="text"
@@ -40,7 +38,8 @@ const user = await useAxios("user", "GET");
         </div>
         <div>
           <label for="lastname" class="block text-sm font-medium text-muted"
-          >Lastname</label>
+            >Lastname</label
+          >
           <input
             type="text"
             name="lastname"
@@ -53,7 +52,8 @@ const user = await useAxios("user", "GET");
       </div>
       <div class="mt-6 w-1/2">
         <label for="email" class="block text-sm font-medium text-muted"
-        >Email address</label>
+          >Email address</label
+        >
         <input
           id="email"
           name="email"

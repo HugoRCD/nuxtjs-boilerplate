@@ -1,41 +1,59 @@
+import en from "./locales/en.json";
+import fr from "./locales/fr.json";
+
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: "fade", mode: "out-in" },
-    layoutTransition: { name: "fade", mode: "out-in" },
+    pageTransition: {
+      name: "fade",
+      mode: "out-in"
+    },
+    layoutTransition: {
+      name: "fade",
+      mode: "out-in"
+    }
   },
-
-  ssr: true,
 
   css: ["~/assets/style/main.scss"],
 
-  components: true,
-
   build: {
-    transpile: ["@heroicons/vue"],
+    transpile: ["@heroicons/vue"]
   },
 
-  modules: ["nuxt-icon", "@nuxt/image-edge", "@pinia/nuxt", "nuxt-headlessui"],
+  modules: ["nuxt-icon", "@nuxt/image-edge", "@pinia/nuxt", "nuxt-headlessui", "@nuxtjs/i18n", "@nuxtjs/tailwindcss"],
 
   imports: {
-    dirs: ["store"],
+    dirs: ["store"]
   },
 
   runtimeConfig: {
     public: {
       appEnv: process.env.APP_ENV,
       googleClientId: process.env.NUXT_GOOGLE_CLIENT_ID,
-      apiUrl: process.env.API_URL,
-    },
+      apiUrl: process.env.API_URL
+    }
   },
 
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {},
-    },
+      autoprefixer: {}
+    }
+  },
+
+  i18n: {
+    vueI18n: {
+      legacy: false,
+      locale: "en",
+      fallbackLocale: "en",
+      availableLocales: ["en", "fr"],
+      messages: {
+        en,
+        fr
+      }
+    }
   },
 
   image: {
-    dir: "assets/media",
-  },
+    dir: "assets/media"
+  }
 });

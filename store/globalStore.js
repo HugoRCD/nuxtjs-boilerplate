@@ -16,7 +16,7 @@ export const useGlobalStore = defineStore({
     },
     getLocale() {
       return this.locale;
-    }
+    },
   },
   actions: {
     setLoading(payload) {
@@ -27,6 +27,6 @@ export const useGlobalStore = defineStore({
     },
     setLocale(payload) {
       this.locale = payload;
-    }
+    },
   },
 });

@@ -13,8 +13,10 @@ const login = ref("");
 const password = ref("");
 
 const signin = async () => {
-  const response = await useAxios("auth/login", "POST",
-    { login: login.value, password: password.value });
+  const response = await useAxios("auth/login", "POST", {
+    login: login.value,
+    password: password.value,
+  });
   if (response) {
     useUserStore().setAccessToken(response.accessToken);
     useRouter().push({ name: "Profile" });
