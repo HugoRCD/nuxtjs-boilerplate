@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   name: "reset-password",
   title: "Reset Password",

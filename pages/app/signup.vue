@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { GoogleLogin } from "vue3-google-login";
 
 definePageMeta({

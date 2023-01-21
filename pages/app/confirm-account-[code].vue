@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   name: "confirm-account",
   title: "Confirm account",
@@ -17,7 +17,7 @@ const confirmAccount = async () => {
 };
 
 const resendCode = async () => {
-  await useAxios("user/verify", "POST");
+  /* await useAxios("user/verify", "POST"); */
 };
 </script>
 
