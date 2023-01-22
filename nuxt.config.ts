@@ -33,6 +33,11 @@ export default defineNuxtConfig({
     }
   },
 
+  supabase: {
+    clientUrl: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+  },
+
   i18n: {
     vueI18n: {
       legacy: false,

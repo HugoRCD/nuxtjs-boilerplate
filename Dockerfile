@@ -1,16 +1,26 @@
-FROM node:18-alpine as nuxt-app
+FROM node:18-alpine as builder
+
+WORKDIR /app
 
 RUN npm install -g pnpm
 
 RUN apk add --update --no-cache python3 build-base gcc && ln -sf /usr/bin/python3 /usr/bin/python
 
-RUN mkdir -p /usr/src/nuxt-app
-WORKDIR /usr/src/nuxt-app
-
 COPY . .
 
-RUN pnpm install --shamefully-hoist
+RUN pnpm install
 RUN pnpm build
 
-ENTRYPOINT ["pnpm", "nuxt", "start"]
+RUN rm -rf node_modules
+
+FROM node:18-alpine as nuxt-app
+
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+COPY --from=builder /app .
+
+CMD ["pnpm", "start"]
+
 EXPOSE 8080
