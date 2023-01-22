@@ -28,14 +28,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appEnv: process.env.APP_ENV,
-      googleClientId: process.env.NUXT_GOOGLE_CLIENT_ID,
       apiUrl: process.env.API_URL
     }
-  },
-
-  supabase: {
-    clientUrl: process.env.SUPABASE_URL,
-    key: process.env.SUPABASE_KEY,
   },
 
   i18n: {
