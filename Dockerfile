@@ -11,8 +11,6 @@ COPY . .
 RUN pnpm install
 RUN pnpm build
 
-RUN rm -rf node_modules
-
 FROM node:18-alpine as nuxt-app
 
 WORKDIR /app
