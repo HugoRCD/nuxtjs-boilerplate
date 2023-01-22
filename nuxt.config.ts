@@ -26,8 +26,14 @@ export default defineNuxtConfig({
     "nuxt-headlessui",
     "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss",
-    "@vueuse/nuxt"
+    "@vueuse/nuxt",
+    "@nuxtjs/supabase",
   ],
+
+  supabase: {
+    clientUrl: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+  },
 
   imports: {
     dirs: ["store"]

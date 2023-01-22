@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { GoogleLogin } from "vue3-google-login";
-
 definePageMeta({
   name: "Login",
   title: "Login",
@@ -11,6 +9,19 @@ const loading = computed(() => useGlobalStore().isLoading);
 
 const login = ref("");
 const password = ref("");
+
+const signWithGithub = async () => {
+  const {
+    user,
+    error,
+  } = await useSupabaseAuthClient().auth.signInWithOAuth({
+    provider: "github",
+  });
+  if (error) {
+    console.log(error);
+  }
+  console.log(user);
+};
 
 const signin = async () => {
   /* const response = await useAxios("auth/login", "POST", {
@@ -83,7 +94,8 @@ const googleLogin = async (googleUser) => {
             <router-link
               :to="{ name: 'ForgotPassword' }"
               class="font-medium text-accent hover:text-accent-hover"
-              >Forgot your password?</router-link
+            >Forgot your password?
+            </router-link
             >
           </div>
         </div>
@@ -107,18 +119,12 @@ const googleLogin = async (googleUser) => {
       </div>
       <div class="mt-6 grid grid-cols-2 gap-3">
         <div>
-          <GoogleLogin
-            class="w-full"
-            :callback="googleLogin"
-            popup-type="TOKEN"
-          >
-            <button type="button" class="btn-secondary">
-              <i class="fab fa-google mr-2"></i>
-            </button>
-          </GoogleLogin>
+          <button type="button" class="btn-secondary">
+            <i class="fab fa-google mr-2"></i>
+          </button>
         </div>
         <div>
-          <button type="button" class="btn-secondary">
+          <button type="button" class="btn-secondary" @click="signWithGithub">
             <i class="fab fa-github mr-2"></i>
           </button>
         </div>
