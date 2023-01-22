@@ -23,6 +23,11 @@ It is built with the latest version of Nuxt and uses pnpm for managing dependenc
 - Use [Supabase](https://supabase.io/) for real-time and powerful API
 - Easy and secure way to connect your frontend to your database
 
+### Deployment
+- Include [Docker](https://www.docker.com/)  configuration using a Dockerfile and Docker-compose
+- Easily deploy the application in a container running on port 8080
+- simply run `docker-compose up` to start the application
+
 ### Documentation
 - Use [Retype](https://retype.js.org/) for documentation
 - Automatic generation of documentation from your code
