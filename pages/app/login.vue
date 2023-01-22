@@ -8,21 +8,21 @@ definePageMeta({
 const login = ref("");
 const password = ref("");
 
-const { query } = useRoute();
 const { auth } = useSupabaseAuthClient();
 const user = useSupabaseUser();
 
 watchEffect(async () => {
   if (user.value) {
-    await navigateTo(query.redirectTo as string, { replace: true });
+    await navigateTo("/app/profile");
   }
 });
 
 const signWithGithub = async () => {
-  const redirectTo = window.location.origin + query.redirectTo;
   const { error } = await auth.signInWithOAuth({
     provider: "github",
-    options: { redirectTo },
+    options: {
+      redirectTo: window.location.origin + "/app/profile",
+    },
   });
   if (error) console.log(error);
 };
@@ -33,14 +33,14 @@ const signin = async () => {
     password: password.value,
   });
   if (error) console.log(error);
-  navigateTo("/app/profile");
 };
 
 const signWithGoogle = async () => {
-  const redirectTo = window.location.origin + query.redirectTo;
   const { error, } = await auth.signInWithOAuth({
     provider: "google",
-    options: { redirectTo },
+    options: {
+      redirectTo: window.location.origin + "/app/profile",
+    },
   });
   if (error) console.log(error);
 };

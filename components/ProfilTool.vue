@@ -16,7 +16,7 @@ const default_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4
 
 const logout = async () => {
   await auth.signOut();
-  navigateTo({ name: "Login" });
+  navigateTo("/app/login");
 };
 </script>
 
