@@ -8,14 +8,25 @@ definePageMeta({
 });
 
 const user = useSupabaseUser();
+const supabase = useSupabaseClient();
 
-const fullname = computed(
-  () => user.value?.user_metadata.full_name || "unknown"
-);
+const email = ref("");
+const fullname = ref("");
 
-const email = computed(
-  () => user.value?.email
-);
+if (user.value) {
+  email.value = user.value.email || "";
+  fullname.value = user.value.user_metadata.full_name || "";
+}
+
+const updateProfile = async () => {
+  const { error } = await supabase.auth.updateUser({
+    email: email.value,
+    data: {
+      full_name: fullname.value,
+    }
+  });
+  if (error) console.log("Error updating user: ", error);
+};
 </script>
 
 <template>
@@ -65,7 +76,7 @@ const email = computed(
         Cancel
       </button>
       <button
-        type="submit"
+        @click="updateProfile"
         class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
       >
         Save
