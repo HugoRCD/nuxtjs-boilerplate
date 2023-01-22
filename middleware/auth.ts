@@ -1,7 +1,7 @@
-export default defineNuxtRouteMiddleware(() => {
-  const isLogged = useUserStore().isLoggedIn;
+export default defineNuxtRouteMiddleware((to) => {
+  const user = useSupabaseUser();
 
-  if (!isLogged) {
-    navigateTo({ name: "Login" });
+  if (!user.value) {
+    navigateTo("/app/login?redirectTo=" + to.path);
   }
 });

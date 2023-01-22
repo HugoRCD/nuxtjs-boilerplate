@@ -1,36 +1,52 @@
-<script setup>
-import { GoogleLogin } from "vue3-google-login";
-
+<script setup lang="ts">
 definePageMeta({
   name: "Login",
   title: "Login",
   description: "Login to your account",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
-
 const login = ref("");
 const password = ref("");
 
-const signin = async () => {
-  const response = await useAxios("auth/login", "POST", {
-    login: login.value,
-    password: password.value,
-  });
-  if (response) {
-    useUserStore().setAccessToken(response.accessToken);
-    useRouter().push({ name: "Profile" });
+const { auth } = useSupabaseAuthClient();
+const user = useSupabaseUser();
+
+watchEffect(async () => {
+  if (user.value) {
+    await navigateTo("/app/profile");
   }
+});
+
+const loading = ref(false);
+
+const signWithGithub = async () => {
+  const { error } = await auth.signInWithOAuth({
+    provider: "github",
+    options: {
+      redirectTo: window.location.origin + "/app/profile",
+    },
+  });
+  if (error) console.log(error);
 };
 
-const googleLogin = async (googleUser) => {
-  const response = await useAxios("auth/google", "POST", {
-    token: googleUser.access_token,
+const signin = async () => {
+  loading.value = true;
+  const { error } = await auth.signInWithPassword({
+    email: login.value,
+    password: password.value,
   });
-  if (response) {
-    useUserStore().setAccessToken(response.accessToken);
-    useRouter().push({ name: "Profile" });
-  }
+  if (error) console.log(error);
+  loading.value = false;
+};
+
+const signWithGoogle = async () => {
+  const { error, } = await auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: window.location.origin + "/app/profile",
+    },
+  });
+  if (error) console.log(error);
 };
 </script>
 
@@ -80,10 +96,11 @@ const googleLogin = async (googleUser) => {
         </div>
         <div class="flex items-center justify-end">
           <div class="text-sm">
-            <router-link
+            <NuxtLink
               :to="{ name: 'ForgotPassword' }"
               class="font-medium text-accent hover:text-accent-hover"
-              >Forgot your password?</router-link
+            >Forgot your password?
+            </NuxtLink
             >
           </div>
         </div>
@@ -107,18 +124,12 @@ const googleLogin = async (googleUser) => {
       </div>
       <div class="mt-6 grid grid-cols-2 gap-3">
         <div>
-          <GoogleLogin
-            class="w-full"
-            :callback="googleLogin"
-            popup-type="TOKEN"
-          >
-            <button type="button" class="btn-secondary">
-              <i class="fab fa-google mr-2"></i>
-            </button>
-          </GoogleLogin>
+          <button type="button" class="btn-secondary" @click="signWithGoogle">
+            <i class="fab fa-google mr-2"></i>
+          </button>
         </div>
         <div>
-          <button type="button" class="btn-secondary">
+          <button type="button" class="btn-secondary" @click="signWithGithub">
             <i class="fab fa-github mr-2"></i>
           </button>
         </div>

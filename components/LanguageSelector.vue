@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { locale } = useI18n();
 
 const availableLocales = {
@@ -16,7 +16,7 @@ const availableLocales = {
 
 watch(locale, (newLang) => {
   locale.value = newLang;
-  useLocalStorage().set("locale", newLang);
+  useLocalStorage("locale", newLang);
 });
 </script>
 

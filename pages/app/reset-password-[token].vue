@@ -1,23 +1,22 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   name: "reset-password",
   title: "Reset Password",
   description: "Reset Password",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
 const password = ref("");
 const passwordConfirmation = ref("");
 const token = ref(useRoute().params.token);
 
 const resetPassword = async () => {
-  const response = await useAxios("reset-password/" + token.value, "POST", {
+  /* const response = await useAxios("reset-password/" + token.value, "POST", {
     password: password.value,
     password_confirmation: passwordConfirmation.value,
   });
   if (response) {
     useRouter().push({ name: "Login" });
-  }
+  } */
 };
 </script>
 
@@ -44,8 +43,7 @@ const resetPassword = async () => {
             Please enter your new password.
           </p>
         </div>
-        <Loader v-if="loading" />
-        <form class="space-y-6" @submit.prevent="resetPassword" v-else>
+        <form class="space-y-6" @submit.prevent="resetPassword">
           <input
             id="password"
             name="password"

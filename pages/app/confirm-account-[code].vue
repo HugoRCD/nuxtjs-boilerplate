@@ -1,23 +1,21 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   name: "confirm-account",
   title: "Confirm account",
   description: "Confirm your account",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
-
 const code = ref(useRoute().params.code);
 
 const confirmAccount = async () => {
-  const response = await useAxios("user/verify/" + code.value, "POST");
+  /* const response = await useAxios("user/verify/" + code.value, "POST");
   if (response) {
     useRouter().push({ name: "Profile" });
-  }
+  } */
 };
 
 const resendCode = async () => {
-  await useAxios("user/verify", "POST");
+  /* await useAxios("user/verify", "POST"); */
 };
 </script>
 
@@ -44,8 +42,7 @@ const resendCode = async () => {
             Please enter the code we sent to your email address.
           </p>
         </div>
-        <Loader v-if="loading" />
-        <form class="space-y-6" @submit.prevent="confirmAccount" v-else>
+        <form class="space-y-6" @submit.prevent="confirmAccount">
           <input
             id="code"
             name="code"

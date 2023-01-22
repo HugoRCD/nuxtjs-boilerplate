@@ -7,36 +7,25 @@ export default defineNuxtConfig({
       name: "fade",
       mode: "out-in"
     },
-    layoutTransition: {
-      name: "fade",
-      mode: "out-in"
-    }
   },
 
   css: ["~/assets/style/main.scss"],
 
-  build: {
-    transpile: ["@heroicons/vue"]
-  },
-
-  modules: ["nuxt-icon", "@nuxt/image-edge", "@pinia/nuxt", "nuxt-headlessui", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@vueuse/nuxt"],
-
-  imports: {
-    dirs: ["store"]
-  },
+  modules: [
+    "nuxt-icon",
+    "@nuxt/image-edge",
+    "nuxt-headlessui",
+    "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt",
+    "@nuxtjs/supabase",
+  ],
 
   runtimeConfig: {
     public: {
       appEnv: process.env.APP_ENV,
       googleClientId: process.env.NUXT_GOOGLE_CLIENT_ID,
       apiUrl: process.env.API_URL
-    }
-  },
-
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {}
     }
   },
 

@@ -1,18 +1,16 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   name: "ForgotPassword",
   title: "Forgot Password",
   description: "Forgot Password",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
-
 const email = ref("");
 
 const sendResetPasswordEmail = async () => {
-  await useAxios("reset-password", "POST", {
+  /* await useAxios("reset-password", "POST", {
     email: email.value,
-  });
+  }); */
 };
 </script>
 
@@ -40,8 +38,7 @@ const sendResetPasswordEmail = async () => {
             password.
           </p>
         </div>
-        <Loader v-if="loading" />
-        <form class="space-y-6" @submit.prevent="sendResetPasswordEmail" v-else>
+        <form class="space-y-6" @submit.prevent="sendResetPasswordEmail">
           <input
             id="email"
             name="email"

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   middleware: ["auth"],
   name: "Profile",
@@ -7,15 +7,20 @@ definePageMeta({
   layout: "app",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
+const user = useSupabaseUser();
 
-const user = await useAxios("user", "GET");
+const full_name = computed(
+  () => user.value?.user_metadata.full_name
+);
+
+const email = computed(
+  () => user.value?.email
+);
 </script>
 
 <template>
   <div>
-    <Loader v-if="loading" class="text-gray-700 text-center" />
-    <div v-else class="bg-secondary mb-5 px-4 py-5 shadow rounded-lg sm:p-6">
+    <div class="bg-secondary mb-5 px-4 py-5 shadow rounded-lg sm:p-6">
       <h3 class="text-lg font-medium leading-6 text-primary">
         Personal Information
       </h3>
@@ -32,7 +37,7 @@ const user = await useAxios("user", "GET");
             name="firstname"
             id="firstname"
             autocomplete="firstname"
-            v-model="user.firstname"
+            v-model="full_name"
             class="input mt-1"
           />
         </div>
@@ -45,7 +50,7 @@ const user = await useAxios("user", "GET");
             name="lastname"
             id="lastname"
             autocomplete="lastname"
-            v-model="user.lastname"
+            v-model="full_name"
             class="input mt-1"
           />
         </div>
@@ -59,7 +64,7 @@ const user = await useAxios("user", "GET");
           name="email"
           type="email"
           autocomplete="email"
-          v-model="user.email"
+          v-model="email"
           class="input mt-1"
         />
       </div>

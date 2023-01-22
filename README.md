@@ -28,12 +28,14 @@ git clone git@github.com:HugoRCD/nuxtjs-boilerplate.git
 
 ### Install dependencies:
 ```
-yarn install
+pnpm install
 ```
+
+There is no need to use the --shamefully-hoist flag here because the dependencies the flag is set to true by default in the .npmrc file.
 
 ### Start the development server:
 ```
-yarn run serve
+pnpm dev
 ```
 
 Now you can open the app in your browser at http://localhost:8080

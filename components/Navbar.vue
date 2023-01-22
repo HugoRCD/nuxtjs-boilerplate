@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 
 const navigation = [{ name: "Home" }, { name: "About" }, { name: "Contact" }];
 
-const isLogged = computed(() => useUserStore().isLoggedIn);
+const user = useSupabaseUser();
 </script>
 
 <template>
@@ -69,7 +69,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
           <div
             class="hidden tablet:block h-6 w-px bg-accent-faded border-l border-gray-200 border-opacity-25"
           ></div>
-          <ProfilTool v-if="isLogged" />
+          <ProfilTool v-if="user" />
           <div v-else class="hidden tablet:flex gap-2">
             <NuxtLink
               :to="{ name: 'Login' }"
@@ -107,7 +107,7 @@ const isLogged = computed(() => useUserStore().isLoggedIn);
       <Tools class="my-4" />
       <div
         class="py-5 border-t border-gray-800 items-center text-center"
-        v-if="!isLogged"
+        v-if="!user"
       >
         <NuxtLink
           :to="{ name: 'Login' }"
