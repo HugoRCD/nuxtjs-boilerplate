@@ -28,8 +28,10 @@ git clone git@github.com:HugoRCD/nuxtjs-boilerplate.git
 
 ### Install dependencies:
 ```
-pnpm install --shamefully-hoist
+pnpm install
 ```
+
+There is no need to use the --shamefully-hoist flag here because the dependencies the flag is set to true by default in the .npmrc file.
 
 ### Start the development server:
 ```

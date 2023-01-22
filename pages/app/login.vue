@@ -28,14 +28,12 @@ const signWithGithub = async () => {
 };
 
 const signin = async () => {
-  /* const response = await useAxios("auth/login", "POST", {
-    login: login.value,
+  const { error } = await auth.signInWithPassword({
+    email: login.value,
     password: password.value,
   });
-  if (response) {
-    useUserStore().setAccessToken(response.accessToken);
-    useRouter().push({ name: "Profile" });
-  } */
+  if (error) console.log(error);
+  navigateTo("/app/profile");
 };
 
 const signWithGoogle = async () => {

@@ -5,6 +5,8 @@ definePageMeta({
   description: "Sign up for your account",
 });
 
+const { auth } = useSupabaseAuthClient();
+
 const user = reactive({
   username: "",
   firstname: "",
@@ -16,15 +18,20 @@ const user = reactive({
 });
 
 const signup = async () => {
-  /* const response = await useAxios("auth/register", "POST", user);
-  if (response) {
-    useRouter().push({ name: "Login" });
-  } */
+  const { error } = await auth.signUp({
+    email: user.email,
+    password: user.password,
+    options: {
+      data: {
+        username: user.username,
+        firstname: user.firstname,
+        lastname: user.lastname,
+      },
+    },
+  });
+  if (error) console.log(error);
+  navigateTo("/app/login");
 };
-
-const isActive = computed(() => {
-  return true; // !(user.password === user.confirm_password && user.password.length > 0);
-});
 </script>
 
 <template>
@@ -103,7 +110,7 @@ const isActive = computed(() => {
           v-model="user.confirm_password"
         />
         <div>
-          <button type="submit" class="btn-primary" :disabled="isActive">
+          <button type="submit" class="btn-primary">
             Sign up
           </button>
         </div>
