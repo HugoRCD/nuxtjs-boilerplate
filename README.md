@@ -32,6 +32,13 @@ It is built with the latest version of Nuxt and uses pnpm for managing dependenc
 - Use [Retype](https://retype.js.org/) for documentation
 - Automatic generation of documentation from your code
 
+## Console
+
+This application includes a powerful console that can be launched 
+by using the shortcut `cmd + k`. This console can provide various 
+features to facilitate development and management of the application but you
+will need to develop your own commands. the console in the boilerplate
+is just an example of what you can do with it.
 
 ## Getting Started
 
