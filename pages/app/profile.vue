@@ -9,8 +9,8 @@ definePageMeta({
 
 const user = useSupabaseUser();
 
-const full_name = computed(
-  () => user.value?.user_metadata.full_name
+const fullname = computed(
+  () => user.value?.user_metadata.full_name || "unknown"
 );
 
 const email = computed(
@@ -28,29 +28,16 @@ const email = computed(
         Use a permanent address where you can receive mail.
       </p>
       <div class="flex flex-row mt-10 gap-5">
-        <div>
+        <div class="w-1/2">
           <label for="firstname" class="block text-sm font-medium text-muted"
-            >Firstname</label
+            >Full name</label
           >
           <input
             type="text"
             name="firstname"
             id="firstname"
             autocomplete="firstname"
-            v-model="full_name"
-            class="input mt-1"
-          />
-        </div>
-        <div>
-          <label for="lastname" class="block text-sm font-medium text-muted"
-            >Lastname</label
-          >
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            autocomplete="lastname"
-            v-model="full_name"
+            v-model="fullname"
             class="input mt-1"
           />
         </div>
