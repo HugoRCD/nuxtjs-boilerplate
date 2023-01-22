@@ -29,11 +29,6 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
   ],
 
-  supabase: {
-    clientUrl: process.env.SUPABASE_URL,
-    key: process.env.SUPABASE_KEY,
-  },
-
   runtimeConfig: {
     public: {
       appEnv: process.env.APP_ENV,

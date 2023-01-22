@@ -5,7 +5,6 @@ definePageMeta({
   description: "Reset Password",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
 const password = ref("");
 const passwordConfirmation = ref("");
 const token = ref(useRoute().params.token);
@@ -44,8 +43,7 @@ const resetPassword = async () => {
             Please enter your new password.
           </p>
         </div>
-        <Loader v-if="loading" />
-        <form class="space-y-6" @submit.prevent="resetPassword" v-else>
+        <form class="space-y-6" @submit.prevent="resetPassword">
           <input
             id="password"
             name="password"

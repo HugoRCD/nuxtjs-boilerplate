@@ -5,8 +5,6 @@ definePageMeta({
   description: "Forgot Password",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
-
 const email = ref("");
 
 const sendResetPasswordEmail = async () => {
@@ -40,8 +38,7 @@ const sendResetPasswordEmail = async () => {
             password.
           </p>
         </div>
-        <Loader v-if="loading" />
-        <form class="space-y-6" @submit.prevent="sendResetPasswordEmail" v-else>
+        <form class="space-y-6" @submit.prevent="sendResetPasswordEmail">
           <input
             id="email"
             name="email"

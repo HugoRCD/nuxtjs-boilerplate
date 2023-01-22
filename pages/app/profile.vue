@@ -7,8 +7,6 @@ definePageMeta({
   layout: "app",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
-
 const user = useSupabaseUser();
 
 const full_name = computed(
@@ -22,8 +20,7 @@ const email = computed(
 
 <template>
   <div>
-    <Loader v-if="loading" class="text-gray-700 text-center" />
-    <div v-else class="bg-secondary mb-5 px-4 py-5 shadow rounded-lg sm:p-6">
+    <div class="bg-secondary mb-5 px-4 py-5 shadow rounded-lg sm:p-6">
       <h3 class="text-lg font-medium leading-6 text-primary">
         Personal Information
       </h3>

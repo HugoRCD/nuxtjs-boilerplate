@@ -5,8 +5,6 @@ definePageMeta({
   description: "Login to your account",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
-
 const login = ref("");
 const password = ref("");
 
@@ -21,14 +19,12 @@ watchEffect(async () => {
 });
 
 const signWithGithub = async () => {
-  useGlobalStore().setLoading(true);
   const redirectTo = window.location.origin + query.redirectTo;
   const { error } = await auth.signInWithOAuth({
     provider: "github",
     options: { redirectTo },
   });
   if (error) console.log(error);
-  useGlobalStore().setLoading(false);
 };
 
 const signin = async () => {
@@ -43,16 +39,12 @@ const signin = async () => {
 };
 
 const signWithGoogle = async () => {
-  const {
-    user,
-    error,
-  } = await auth.signInWithOAuth({
+  const redirectTo = window.location.origin + query.redirectTo;
+  const { error, } = await auth.signInWithOAuth({
     provider: "google",
+    options: { redirectTo },
   });
-  if (error) {
-    console.log(error);
-  }
-  console.log(user);
+  if (error) console.log(error);
 };
 </script>
 
@@ -71,8 +63,7 @@ const signWithGoogle = async () => {
       </h2>
     </div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
-      <Loader v-if="loading" />
-      <form class="space-y-6" @submit.prevent="signin" v-else>
+      <form class="space-y-6" @submit.prevent="signin">
         <div>
           <div class="mt-1">
             <input

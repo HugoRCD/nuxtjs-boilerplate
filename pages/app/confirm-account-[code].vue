@@ -5,8 +5,6 @@ definePageMeta({
   description: "Confirm your account",
 });
 
-const loading = computed(() => useGlobalStore().isLoading);
-
 const code = ref(useRoute().params.code);
 
 const confirmAccount = async () => {
@@ -44,8 +42,7 @@ const resendCode = async () => {
             Please enter the code we sent to your email address.
           </p>
         </div>
-        <Loader v-if="loading" />
-        <form class="space-y-6" @submit.prevent="confirmAccount" v-else>
+        <form class="space-y-6" @submit.prevent="confirmAccount">
           <input
             id="code"
             name="code"

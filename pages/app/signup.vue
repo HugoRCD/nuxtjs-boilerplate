@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { GoogleLogin } from "vue3-google-login";
-
 definePageMeta({
   name: "Signup",
   title: "Signup",
   description: "Sign up for your account",
 });
-
-const loading = computed(() => useGlobalStore().isLoading);
 
 const user = reactive({
   username: "",
@@ -23,16 +19,6 @@ const signup = async () => {
   /* const response = await useAxios("auth/register", "POST", user);
   if (response) {
     useRouter().push({ name: "Login" });
-  } */
-};
-
-const googleLogin = async (googleUser) => {
-  /* const response = await useAxios("auth/google", "POST", {
-    token: googleUser.access_token,
-  });
-  if (response) {
-    useUserStore().setAccessToken(response.accessToken);
-    useRouter().push({ name: "Profile" });
   } */
 };
 
@@ -56,8 +42,7 @@ const isActive = computed(() => {
       </h2>
     </div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
-      <Loader v-if="loading" />
-      <form class="space-y-6" @submit.prevent="signup" v-else>
+      <form class="space-y-6" @submit.prevent="signup">
         <input
           id="username"
           name="username"
@@ -138,15 +123,9 @@ const isActive = computed(() => {
       </div>
       <div class="mt-6 grid grid-cols-2 gap-3">
         <div>
-          <GoogleLogin
-            class="w-full"
-            :callback="googleLogin"
-            popup-type="TOKEN"
-          >
-            <button type="button" class="btn-secondary">
-              <i class="fab fa-google mr-2"></i>
-            </button>
-          </GoogleLogin>
+          <button type="button" class="btn-secondary">
+            <i class="fab fa-google mr-2"></i>
+          </button>
         </div>
         <div>
           <button type="button" class="btn-secondary">
