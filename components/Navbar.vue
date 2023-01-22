@@ -3,7 +3,9 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 
 const navigation = [{ name: "Home" }, { name: "About" }, { name: "Contact" }];
 
-const isLogged = computed(() => false);
+const user = useSupabaseUser();
+
+const isLogged = computed(() => user.value !== null);
 </script>
 
 <template>

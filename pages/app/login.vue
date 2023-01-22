@@ -34,14 +34,17 @@ const signin = async () => {
   } */
 };
 
-const googleLogin = async (googleUser) => {
-  /* const response = await useAxios("auth/google", "POST", {
-    token: googleUser.access_token,
+const signWithGoogle = async () => {
+  const {
+    user,
+    error,
+  } = await useSupabaseAuthClient().auth.signInWithOAuth({
+    provider: "google",
   });
-  if (response) {
-    useUserStore().setAccessToken(response.accessToken);
-    useRouter().push({ name: "Profile" });
-  } */
+  if (error) {
+    console.log(error);
+  }
+  console.log(user);
 };
 </script>
 
@@ -91,11 +94,11 @@ const googleLogin = async (googleUser) => {
         </div>
         <div class="flex items-center justify-end">
           <div class="text-sm">
-            <router-link
+            <NuxtLink
               :to="{ name: 'ForgotPassword' }"
               class="font-medium text-accent hover:text-accent-hover"
             >Forgot your password?
-            </router-link
+            </NuxtLink
             >
           </div>
         </div>
@@ -119,7 +122,7 @@ const googleLogin = async (googleUser) => {
       </div>
       <div class="mt-6 grid grid-cols-2 gap-3">
         <div>
-          <button type="button" class="btn-secondary">
+          <button type="button" class="btn-secondary" @click="signWithGoogle">
             <i class="fab fa-google mr-2"></i>
           </button>
         </div>

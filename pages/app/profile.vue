@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  // middleware: ["auth"],
+  middleware: ["auth"],
   name: "Profile",
   title: "Profile",
   description: "Profile",
@@ -9,13 +9,9 @@ definePageMeta({
 
 const loading = computed(() => useGlobalStore().isLoading);
 
-// const user = await useAxios("user", "GET");
-const user = ref({
-  username: "John_doe",
-  firstname: "John",
-  lastname: "Doe",
-  email: "johndoe@contact.com",
-});
+const user = useSupabaseUser();
+
+const user_infos = computed(() => user.value?.user_metadata);
 </script>
 
 <template>
@@ -38,7 +34,7 @@ const user = ref({
             name="firstname"
             id="firstname"
             autocomplete="firstname"
-            v-model="user.firstname"
+            v-model="user_infos.full_name.split(' ')[0]"
             class="input mt-1"
           />
         </div>
@@ -51,7 +47,7 @@ const user = ref({
             name="lastname"
             id="lastname"
             autocomplete="lastname"
-            v-model="user.lastname"
+            v-model="user_infos.full_name.split(' ')[1]"
             class="input mt-1"
           />
         </div>
