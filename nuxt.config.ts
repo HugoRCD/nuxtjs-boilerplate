@@ -11,6 +11,10 @@ export default defineNuxtConfig({
 
   css: ["~/assets/style/main.scss"],
 
+  build: {
+    transpile: ["@heroicons/vue"],
+  },
+
   modules: [
     "nuxt-icon",
     "@nuxt/image-edge",
