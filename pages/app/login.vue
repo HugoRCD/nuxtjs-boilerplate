@@ -17,6 +17,8 @@ watchEffect(async () => {
   }
 });
 
+const loading = ref(false);
+
 const signWithGithub = async () => {
   const { error } = await auth.signInWithOAuth({
     provider: "github",
@@ -28,11 +30,13 @@ const signWithGithub = async () => {
 };
 
 const signin = async () => {
+  loading.value = true;
   const { error } = await auth.signInWithPassword({
     email: login.value,
     password: password.value,
   });
   if (error) console.log(error);
+  loading.value = false;
 };
 
 const signWithGoogle = async () => {
@@ -61,7 +65,8 @@ const signWithGoogle = async () => {
       </h2>
     </div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
-      <form class="space-y-6" @submit.prevent="signin">
+      <Loader v-if="loading" />
+      <form class="space-y-6" @submit.prevent="signin" v-else>
         <div>
           <div class="mt-1">
             <input
