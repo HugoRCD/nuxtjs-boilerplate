@@ -5,13 +5,14 @@
 This is a fully functional Nuxt 3 template that includes features such as OAuth authentication with Google, translation with I18n, a dark and light theme and many more.
 It is built with the latest version of Nuxt and uses pnpm for managing dependencies, which helps to keep the application lightweight and fast.
 
-![Homepage screenshot](./public/homescreen.webp)
+![Homepage](./public/homescreen.webp)
 
 ## Features
 
 ### Authentication
 - OAuth authentication with multiple providers such as Google, GitHub, etc...
 - Working forgot password feature
+![login page](./public/login.webp)
 
 ### UI/UX
 - Translation with I18n for multiple languages support
