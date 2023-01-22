@@ -23,6 +23,7 @@ It is built with the latest version of Nuxt and uses pnpm for managing dependenc
 ### API
 - Use [Supabase](https://supabase.io/) for real-time and powerful API
 - Easy and secure way to connect your frontend to your database
+- There is also a self api inside using the Nitro server built-in Nuxt
 
 ### Deployment
 - Include [Docker](https://www.docker.com/)  configuration using a Dockerfile and Docker-compose
@@ -32,6 +33,9 @@ It is built with the latest version of Nuxt and uses pnpm for managing dependenc
 ### Documentation
 - Use [Retype](https://retype.js.org/) for documentation
 - Automatic generation of documentation from your code
+
+### Lint
+- Eslint is configure on the boilerplate (configure for Typescript, with Prettier)
 
 ## Console
 
