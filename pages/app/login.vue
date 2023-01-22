@@ -10,17 +10,25 @@ const loading = computed(() => useGlobalStore().isLoading);
 const login = ref("");
 const password = ref("");
 
-const signWithGithub = async () => {
-  const {
-    user,
-    error,
-  } = await useSupabaseAuthClient().auth.signInWithOAuth({
-    provider: "github",
-  });
-  if (error) {
-    console.log(error);
+const { query } = useRoute();
+const { auth } = useSupabaseAuthClient();
+const user = useSupabaseUser();
+
+watchEffect(async () => {
+  if (user.value) {
+    await navigateTo(query.redirectTo as string, { replace: true });
   }
-  console.log(user);
+});
+
+const signWithGithub = async () => {
+  useGlobalStore().setLoading(true);
+  const redirectTo = window.location.origin + query.redirectTo;
+  const { error } = await auth.signInWithOAuth({
+    provider: "github",
+    options: { redirectTo },
+  });
+  if (error) console.log(error);
+  useGlobalStore().setLoading(false);
 };
 
 const signin = async () => {
@@ -38,7 +46,7 @@ const signWithGoogle = async () => {
   const {
     user,
     error,
-  } = await useSupabaseAuthClient().auth.signInWithOAuth({
+  } = await auth.signInWithOAuth({
     provider: "google",
   });
   if (error) {

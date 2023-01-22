@@ -14,21 +14,17 @@
     "start": "nuxt start",
     "format": "prettier --write \"**/*.js\" \"**/*.vue\" "
   },
-  "dependencies": {
+  "devDependencies": {
     "@headlessui/vue": "^1.7.7",
     "@heroicons/vue": "^2.0.13",
     "@nuxt/image-edge": "1.0.0-27840416.dc1ed65",
     "@nuxtjs/style-resources": "^1.2.1",
     "@nuxtjs/tailwindcss": "^6.2.0",
-    "@pinia/nuxt": "^0.4.6",
     "@tailwindcss/forms": "^0.5.3",
     "nuxt-headlessui": "^1.1.1",
     "nuxt-icon": "^0.2.6",
-    "pinia": "^2.0.29",
     "postcss": "^8.4.21",
-    "sass": "^1.57.1"
-  },
-  "devDependencies": {
+    "sass": "^1.57.1",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/i18n": "8.0.0-beta.8",
     "@nuxtjs/supabase": "^0.3.0",

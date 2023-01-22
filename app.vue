@@ -28,11 +28,9 @@ const theme = ref("dark");
 onMounted(() => {
   const userLocale = useLocalStorage("locale", "en");
   const userTheme = useLocalStorage("theme", "dark");
-  const accessToken = useLocalStorage("accessToken", "");
 
   locale.value = userLocale.value;
   theme.value = userTheme.value;
-  useUserStore().setAccessToken(accessToken.value);
 });
 </script>
 

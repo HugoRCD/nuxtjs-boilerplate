@@ -11,7 +11,13 @@ const loading = computed(() => useGlobalStore().isLoading);
 
 const user = useSupabaseUser();
 
-const user_infos = computed(() => user.value?.user_metadata);
+const full_name = computed(
+  () => user.value?.user_metadata.full_name
+);
+
+const email = computed(
+  () => user.value?.email
+);
 </script>
 
 <template>
@@ -34,7 +40,7 @@ const user_infos = computed(() => user.value?.user_metadata);
             name="firstname"
             id="firstname"
             autocomplete="firstname"
-            v-model="user_infos.full_name.split(' ')[0]"
+            v-model="full_name"
             class="input mt-1"
           />
         </div>
@@ -47,7 +53,7 @@ const user_infos = computed(() => user.value?.user_metadata);
             name="lastname"
             id="lastname"
             autocomplete="lastname"
-            v-model="user_infos.full_name.split(' ')[1]"
+            v-model="full_name"
             class="input mt-1"
           />
         </div>
@@ -61,7 +67,7 @@ const user_infos = computed(() => user.value?.user_metadata);
           name="email"
           type="email"
           autocomplete="email"
-          v-model="user.email"
+          v-model="email"
           class="input mt-1"
         />
       </div>

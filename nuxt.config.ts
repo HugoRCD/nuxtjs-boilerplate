@@ -22,7 +22,6 @@ export default defineNuxtConfig({
   modules: [
     "nuxt-icon",
     "@nuxt/image-edge",
-    "@pinia/nuxt",
     "nuxt-headlessui",
     "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss",
@@ -33,10 +32,6 @@ export default defineNuxtConfig({
   supabase: {
     clientUrl: process.env.SUPABASE_URL,
     key: process.env.SUPABASE_KEY,
-  },
-
-  imports: {
-    dirs: ["store"]
   },
 
   runtimeConfig: {

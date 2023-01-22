@@ -8,14 +8,14 @@ const profile_navigation = [
 ];
 
 const user = useSupabaseUser();
-const supabase = useSupabaseAuthClient();
+const { auth } = useSupabaseAuthClient();
 
 const profile = computed(() => user.value?.user_metadata.avatar_url);
 
 const default_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 
 const logout = async () => {
-  await supabase.auth.signOut();
+  await auth.signOut();
   navigateTo({ name: "Login" });
 };
 </script>
