@@ -2,17 +2,6 @@ import en from "./locales/en.json";
 import fr from "./locales/fr.json";
 
 export default defineNuxtConfig({
-  app: {
-    pageTransition: {
-      name: "fade",
-      mode: "out-in"
-    },
-    layoutTransition: {
-      name: "fade",
-      mode: "out-in"
-    }
-  },
-
   css: ["~/assets/style/main.scss"],
 
   build: {
