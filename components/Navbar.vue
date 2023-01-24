@@ -69,21 +69,23 @@ const user = useSupabaseUser();
           <div
             class="hidden tablet:block h-6 w-px bg-accent-faded border-l border-gray-200 border-opacity-25"
           ></div>
-          <ProfilTool v-if="user" />
-          <div v-else class="hidden tablet:flex gap-2">
-            <NuxtLink
-              :to="{ name: 'Login' }"
-              class="text-primary hover:bg-gray-800 hover:text-white px-4 py-1 rounded-md text-sm font-medium"
-            >
-              {{ $t("navigation.login") }}
-            </NuxtLink>
-            <NuxtLink
-              :to="{ name: 'Signup' }"
-              class="text-inverted bg-accent hover:bg-accent-hover px-4 py-1 rounded-md text-sm font-medium"
-            >
-              {{ $t("navigation.signup") }}
-            </NuxtLink>
-          </div>
+          <client-only>
+            <ProfilTool v-if="user" />
+            <div v-else class="hidden tablet:flex gap-2">
+              <NuxtLink
+                :to="{ name: 'Login' }"
+                class="text-primary hover:bg-gray-800 hover:text-white px-4 py-1 rounded-md text-sm font-medium"
+              >
+                {{ $t("navigation.login") }}
+              </NuxtLink>
+              <NuxtLink
+                :to="{ name: 'Signup' }"
+                class="text-inverted bg-accent hover:bg-accent-hover px-4 py-1 rounded-md text-sm font-medium"
+              >
+                {{ $t("navigation.signup") }}
+              </NuxtLink>
+            </div>
+          </client-only>
         </div>
       </div>
     </div>
@@ -105,23 +107,25 @@ const user = useSupabaseUser();
         </NuxtLink>
       </div>
       <Tools class="my-4" />
-      <div
-        class="py-5 border-t border-gray-800 items-center text-center"
-        v-if="!user"
-      >
-        <NuxtLink
-          :to="{ name: 'Login' }"
-          class="text-primary hover:bg-gray-800 hover:text-white px-4 py-1 rounded-md text-sm font-medium"
+      <client-only>
+        <div
+          class="py-5 border-t border-gray-800 items-center text-center"
+          v-if="!user"
         >
-          {{ $t("navigation.login") }}
-        </NuxtLink>
-        <NuxtLink
-          :to="{ name: 'Signup' }"
-          class="text-inverted bg-accent hover:bg-accent-hover px-4 py-1 rounded-md text-sm font-medium"
-        >
-          {{ $t("navigation.signup") }}
-        </NuxtLink>
-      </div>
+          <NuxtLink
+            :to="{ name: 'Login' }"
+            class="text-primary hover:bg-gray-800 hover:text-white px-4 py-1 rounded-md text-sm font-medium"
+          >
+            {{ $t("navigation.login") }}
+          </NuxtLink>
+          <NuxtLink
+            :to="{ name: 'Signup' }"
+            class="text-inverted bg-accent hover:bg-accent-hover px-4 py-1 rounded-md text-sm font-medium"
+          >
+            {{ $t("navigation.signup") }}
+          </NuxtLink>
+        </div>
+      </client-only>
     </DisclosurePanel>
   </Disclosure>
 </template>
