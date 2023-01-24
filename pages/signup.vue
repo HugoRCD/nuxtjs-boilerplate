@@ -29,7 +29,7 @@ const signup = async () => {
     },
   });
   if (error) console.log(error);
-  navigateTo("/app/login");
+  navigateTo("/login");
 };
 </script>
 
@@ -38,7 +38,7 @@ const signup = async () => {
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <img
         class="mx-auto h-12 w-auto"
-        src="../../assets/media/logo.svg"
+        src="../assets/media/logo.svg"
         alt="Your Company"
       />
       <h2

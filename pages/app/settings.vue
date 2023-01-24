@@ -1,10 +1,8 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: ["auth"],
   name: "Settings",
   title: "Settings",
   description: "Settings",
-  layout: "app",
 });
 </script>
 

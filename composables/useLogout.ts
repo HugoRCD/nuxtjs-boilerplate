@@ -20,5 +20,5 @@ export const useLogout = async () => {
   } catch (e) {
     console.error(error);
   }
-  await navigateTo("/app/login");
+  await navigateTo("/login");
 };

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: ["auth"],
   name: "Admin",
   title: "Admin",
   description: "Admin",
-  layout: "app",
 });
 
 const { data } = await useFetch("/api/user/listUsers", {
