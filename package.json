@@ -12,6 +12,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "start": "nuxt start",
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
     "format": "prettier --write \"**/*.js\" \"**/*.vue\" ",
     "prisma:generate": "prisma generate",
     "prisma:pull": "prisma db pull",
@@ -44,7 +45,7 @@
     "prettier": "^2.8.3",
     "prisma": "^4.9.0",
     "sass": "^1.57.1",
-    "typescript": "^4.9.4",
-    "stripe": "^11.7.0"
+    "stripe": "^11.7.0",
+    "typescript": "^4.9.4"
   }
 }
