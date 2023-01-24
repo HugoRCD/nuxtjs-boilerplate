@@ -29,16 +29,13 @@ const updateProfile = async () => {
 };
 
 const deleteAccount = async () => {
-  await useLogout();
-  const { error } = await useFetch("/api/user/deleteUser");
-  if (!error) {
-    console.log("Error deleting user: ", error);
-    return;
-  }
+  await useDeleteAccount();
 };
 
 const whoAmI = async () => {
-  const { data } = await useFetch("/api/user/currentUser");
+  const { data } = await useFetch("/api/user/currentUser", {
+    method: "GET",
+  });
   if (data) console.log(data.value);
 };
 </script>
