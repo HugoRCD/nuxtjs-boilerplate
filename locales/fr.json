@@ -12,7 +12,8 @@
     "logout": "Déconnexion",
     "signup": "Inscription",
     "profile": "Profil",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "admin": "Admin"
   },
   "pages": {
     "profile": {

@@ -12,7 +12,8 @@
     "logout": "Logout",
     "signup": "Sign Up",
     "profile": "Profile",
-    "settings": "Settings"
+    "settings": "Settings",
+    "admin": "Admin"
   },
   "pages": {
     "profile": {
