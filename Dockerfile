@@ -1,6 +1,8 @@
 FROM node:18-alpine as builder
 
-ARG EnvironmentVariable
+ARG SUPABASE_URL
+ARG SUPABASE_KEY
+ARG SUPABASE_SERVICE_KEY
 
 WORKDIR /app
 
