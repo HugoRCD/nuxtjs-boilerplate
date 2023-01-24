@@ -15,7 +15,12 @@
     "format": "prettier --write \"**/*.js\" \"**/*.vue\" ",
     "prisma:generate": "prisma generate",
     "prisma:pull": "prisma db pull",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:migrate:deploy": "prisma migrate deploy",
     "prisma:push": "prisma db push"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.mjs"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.7",
@@ -32,12 +37,10 @@
     "@typescript-eslint/parser": "^5.48.2",
     "@vueuse/core": "^9.11.1",
     "@vueuse/nuxt": "^9.11.1",
-    "autoprefixer": "^10.4.13",
     "eslint": "^8.32.0",
     "nuxt": "3.0.0",
     "nuxt-headlessui": "^1.1.1",
     "nuxt-icon": "^0.2.6",
-    "postcss": "^8.4.21",
     "prettier": "^2.8.3",
     "prisma": "^4.9.0",
     "sass": "^1.57.1",
