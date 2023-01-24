@@ -19,16 +19,6 @@ watchEffect(async () => {
 
 const loading = ref(false);
 
-const signWithGithub = async () => {
-  const { error } = await auth.signInWithOAuth({
-    provider: "github",
-    options: {
-      redirectTo: window.location.origin + "/app/profile",
-    },
-  });
-  if (error) console.log(error);
-};
-
 const signin = async () => {
   loading.value = true;
   const { error } = await auth.signInWithPassword({
@@ -37,6 +27,16 @@ const signin = async () => {
   });
   if (error) console.log(error);
   loading.value = false;
+};
+
+const signWithGithub = async () => {
+  const { error } = await auth.signInWithOAuth({
+    provider: "github",
+    options: {
+      redirectTo: window.location.origin + "/app/profile",
+    },
+  });
+  if (error) console.log(error);
 };
 
 const signWithGoogle = async () => {
