@@ -1,5 +1,7 @@
 FROM node:18-alpine as builder
 
+ARG EnvironmentVariable
+
 WORKDIR /app
 
 RUN npm install -g pnpm
