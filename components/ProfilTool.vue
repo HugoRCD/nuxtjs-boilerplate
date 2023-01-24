@@ -8,30 +8,13 @@ const profile_navigation = [
 ];
 
 const user = useSupabaseUser();
-const { auth } = useSupabaseAuthClient();
 
 const profile = computed(() => user.value?.user_metadata.avatar_url);
 
 const default_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 
 const logout = async () => {
-  const { error } = await auth.signOut();
-  if (error) {
-    console.error(error);
-    return;
-  }
-  // The Nuxt Supabase auth *should* be doing this
-  // for us, but it isn't for some reason.
-  try {
-    await $fetch("/api/_supabase/session", {
-      method: "POST",
-      body: { event: "SIGNED_OUT", session: null },
-    });
-    user.value = null;
-  } catch (e) {
-    console.error(error);
-  }
-  await navigateTo("/app/login");
+  await useLogout();
 };
 </script>
 

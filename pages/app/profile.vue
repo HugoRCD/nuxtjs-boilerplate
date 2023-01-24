@@ -28,8 +28,17 @@ const updateProfile = async () => {
   if (error) console.log("Error updating user: ", error);
 };
 
+const deleteAccount = async () => {
+  await useLogout();
+  const { error } = await useFetch("/api/user/deleteUser");
+  if (!error) {
+    console.log("Error deleting user: ", error);
+    return;
+  }
+};
+
 const whoAmI = async () => {
-  const { data } = await useFetch("/api/currentUser");
+  const { data } = await useFetch("/api/user/currentUser");
   if (data) console.log(data.value);
 };
 </script>
@@ -73,17 +82,24 @@ const whoAmI = async () => {
       </div>
     </div>
 
-    <div class="flex justify-end">
+    <div class="flex justify-end gap-4">
       <button
         @click="whoAmI"
         type="button"
-        class="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        class="rounded-md bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
       >
         Test Self Endpoint (see console)
       </button>
       <button
+        @click="deleteAccount"
+        type="button"
+        class="rounded-md bg-red-600 py-2 px-4 text-sm font-medium text-white shadow-sm"
+      >
+        Delete Account
+      </button>
+      <button
         @click="updateProfile"
-        class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        class="rounded-md border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700"
       >
         Save changes
       </button>

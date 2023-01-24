@@ -24,8 +24,7 @@ const signup = async () => {
     options: {
       data: {
         username: user.username,
-        firstname: user.firstname,
-        lastname: user.lastname,
+        full_name: user.firstname + " " + user.lastname,
       },
     },
   });
