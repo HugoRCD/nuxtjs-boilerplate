@@ -5,12 +5,13 @@ definePageMeta({
   description: "Forgot Password",
 });
 
+const { auth } = useSupabaseClient();
+
 const email = ref("");
 
 const sendResetPasswordEmail = async () => {
-  /* await useAxios("reset-password", "POST", {
-    email: email.value,
-  }); */
+  const { error } = await auth.resetPasswordForEmail(email.value);
+  if (error) console.log("Error sending password reset email: ", error);
 };
 </script>
 
@@ -24,7 +25,7 @@ const sendResetPasswordEmail = async () => {
           <router-link to="/">
             <img
               class="h-12 w-auto mx-auto"
-              src="../../assets/media/logo.svg"
+              src="../assets/media/logo.svg"
               alt="Your Company"
             />
           </router-link>

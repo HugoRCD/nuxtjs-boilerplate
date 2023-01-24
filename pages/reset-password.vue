@@ -5,18 +5,16 @@ definePageMeta({
   description: "Reset Password",
 });
 
+const { auth } = useSupabaseClient();
+
 const password = ref("");
 const passwordConfirmation = ref("");
-const token = ref(useRoute().params.token);
 
 const resetPassword = async () => {
-  /* const response = await useAxios("reset-password/" + token.value, "POST", {
+  const { error } = await auth.updateUser({
     password: password.value,
-    password_confirmation: passwordConfirmation.value,
   });
-  if (response) {
-    useRouter().push({ name: "Login" });
-  } */
+  if (!error) console.log("Error resetting password:", error);
 };
 </script>
 
@@ -30,7 +28,7 @@ const resetPassword = async () => {
           <router-link to="/">
             <img
               class="h-12 w-auto mx-auto"
-              src="../../assets/media/logo.svg"
+              src="../assets/media/logo.svg"
               alt="Your Company"
             />
           </router-link>
