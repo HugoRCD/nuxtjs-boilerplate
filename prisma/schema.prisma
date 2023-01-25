@@ -8,64 +8,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  schemas  = ["auth", "public"]
-}
-
-model account {
-  id                 String    @id @db.Uuid
-  updated_at         DateTime? @db.Timestamptz(6)
-  user_name          String?   @unique
-  full_name          String?
-  email              String?   @unique
-  stripe_customer_id String?   @unique
-  admin              Boolean?  @default(false)
-  avatar_url         String?
-  users              users     @relation(fields: [id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-
-  @@schema("public")
-}
-
-model users {
-  instance_id                 String?       @db.Uuid
-  id                          String        @id @db.Uuid
-  aud                         String?       @db.VarChar(255)
-  role                        String?       @db.VarChar(255)
-  email                       String?       @db.VarChar(255)
-  encrypted_password          String?       @db.VarChar(255)
-  email_confirmed_at          DateTime?     @db.Timestamptz(6)
-  invited_at                  DateTime?     @db.Timestamptz(6)
-  confirmation_token          String?       @db.VarChar(255)
-  confirmation_sent_at        DateTime?     @db.Timestamptz(6)
-  recovery_token              String?       @db.VarChar(255)
-  recovery_sent_at            DateTime?     @db.Timestamptz(6)
-  email_change_token_new      String?       @db.VarChar(255)
-  email_change                String?       @db.VarChar(255)
-  email_change_sent_at        DateTime?     @db.Timestamptz(6)
-  last_sign_in_at             DateTime?     @db.Timestamptz(6)
-  raw_app_meta_data           Json?
-  raw_user_meta_data          Json?
-  is_super_admin              Boolean?
-  created_at                  DateTime?     @db.Timestamptz(6)
-  updated_at                  DateTime?     @db.Timestamptz(6)
-  phone                       String?       @unique @db.VarChar(15)
-  phone_confirmed_at          DateTime?     @db.Timestamptz(6)
-  phone_change                String?       @default("") @db.VarChar(15)
-  phone_change_token          String?       @default("") @db.VarChar(255)
-  phone_change_sent_at        DateTime?     @db.Timestamptz(6)
-  confirmed_at                DateTime?     @default(dbgenerated("LEAST(email_confirmed_at, phone_confirmed_at)")) @db.Timestamptz(6)
-  email_change_token_current  String?       @default("") @db.VarChar(255)
-  email_change_confirm_status Int?          @default(0) @db.SmallInt
-  banned_until                DateTime?     @db.Timestamptz(6)
-  reauthentication_token      String?       @default("") @db.VarChar(255)
-  reauthentication_sent_at    DateTime?     @db.Timestamptz(6)
-  is_sso_user                 Boolean       @default(false)
-  identities                  identities[]
-  mfa_factors                 mfa_factors[]
-  sessions                    sessions[]
-  account                     account?
-
-  @@index([instance_id])
-  @@schema("auth")
+  schemas  = ["auth", "public", "storage"]
 }
 
 model audit_log_entries {
@@ -241,6 +184,105 @@ model sso_providers {
   sso_domains       sso_domains[]
 
   @@schema("auth")
+}
+
+model users {
+  instance_id                 String?       @db.Uuid
+  id                          String        @id @db.Uuid
+  aud                         String?       @db.VarChar(255)
+  role                        String?       @db.VarChar(255)
+  email                       String?       @db.VarChar(255)
+  encrypted_password          String?       @db.VarChar(255)
+  email_confirmed_at          DateTime?     @db.Timestamptz(6)
+  invited_at                  DateTime?     @db.Timestamptz(6)
+  confirmation_token          String?       @db.VarChar(255)
+  confirmation_sent_at        DateTime?     @db.Timestamptz(6)
+  recovery_token              String?       @db.VarChar(255)
+  recovery_sent_at            DateTime?     @db.Timestamptz(6)
+  email_change_token_new      String?       @db.VarChar(255)
+  email_change                String?       @db.VarChar(255)
+  email_change_sent_at        DateTime?     @db.Timestamptz(6)
+  last_sign_in_at             DateTime?     @db.Timestamptz(6)
+  raw_app_meta_data           Json?
+  raw_user_meta_data          Json?
+  is_super_admin              Boolean?
+  created_at                  DateTime?     @db.Timestamptz(6)
+  updated_at                  DateTime?     @db.Timestamptz(6)
+  phone                       String?       @unique @db.VarChar(15)
+  phone_confirmed_at          DateTime?     @db.Timestamptz(6)
+  phone_change                String?       @default("") @db.VarChar(15)
+  phone_change_token          String?       @default("") @db.VarChar(255)
+  phone_change_sent_at        DateTime?     @db.Timestamptz(6)
+  confirmed_at                DateTime?     @default(dbgenerated("LEAST(email_confirmed_at, phone_confirmed_at)")) @db.Timestamptz(6)
+  email_change_token_current  String?       @default("") @db.VarChar(255)
+  email_change_confirm_status Int?          @default(0) @db.SmallInt
+  banned_until                DateTime?     @db.Timestamptz(6)
+  reauthentication_token      String?       @default("") @db.VarChar(255)
+  reauthentication_sent_at    DateTime?     @db.Timestamptz(6)
+  is_sso_user                 Boolean       @default(false)
+  identities                  identities[]
+  mfa_factors                 mfa_factors[]
+  sessions                    sessions[]
+  account                     account?
+  buckets                     buckets[]
+  objects                     objects[]
+
+  @@index([instance_id])
+  @@schema("auth")
+}
+
+model account {
+  id                 String    @id @db.Uuid
+  updated_at         DateTime? @db.Timestamptz(6)
+  user_name          String?
+  full_name          String?
+  email              String?   @unique
+  stripe_customer_id String?   @unique
+  admin              Boolean?  @default(false)
+  avatar_url         String?
+  users              users     @relation(fields: [id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+model buckets {
+  id         String    @id
+  name       String    @unique(map: "bname")
+  owner      String?   @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at DateTime? @default(now()) @db.Timestamptz(6)
+  public     Boolean?  @default(false)
+  users      users?    @relation(fields: [owner], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  objects    objects[]
+
+  @@schema("storage")
+}
+
+model migrations {
+  id          Int       @id
+  name        String    @unique @db.VarChar(100)
+  hash        String    @db.VarChar(40)
+  executed_at DateTime? @default(now()) @db.Timestamp(6)
+
+  @@schema("storage")
+}
+
+model objects {
+  id               String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  bucket_id        String?
+  name             String?
+  owner            String?   @db.Uuid
+  created_at       DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime? @default(now()) @db.Timestamptz(6)
+  last_accessed_at DateTime? @default(now()) @db.Timestamptz(6)
+  metadata         Json?
+  path_tokens      String[]  @default(dbgenerated("string_to_array(name, '/'::text)"))
+  buckets          buckets?  @relation(fields: [bucket_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "objects_bucketId_fkey")
+  users            users?    @relation(fields: [owner], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([bucket_id, name], map: "bucketid_objname")
+  @@index([name], map: "name_prefix_search")
+  @@schema("storage")
 }
 
 enum aal_level {
