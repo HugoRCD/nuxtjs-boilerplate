@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   protectRoute(event);
   const body = await readBody(event);
   const email = event.context.user.email;
-  const productId = body.product_price;
+  const productId = body.priceId;
   const { url } = await getSubscriptionUrl(email, productId);
   if (url) {
     return sendRedirect(event, url);
