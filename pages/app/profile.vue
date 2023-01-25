@@ -76,7 +76,7 @@ const whoAmI = async () => {
     </div>
 
     <div class="flex justify-end gap-4">
-      <form action="/api/stripe/test" method="post">
+      <form action="/api/stripe/subscribe" method="post">
         <button
           name="product_price"
           value="price_1MTtgFCk9AfBe7l2i8spjHK5"
