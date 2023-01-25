@@ -1,8 +1,7 @@
 import protectRoute from "~/server/utils/protectRoute";
-/* import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient(); */
+import { User } from "~/types/User";
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<User> => {
   protectRoute(event);
   return event.context.user;
 });
