@@ -30,7 +30,7 @@ const signup = async () => {
     password: password.value,
     options: {
       data: {
-        username: username.value,
+        user_name: username.value,
         full_name: firstname.value + " " + lastname.value,
       },
     },

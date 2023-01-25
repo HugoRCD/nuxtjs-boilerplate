@@ -31,10 +31,8 @@ const deleteAccount = async () => {
 };
 
 const whoAmI = async () => {
-  const { data } = await useFetch("/api/user/currentUser", {
-    method: "GET",
-  });
-  if (data) console.log(data.value);
+  const response = await useCurrentUser();
+  console.log(response.value);
 };
 </script>
 
