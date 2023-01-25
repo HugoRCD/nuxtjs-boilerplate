@@ -59,9 +59,9 @@ const plans: Plan[] = [
       </div>
       <div class="relative mx-auto mt-8 max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-md lg:max-w-4xl">
-          <div class="flex flex-col gap-6 rounded-3xl p-8 ring-1 ring-accent/10 sm:p-10 lg:flex-row lg:items-center lg:gap-8">
+          <div class="flex flex-col gap-6 rounded-3xl p-8 bg-secondary sm:p-10 lg:flex-row lg:items-center lg:gap-8">
             <div class="lg:min-w-0 lg:flex-1">
-              <h3 class="text-lg font-semibold leading-8 tracking-tight text-accent">Custom</h3>
+              <h3 class="text-lg font-semibold leading-8 tracking-tight text-primary">Custom</h3>
               <div class="mt-2 text-base leading-7 text-gray-600">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
               </div>
