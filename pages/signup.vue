@@ -48,6 +48,16 @@ const signWithGoogle = async () => {
   });
   if (error) console.log(error);
 };
+
+const signWithGithub = async () => {
+  const { error } = await auth.signInWithOAuth({
+    provider: "github",
+    options: {
+      redirectTo: window.location.origin + "/app/profile",
+    },
+  });
+  if (error) console.log(error);
+};
 </script>
 
 <template>
