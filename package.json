@@ -41,7 +41,7 @@
     "eslint": "^8.32.0",
     "nuxt": "3.4.3",
     "nuxt-headlessui": "^1.1.1",
-    "nuxt-icon": "^0.2.6",
+    "nuxt-icon": "^0.5.0",
     "prettier": "^2.8.3",
     "prisma": "^4.9.0",
     "sass": "^1.57.1",
