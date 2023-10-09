@@ -28,7 +28,7 @@
     "@heroicons/vue": "^2.0.13",
     "@nuxt/image-edge": "1.0.0-27840416.dc1ed65",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@nuxtjs/i18n": "8.0.0-beta.9",
+    "@nuxtjs/i18n": "8.0.0-rc.5",
     "@nuxtjs/style-resources": "^1.2.1",
     "@nuxtjs/supabase": "^0.3.0",
     "@nuxtjs/tailwindcss": "^6.2.0",
